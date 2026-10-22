@@ -1,0 +1,922 @@
+{
+ "27 HADLEY ST|01851": {
+  "lat": 42.634716682543,
+  "lng": -71.352789727737,
+  "src": "census",
+  "matched": "27 HADLEY ST, LOWELL, MA, 01851"
+ },
+ "163 A ST|01851": {
+  "lat": 42.628075204101,
+  "lng": -71.328372521364,
+  "src": "census",
+  "matched": "163 A ST, LOWELL, MA, 01851"
+ },
+ "75 ALEXANDER AVE|01826": {
+  "lat": 42.686184649011,
+  "lng": -71.337796419263,
+  "src": "census",
+  "matched": "75 ALEXANDER AVE, DRACUT, MA, 01826"
+ },
+ "85 OLD MEADOW RD|01826": {
+  "lat": 42.661556738775,
+  "lng": -71.333502098175,
+  "src": "census",
+  "matched": "85 OLD MEADOW RD, DRACUT, MA, 01826"
+ },
+ "95 TENNIS PLZ RD|01826": {
+  "lat": 42.675937547979,
+  "lng": -71.345044797329,
+  "src": "census",
+  "matched": "95 TENNIS PLAZA RD, DRACUT, MA, 01826"
+ },
+ "1199 HILDRETH ST|01826": {
+  "lat": 42.685277923686,
+  "lng": -71.330323104909,
+  "src": "census",
+  "matched": "1199 HILDRETH ST, DRACUT, MA, 01826"
+ },
+ "54 HOPKINS ST|01826": {
+  "lat": 42.674963014238,
+  "lng": -71.331771982514,
+  "src": "census",
+  "matched": "54 HOPKINS ST, DRACUT, MA, 01826"
+ },
+ "365 EAST ST|01876": {
+  "lat": 42.6069472,
+  "lng": -71.2180803,
+  "src": "osm-building",
+  "matched": "Tewksbury Hospital"
+ },
+ "875 EAST ST|01876": {
+  "lat": 42.6151382,
+  "lng": -71.1953777,
+  "src": "osm-building",
+  "matched": "875 East St"
+ },
+ "119 GRAND ST|01851": {
+  "lat": 42.63621883158,
+  "lng": -71.317825080372,
+  "src": "census",
+  "matched": "119 GRAND ST, LOWELL, MA, 01851"
+ },
+ "574 CHANDLER ST|01876": {
+  "lat": 42.600110302197,
+  "lng": -71.229975065306,
+  "src": "census",
+  "matched": "574 CHANDLER ST, TEWKSBURY, MA, 01876"
+ },
+ "339 HIGH ST|01852": {
+  "lat": 42.639982987246,
+  "lng": -71.299386713241,
+  "src": "census",
+  "matched": "339 HIGH ST, LOWELL, MA, 01852"
+ },
+ "247 SALEM RD|01876": {
+  "lat": 42.578192738081,
+  "lng": -71.185100818001,
+  "src": "census",
+  "matched": "247 SALEM RD, TEWKSBURY, MA, 01876"
+ },
+ "45 BURTT ST|01851": {
+  "lat": 42.633046392382,
+  "lng": -71.334488807578,
+  "src": "census",
+  "matched": "45 BURTT ST, LOWELL, MA, 01851"
+ },
+ "55 PRATT ST|01876": {
+  "lat": 42.580234794249,
+  "lng": -71.197161797894,
+  "src": "census",
+  "matched": "55 PRATT ST, TEWKSBURY, MA, 01876"
+ },
+ "55 WHITE ST|01854": {
+  "lat": 42.652776410102,
+  "lng": -71.331100682509,
+  "src": "census",
+  "matched": "55 WHITE ST, LOWELL, MA, 01854"
+ },
+ "203 CIRCUIT AVE|01852": {
+  "lat": 42.6223914,
+  "lng": -71.2879731,
+  "src": "osm-building",
+  "matched": "203 Circuit Ave"
+ },
+ "96 RICHARDSON RD|01863": {
+  "lat": 42.625973393482,
+  "lng": -71.379402712752,
+  "src": "census",
+  "matched": "96 RICHARDSON RD, N CHELMSFORD, MA, 01863"
+ },
+ "90 BRICK KILN RD|01824": {
+  "lat": 42.595566719119,
+  "lng": -71.305031415882,
+  "src": "census",
+  "matched": "90 BRICK KILN RD, CHELMSFORD, MA, 01824"
+ },
+ "820 BRIDGE ST|01850": {
+  "lat": 42.655791082772,
+  "lng": -71.302968756165,
+  "src": "census",
+  "matched": "820 BRIDGE ST, LOWELL, MA, 01850"
+ },
+ "80 MIDDLESEX ST|01863": {
+  "lat": 42.63646038998,
+  "lng": -71.374743735345,
+  "src": "census",
+  "matched": "80 MIDDLESEX ST, N CHELMSFORD, MA, 01863"
+ },
+ "279 DUTTON ST|01854": {
+  "lat": 42.644363025651,
+  "lng": -71.314158627023,
+  "src": "census",
+  "matched": "279 DUTTON ST, LOWELL, MA, 01852"
+ },
+ "229 BILLERICA RD|01824": {
+  "lat": 42.596661726304,
+  "lng": -71.326184321767,
+  "src": "census",
+  "matched": "229 BILLERICA RD, CHELMSFORD, MA, 01824"
+ },
+ "494 WESTFORD ST|01851": {
+  "lat": 42.634132498071,
+  "lng": -71.333587537561,
+  "src": "census",
+  "matched": "494 WESTFORD ST, LOWELL, MA, 01851"
+ },
+ "475 STEVENS ST|01851": {
+  "lat": 42.626664162431,
+  "lng": -71.331974489601,
+  "src": "census",
+  "matched": "475 STEVENS ST, LOWELL, MA, 01851"
+ },
+ "205 MIDDLESEX ST|01852": {
+  "lat": 42.640949824226,
+  "lng": -71.311927812579,
+  "src": "census",
+  "matched": "205 MIDDLESEX ST, LOWELL, MA, 01852"
+ },
+ "40 SWIFT ST|01852": {
+  "lat": 42.634555442539,
+  "lng": -71.30366794048,
+  "src": "census",
+  "matched": "40 SWIFT ST, LOWELL, MA, 01852"
+ },
+ "1582 VARNUM AVE|01854": {
+  "lat": 42.654034887427,
+  "lng": -71.380550289638,
+  "src": "census",
+  "matched": "1582 VARNUM AVE, LOWELL, MA, 01854"
+ },
+ "140 BOWDEN ST|01852": {
+  "lat": 42.619698269304,
+  "lng": -71.300131501565,
+  "src": "census",
+  "matched": "140 BOWDEN ST, LOWELL, MA, 01852"
+ },
+ "124 RIVERSIDE ST|01854": {
+  "lat": 42.652752845801,
+  "lng": -71.328451170326,
+  "src": "census",
+  "matched": "124 RIVERSIDE ST, LOWELL, MA, 01854"
+ },
+ "1905 MIDDLESEX ST|01851": {
+  "lat": 42.635317769809,
+  "lng": -71.359832615663,
+  "src": "census",
+  "matched": "1905 MIDDLESEX ST, LOWELL, MA, 01851"
+ },
+ "1224 SHAWSHEEN ST|01876": {
+  "lat": 42.607087808087,
+  "lng": -71.189443789456,
+  "src": "census",
+  "matched": "1224 SHAWSHEEN ST, TEWKSBURY, MA, 01876"
+ },
+ "220 PAWTUCKET ST|01854": {
+  "lat": 42.650376853627,
+  "lng": -71.324308312923,
+  "src": "census",
+  "matched": "220 PAWTUCKET ST, LOWELL, MA, 01854"
+ },
+ "338 ASTLE ST|01876": {
+  "lat": 42.620492333226,
+  "lng": -71.276856872758,
+  "src": "census",
+  "matched": "338 ASTLE ST, TEWKSBURY, MA, 01876"
+ },
+ "2 ROCKDALE AVE|01854": {
+  "lat": 42.647716052973,
+  "lng": -71.324318858089,
+  "src": "census",
+  "matched": "2 ROCKDALE AVE, LOWELL, MA, 01854"
+ },
+ "350 ROGERS ST|01876": {
+  "lat": 42.612827335849,
+  "lng": -71.263347204118,
+  "src": "census",
+  "matched": "350 ROGERS ST, TEWKSBURY, MA, 01876"
+ },
+ "341 LAKEVIEW AVE|01850": {
+  "lat": 42.652207845801,
+  "lng": -71.309250195782,
+  "src": "census",
+  "matched": "341 LAKEVIEW AVE, LOWELL, MA, 01850"
+ },
+ "416 ROGERS ST|01876": {
+  "lat": 42.611722579468,
+  "lng": -71.265810528288,
+  "src": "census",
+  "matched": "416 ROGERS ST, TEWKSBURY, MA, 01876"
+ },
+ "1141 BRIDGE ST|01850": {
+  "lat": 42.663003629905,
+  "lng": -71.303373435045,
+  "src": "census",
+  "matched": "1141 BRIDGE ST, LOWELL, MA, 01850"
+ },
+ "1900 MAIN ST|01876": {
+  "lat": 42.5909262,
+  "lng": -71.2020209,
+  "src": "osm-building",
+  "matched": "1900 Main St"
+ },
+ "345 HILDRETH ST|01850": {
+  "lat": 42.662257590298,
+  "lng": -71.309621260879,
+  "src": "census",
+  "matched": "345 HILDRETH ST, LOWELL, MA, 01850"
+ },
+ "12 HODGSON|01876": {
+  "lat": 42.5895822,
+  "lng": -71.2239783,
+  "src": "osm-building",
+  "matched": "12 Hodgson St"
+ },
+ "85 PARKHURST RD|01824": {
+  "lat": 42.625173644915,
+  "lng": -71.359934936402,
+  "src": "census",
+  "matched": "85 PARKHURST RD, CHELMSFORD, MA, 01824"
+ },
+ "75 RAYMOND ST|01876": {
+  "lat": 42.5901617,
+  "lng": -71.2455606,
+  "src": "osm-building",
+  "matched": "75 Raymond St"
+ },
+ "107 STEVENS ST|01851": {
+  "lat": 42.63674832018,
+  "lng": -71.334473424465,
+  "src": "census",
+  "matched": "107 STEVENS ST, LOWELL, MA, 01851"
+ },
+ "970 MAIN ST|01876": {
+  "lat": 42.61262583093,
+  "lng": -71.234620238093,
+  "src": "census",
+  "matched": "970 MAIN ST, TEWKSBURY, MA, 01876"
+ },
+ "9 SAYLES ST|01851": {
+  "lat": 42.638031298968,
+  "lng": -71.340369694577,
+  "src": "census",
+  "matched": "9 SAYLES ST, LOWELL, MA, 01851"
+ },
+ "734 MAIN ST|01876": {
+  "lat": 42.615801566258,
+  "lng": -71.243668139413,
+  "src": "census",
+  "matched": "734 MAIN ST, TEWKSBURY, MA, 01876"
+ },
+ "21 COLUMBIA RD|01854": {
+  "lat": 42.65251262799,
+  "lng": -71.336922642156,
+  "src": "census",
+  "matched": "21 COLUMBIA RD, LOWELL, MA, 01854"
+ },
+ "1262 WHIPPLE RD|01876": {
+  "lat": 42.588741297246,
+  "lng": -71.238185097492,
+  "src": "census",
+  "matched": "1262 WHIPPLE RD, TEWKSBURY, MA, 01876"
+ },
+ "129 LAKEVIEW AVE|01850": {
+  "lat": 42.650279447572,
+  "lng": -71.306244801899,
+  "src": "census",
+  "matched": "129 LAKEVIEW AVE, LOWELL, MA, 01850"
+ },
+ "15 VETERANS WAY|01852": {
+  "lat": 42.640634686098,
+  "lng": -71.307939711667,
+  "src": "census",
+  "matched": "15 VETERAN'S WAY, LOWELL, MA, 01852"
+ },
+ "72 READ ST|01850": {
+  "lat": 42.650810978115,
+  "lng": -71.301878860385,
+  "src": "census",
+  "matched": "72 READ ST, LOWELL, MA, 01850"
+ },
+ "85 AGAWAM ST|01852": {
+  "lat": 42.629694458683,
+  "lng": -71.301482708262,
+  "src": "census",
+  "matched": "85 AGAWAM ST, LOWELL, MA, 01852"
+ },
+ "177 E MERRIMACK ST|01852": {
+  "lat": 42.644514082459,
+  "lng": -71.302275055921,
+  "src": "census",
+  "matched": "177 E MERRIMACK ST, LOWELL, MA, 01852"
+ },
+ "120 CABOT ST|01852": {
+  "lat": 42.649002717389,
+  "lng": -71.318410753607,
+  "src": "census",
+  "matched": "120 CABOT ST, LOWELL, MA, 01854"
+ },
+ "15 WESTFORD ST|01851": {
+  "lat": 42.63782179545,
+  "lng": -71.316604061548,
+  "src": "census",
+  "matched": "15 WESTFORD ST, LOWELL, MA, 01851"
+ },
+ "37 ELM ST|01852": {
+  "lat": 42.637482861209,
+  "lng": -71.306860625528,
+  "src": "census",
+  "matched": "37 ELM ST, LOWELL, MA, 01852"
+ },
+ "1460 MIDDLESEX ST|01851": {
+  "lat": 42.637691555348,
+  "lng": -71.344814380194,
+  "src": "census",
+  "matched": "1460 MIDDLESEX ST, LOWELL, MA, 01851"
+ },
+ "43 SUMMER ST|01852": {
+  "lat": 42.639615574877,
+  "lng": -71.309762278223,
+  "src": "census",
+  "matched": "43 SUMMER ST, LOWELL, MA, 01852"
+ },
+ "210 CROSS ST|01854": {
+  "lat": 42.643931324463,
+  "lng": -71.324652429479,
+  "src": "census",
+  "matched": "210 CROSS ST, LOWELL, MA, 01854"
+ },
+ "150 RANGEWAY RD|01862": {
+  "lat": 42.571633914459,
+  "lng": -71.309146366672,
+  "src": "census",
+  "matched": "150 RANGEWAY RD, N BILLERICA, MA, 01862"
+ },
+ "1 INNIS DR|01821": {
+  "lat": 42.551040620697,
+  "lng": -71.266397555692,
+  "src": "census",
+  "matched": "1 INNIS DR, BILLERICA, MA, 01821"
+ },
+ "134 BILLERICA AVE|01862": {
+  "lat": 42.603208729332,
+  "lng": -71.283502103397,
+  "src": "census",
+  "matched": "134 BILLERICA AVE, NORTH BILLERICA, MA, 01862"
+ },
+ "37 CONNOLLY RD|01821": {
+  "lat": 42.54267124113,
+  "lng": -71.211377755857,
+  "src": "census",
+  "matched": "37 CONNOLLY RD, BILLERICA, MA, 01821"
+ },
+ "16 RIVER ST|01821": {
+  "lat": 42.559701921138,
+  "lng": -71.271470371608,
+  "src": "census",
+  "matched": "16 RIVER ST, BILLERICA, MA, 01821"
+ },
+ "19 WOODSIDE RD|01862": {
+  "lat": 42.537532825849,
+  "lng": -71.303530651744,
+  "src": "census",
+  "matched": "19 WOODSIDE RD, NORTH BILLERICA, MA, 01862"
+ },
+ "17 PROGRESS RD|01821": {
+  "lat": 42.5233186,
+  "lng": -71.2343716,
+  "src": "osm-building",
+  "matched": "17 Progress Rd"
+ },
+ "43 RHODES ST|01862": {
+  "lat": 42.541283904692,
+  "lng": -71.268225093643,
+  "src": "census",
+  "matched": "43 RHODES ST, BILLERICA, MA, 01821"
+ },
+ "847 BOSTON RD|01821": {
+  "lat": 42.525454879678,
+  "lng": -71.223262318347,
+  "src": "census",
+  "matched": "847 BOSTON RD, BILLERICA, MA, 01821"
+ },
+ "305 BOSTON RD|01862": {
+  "lat": 42.5732967,
+  "lng": -71.2784966,
+  "src": "osm-building",
+  "matched": "305 Boston Rd"
+ },
+ "85 WESTFORD ST|01851": {
+  "lat": 42.637201482272,
+  "lng": -71.319060563199,
+  "src": "census",
+  "matched": "85 WESTFORD ST, LOWELL, MA, 01851"
+ },
+ "39 LUNDBERG ST|01852": {
+  "lat": 42.622626811811,
+  "lng": -71.304069812784,
+  "src": "census",
+  "matched": "39 LUNDBERG ST, LOWELL, MA, 01852"
+ },
+ "90 APPLETON ST|01852": {
+  "lat": 42.640710839136,
+  "lng": -71.309608863315,
+  "src": "census",
+  "matched": "90 APPLETON ST, LOWELL, MA, 01852"
+ },
+ "273 SUMMER ST|01852": {
+  "lat": 42.638685196778,
+  "lng": -71.313590013144,
+  "src": "census",
+  "matched": "273 SUMMER ST, LOWELL, MA, 01852"
+ },
+ "638 ROGERS ST|01852": {
+  "lat": 42.631103030736,
+  "lng": -71.282081829345,
+  "src": "census",
+  "matched": "638 ROGERS ST, LOWELL, MA, 01852"
+ },
+ "90 PHOENIX AVE|01852": {
+  "lat": 42.62727248759,
+  "lng": -71.279020516888,
+  "src": "census",
+  "matched": "90 PHOENIX AVE, LOWELL, MA, 01852"
+ },
+ "31 FISHER ST|01850": {
+  "lat": 42.659280399815,
+  "lng": -71.31327073221,
+  "src": "census",
+  "matched": "31 FISHER ST, LOWELL, MA, 01850"
+ },
+ "1955 MIDDLESEX ST|01851": {
+  "lat": 42.635676111842,
+  "lng": -71.36156751179,
+  "src": "census",
+  "matched": "1955 MIDDLESEX ST, LOWELL, MA, 01851"
+ },
+ "139 SALEM ST|01854": {
+  "lat": 42.648645051769,
+  "lng": -71.321652534555,
+  "src": "census",
+  "matched": "139 SALEM ST, LOWELL, MA, 01854"
+ },
+ "39 LORING ST|01851": {
+  "lat": 42.636255440777,
+  "lng": -71.327863769445,
+  "src": "census",
+  "matched": "39 LORING ST, LOWELL, MA, 01851"
+ },
+ "9 PROGRESS RD|01821": {
+  "lat": 42.521818289734,
+  "lng": -71.232818436716,
+  "src": "census",
+  "matched": "9 PROGRESS RD, BILLERICA, MA, 01821"
+ },
+ "35 DUNHAM RD|01821": {
+  "lat": 42.5187837,
+  "lng": -71.2316931,
+  "src": "osm-building",
+  "matched": "35 Dunham Rd"
+ },
+ "38 SULLIVAN RD|01862": {
+  "lat": 42.567094557806,
+  "lng": -71.323471944098,
+  "src": "census",
+  "matched": "38 SULLIVAN RD, NORTH BILLERICA, MA, 01862"
+ },
+ "78 BILLERICA AVE|01862": {
+  "lat": 42.600499976403,
+  "lng": -71.282858588204,
+  "src": "census",
+  "matched": "78 BILLERICA AVE, N BILLERICA, MA, 01862"
+ },
+ "185 PAWTUCKET|01879": {
+  "lat": 42.652933,
+  "lng": -71.3964762,
+  "src": "osm-building",
+  "matched": "185 Pawtucket Blvd"
+ },
+ "54 PARHAM RD|01879": {
+  "lat": 42.685404304441,
+  "lng": -71.385157359355,
+  "src": "census",
+  "matched": "54 PARHAM RD, TYNGSBORO, MA, 01879"
+ },
+ "9 ALDEN ST|01879": {
+  "lat": 42.694027568353,
+  "lng": -71.375533806653,
+  "src": "census",
+  "matched": "9 ALDEN ST, TYNGSBORO, MA, 01879"
+ },
+ "2 PARK DR|01886": {
+  "lat": 42.558656778359,
+  "lng": -71.436163019913,
+  "src": "census",
+  "matched": "2 PARK DR, WESTFORD, MA, 01886"
+ },
+ "18 THIRD ST|01850": {
+  "lat": 42.650127976866,
+  "lng": -71.303320083374,
+  "src": "census",
+  "matched": "18 3RD ST, LOWELL, MA, 01850"
+ },
+ "106 PARK AVE W|01852": {
+  "lat": 42.6314239,
+  "lng": -71.2971493,
+  "src": "osm-building",
+  "matched": "106 Park Ave W"
+ },
+ "214 SIXTH AVE|01854": {
+  "lat": 42.657825435874,
+  "lng": -71.331804106072,
+  "src": "census",
+  "matched": "214 6TH AVE, LOWELL, MA, 01854"
+ },
+ "83 CANADA ST|01852": {
+  "lat": 42.627551844017,
+  "lng": -71.313888704936,
+  "src": "census",
+  "matched": "83 CANADA ST, LOWELL, MA, 01852"
+ },
+ "83 CHESTNUT ST|01852": {
+  "lat": 42.643138160544,
+  "lng": -71.299996472736,
+  "src": "census",
+  "matched": "83 CHESTNUT ST, LOWELL, MA, 01852"
+ },
+ "198 SOUTH ST|01852": {
+  "lat": 42.6395614,
+  "lng": -71.3110098,
+  "src": "osm-building",
+  "matched": "198 South St"
+ },
+ "7 CRESCENT ST|01851": {
+  "lat": 42.624810519156,
+  "lng": -71.32383672879,
+  "src": "census",
+  "matched": "7 CRESCENT ST, LOWELL, MA, 01851"
+ },
+ "773 MERRIMACK ST|01854": {
+  "lat": 42.649494006692,
+  "lng": -71.3214008795,
+  "src": "census",
+  "matched": "773 MERRIMACK ST, LOWELL, MA, 01854"
+ },
+ "10 WALNUT ST|01852": {
+  "lat": 42.636174172249,
+  "lng": -71.308575212221,
+  "src": "census",
+  "matched": "10 WALNUT ST, LOWELL, MA, 01852"
+ },
+ "39 CROSBY ST|01852": {
+  "lat": 42.633383783111,
+  "lng": -71.306994499124,
+  "src": "census",
+  "matched": "39 CROSBY ST, LOWELL, MA, 01852"
+ },
+ "485 GROTON RD|01886": {
+  "lat": 42.624463615526,
+  "lng": -71.424329487163,
+  "src": "census",
+  "matched": "485 GROTON RD, WESTFORD, MA, 01886"
+ },
+ "69 BROADWAY ST|01886": {
+  "lat": 42.595186582696,
+  "lng": -71.465427557552,
+  "src": "census",
+  "matched": "69 BROADWAY, WESTFORD, MA, 01886"
+ },
+ "12 SHELLY LN|01886": {
+  "lat": 42.5435399,
+  "lng": -71.3978046,
+  "src": "osm-building",
+  "matched": "12 Shelly Ln"
+ },
+ "17 BEAVER ST|01850": {
+  "lat": 42.66048705468,
+  "lng": -71.317019467488,
+  "src": "census",
+  "matched": "17 BEAVER ST, LOWELL, MA, 01850"
+ },
+ "23 CORAL ST|01851": {
+  "lat": 42.63676512398,
+  "lng": -71.326293714792,
+  "src": "census",
+  "matched": "23 CORAL ST, LOWELL, MA, 01851"
+ },
+ "50 PINE ST|01851": {
+  "lat": 42.634208476905,
+  "lng": -71.328864712452,
+  "src": "census",
+  "matched": "50 PINE ST, LOWELL, MA, 01851"
+ },
+ "114 CABOT ST|01854": {
+  "lat": 42.648967464186,
+  "lng": -71.318441757077,
+  "src": "census",
+  "matched": "114 CABOT ST, LOWELL, MA, 01854"
+ },
+ "134 LILLEY AVE|01850": {
+  "lat": 42.658850101221,
+  "lng": -71.309038399877,
+  "src": "census",
+  "matched": "134 LILLEY AVE, LOWELL, MA, 01850"
+ },
+ "15 ELM ST|01852": {
+  "lat": 42.637693096153,
+  "lng": -71.306064818575,
+  "src": "census",
+  "matched": "15 ELM ST, LOWELL, MA, 01852"
+ },
+ "450 CHELMSFORD ST|01851": {
+  "lat": 42.6278625,
+  "lng": -71.3202073,
+  "src": "osm-building",
+  "matched": "450 Chelmsford St"
+ },
+ "9 COBURN ST|01850": {
+  "lat": 42.650732141199,
+  "lng": -71.306916449995,
+  "src": "census",
+  "matched": "9 COBURN ST, LOWELL, MA, 01850"
+ },
+ "36 B ST|01851": {
+  "lat": 42.628829442374,
+  "lng": -71.325173813852,
+  "src": "census",
+  "matched": "36 B ST, LOWELL, MA, 01851"
+ },
+ "125 WESTFORD ST|01851": {
+  "lat": 42.63670162062,
+  "lng": -71.320654441,
+  "src": "census",
+  "matched": "125 WESTFORD ST, LOWELL, MA, 01851"
+ },
+ "7 WESTFORD ST|01851": {
+  "lat": 42.637865337208,
+  "lng": -71.316341883958,
+  "src": "census",
+  "matched": "7 WESTFORD ST, LOWELL, MA, 01851"
+ },
+ "317 NESMITH ST|01852": {
+  "lat": 42.636187496103,
+  "lng": -71.293438257677,
+  "src": "census",
+  "matched": "317 NESMITH ST, LOWELL, MA, 01852"
+ },
+ "35 LINCOLN ST|01851": {
+  "lat": 42.631169386967,
+  "lng": -71.319298837869,
+  "src": "census",
+  "matched": "35 LINCOLN ST, LOWELL, MA, 01851"
+ },
+ "17 WALKER ST|01854": {
+  "lat": 42.645986103601,
+  "lng": -71.332960425625,
+  "src": "census",
+  "matched": "17 WALKER ST, LOWELL, MA, 01854"
+ },
+ "370 MERRIMACK ST|01852": {
+  "lat": 42.645951480326,
+  "lng": -71.3140232911,
+  "src": "census",
+  "matched": "370 MERRIMACK ST, LOWELL, MA, 01852"
+ },
+ "26 LIVINGSTON ST|01852": {
+  "lat": 42.631408236079,
+  "lng": -71.30797404192,
+  "src": "census",
+  "matched": "26 LIVINGSTON ST, LOWELL, MA, 01852"
+ },
+ "53 HIGHLAND AVE|01851": {
+  "lat": 42.630260543919,
+  "lng": -71.334240556549,
+  "src": "census",
+  "matched": "53 HIGHLAND AVE, LOWELL, MA, 01851"
+ },
+ "270 WILDER ST|01851": {
+  "lat": 42.637835485538,
+  "lng": -71.331957358434,
+  "src": "census",
+  "matched": "270 WILDER ST, LOWELL, MA, 01851"
+ },
+ "20 WOODLAND DR|01852": {
+  "lat": 42.614379433846,
+  "lng": -71.310658031141,
+  "src": "census",
+  "matched": "20 WOODLAND DR, LOWELL, MA, 01852"
+ },
+ "209 SUMMER ST|01852": {
+  "lat": 42.639001464978,
+  "lng": -71.312575286772,
+  "src": "census",
+  "matched": "209 SUMMER ST, LOWELL, MA, 01852"
+ },
+ "307 MARKET ST|01852": {
+  "lat": 42.645253941673,
+  "lng": -71.314248954792,
+  "src": "census",
+  "matched": "307 MARKET ST, LOWELL, MA, 01852"
+ },
+ "38 MEAD ST|01852": {
+  "lat": 42.634644684364,
+  "lng": -71.305522805497,
+  "src": "census",
+  "matched": "38 MEADE ST, LOWELL, MA, 01852"
+ },
+ "84 WHIPPLE ST|01852": {
+  "lat": 42.634089591642,
+  "lng": -71.304261073056,
+  "src": "census",
+  "matched": "84 WHIPPLE ST, LOWELL, MA, 01852"
+ },
+ "33 WALKER ST|01854": {
+  "lat": 42.645483378773,
+  "lng": -71.332738070972,
+  "src": "census",
+  "matched": "33 WALKER ST, LOWELL, MA, 01854"
+ },
+ "1 VARNUM AVE|01854": {
+  "lat": 42.6499994,
+  "lng": -71.3322948,
+  "src": "osm-building",
+  "matched": "1 Varnum Ave"
+ },
+ "11 A ST|01851": {
+  "lat": 42.628341903722,
+  "lng": -71.322606354976,
+  "src": "census",
+  "matched": "11 A ST, LOWELL, MA, 01851"
+ },
+ "145 BOWERS ST|01854": {
+  "lat": 42.646840484072,
+  "lng": -71.326749819648,
+  "src": "census",
+  "matched": "145 BOWERS ST, LOWELL, MA, 01854"
+ },
+ "475 VARNUM AVE|01854": {
+  "lat": 42.64503699674,
+  "lng": -71.347805130121,
+  "src": "census",
+  "matched": "475 VARNUM AVE, LOWELL, MA, 01854"
+ },
+ "4 OMNI WAY|01824": {
+  "lat": 42.591466090947,
+  "lng": -71.317726472041,
+  "src": "census",
+  "matched": "4 OMNI WAY, CHELMSFORD, MA, 01824"
+ },
+ "27 PRINCETON ST|01863": {
+  "lat": 42.637728745235,
+  "lng": -71.381502646094,
+  "src": "census",
+  "matched": "27 PRINCETON ST, NORTH CHELMSFORD, MA, 01863"
+ },
+ "165 MERRIMACK AVE|01826": {
+  "lat": 42.654701399117,
+  "lng": -71.281617512458,
+  "src": "census",
+  "matched": "165 MERRIMACK AVE, DRACUT, MA, 01826"
+ },
+ "48 VANDETTE AVE|01826": {
+  "lat": 42.686951165436,
+  "lng": -71.351843663306,
+  "src": "census",
+  "matched": "48 VANDETTE AVE, DRACUT, MA, 01826"
+ },
+ "36 WISTERIA PATH|01826": {
+  "lat": 42.682943899012,
+  "lng": -71.376991053676,
+  "src": "census",
+  "matched": "36 WISTERIA PATH, DRACUT, MA, 01826"
+ },
+ "191 PELCZAR RD|01826": {
+  "lat": 42.673922671011,
+  "lng": -71.272816792744,
+  "src": "census",
+  "matched": "191 PELCZAR RD, DRACUT, MA, 01826"
+ },
+ "26 TANNER ST|01852": {
+  "lat": 42.631135832005,
+  "lng": -71.313821479126,
+  "src": "census",
+  "matched": "26 TANNER ST, LOWELL, MA, 01852"
+ },
+ "131 RUBY RD|01826": {
+  "lat": 42.718149765571,
+  "lng": -71.269238865507,
+  "src": "census",
+  "matched": "131 RUBY RD, DRACUT, MA, 01826"
+ },
+ "138 LIBERTY ST|01851": {
+  "lat": 42.632918066401,
+  "lng": -71.324559727451,
+  "src": "census",
+  "matched": "138 LIBERTY ST, LOWELL, MA, 01851"
+ },
+ "144 PLEASANT ST|01826": {
+  "lat": 42.66503126359,
+  "lng": -71.320705349746,
+  "src": "census",
+  "matched": "144 PLEASANT ST, DRACUT, MA, 01826"
+ },
+ "47 BARCLAY ST|01851": {
+  "lat": 42.633081568149,
+  "lng": -71.321700451357,
+  "src": "census",
+  "matched": "47 BARCLAY ST, LOWELL, MA, 01851"
+ },
+ "1629 LAKEVIEW AVE|01826": {
+  "lat": 42.677630716655,
+  "lng": -71.338026403498,
+  "src": "census",
+  "matched": "1629 LAKEVIEW AVE, DRACUT, MA, 01826"
+ },
+ "47 BARCLAY|01851": {
+  "lat": 42.633081568149,
+  "lng": -71.321700451357,
+  "src": "census",
+  "matched": "47 BARCLAY ST, LOWELL, MA, 01851"
+ },
+ "17 FAULKNER ST|01852": {
+  "lat": 42.631929957377,
+  "lng": -71.30065301696,
+  "src": "census",
+  "matched": "17 FAULKNER ST, LOWELL, MA, 01852"
+ },
+ "150 MIDDLESEX ST|01852": {
+  "lat": 42.641056762971,
+  "lng": -71.31117238434,
+  "src": "census",
+  "matched": "150 MIDDLESEX ST, LOWELL, MA, 01852"
+ },
+ "145 BELLEVUE ST|01851": {
+  "lat": 42.632905185851,
+  "lng": -71.320813058744,
+  "src": "census",
+  "matched": "145 BELLEVUE ST, LOWELL, MA, 01851"
+ },
+ "10 TECHNOLOGY DR|01851": {
+  "lat": 42.627358,
+  "lng": -71.3596569,
+  "src": "osm",
+  "matched": "10, Technology Drive, Princeton Village"
+ },
+ "62 COLONIAL AVE|01854": {
+  "lat": 42.65178,
+  "lng": -71.328,
+  "src": "manual",
+  "matched": "Colonial Ave, Lowell (street level)",
+  "approx": true
+ },
+ "78 BILLERICA AVE|01821": {
+  "lat": 42.6005124,
+  "lng": -71.2830047,
+  "src": "osm",
+  "matched": "78, Billerica Avenue, Billerica Mills Historic District"
+ },
+ "50 LOWES WAY|01851": {
+  "lat": 42.6177987,
+  "lng": -71.3236937,
+  "src": "osm",
+  "matched": "Lowe's, 50, Lowes Way"
+ },
+ "1 UPS RD|01824": {
+  "lat": 42.5947311,
+  "lng": -71.3062362,
+  "src": "osm",
+  "matched": "UPS Road, Chelmsford, Middlesex County",
+  "approx": true
+ },
+ "299 CHELMSFORD ST|01824": {
+  "lat": 42.6115485,
+  "lng": -71.3302367,
+  "src": "osm",
+  "matched": "Stop & Shop, 299, Chelmsford Street"
+ },
+ "1 CORNERSTONE SQ|01886": {
+  "lat": 42.567108,
+  "lng": -71.4256755,
+  "src": "osm",
+  "matched": "Burtons Grill, 1, Cornerstone Square"
+ }
+}

@@ -1,0 +1,6 @@
+# Raw registry pulls stay local (the public site already carries everything the map needs)
+data/sorb-raw.csv
+data/sorb-links.csv
+.vercel/
+site/.vercel/
+node_modules/
