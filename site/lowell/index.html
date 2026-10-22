@@ -16,6 +16,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.css">
 <style>
   :root {
     --bg: #f4f2ee;
@@ -62,8 +63,9 @@
 
   #map { position: fixed; inset: 0; background: var(--bg); }
   .leaflet-container { font: inherit; background: var(--bg); }
+  /* OpenFreeMap has a real dark style; only the raster fallback needs the color flip */
   .leaflet-tile-pane { transition: filter .3s ease; }
-  :root[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.6); }
+  :root.raster-tiles[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.6); }
   .leaflet-control-attribution { font-size: 10px; background: var(--panel) !important; color: var(--ink-3); }
   .leaflet-control-attribution a { color: var(--ink-2); }
 
@@ -425,6 +427,8 @@
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
 <script src="data.js"></script>
 <script>
 (() => {
@@ -506,17 +510,32 @@
 
   // ---------- map ----------
   const map = L.map('map', { zoomControl: false, attributionControl: true, tap: true }).setView(LOWELL, 14);
-  // One OSM tile source; dark mode is a CSS filter on the tile pane
-  L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
-    attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 19
-  }).addTo(map);
+  // Streets come from OpenFreeMap (free, no key, built for app traffic). OSM's volunteer tile servers
+  // block busy apps, so they are only a fallback for phones without WebGL.
+  const STYLES = { light: 'https://tiles.openfreemap.org/styles/liberty', dark: 'https://tiles.openfreemap.org/styles/dark' };
+  const ATTRIB = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+  const prefersDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+  const startTheme = store.get('theme') || (prefersDark ? 'dark' : 'light');
+  let base = null;
+  try {
+    if (window.maplibregl && maplibregl.supported?.() !== false && L.maplibreGL) {
+      base = L.maplibreGL({ style: STYLES[startTheme], attribution: ATTRIB }).addTo(map);
+    }
+  } catch { base = null; }
+  if (!base) {
+    document.documentElement.classList.add('raster-tiles');
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 19
+    }).addTo(map);
+  }
+  let shownStyle = startTheme;
   function setTheme(theme) {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#0e1014' : '#f4f2ee';
     store.set('theme', theme);
+    if (base && theme !== shownStyle) { shownStyle = theme; base.getMaplibreMap().setStyle(STYLES[theme]); }
   }
-  const prefersDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
-  setTheme(store.get('theme') || (prefersDark ? 'dark' : 'light'));
+  setTheme(startTheme);
 
   const COMPACT_BELOW = 15; // zoomed out: dots instead of pins so the city view stays readable
   function pinIcon(level, count, hot) {
