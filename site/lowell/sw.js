@@ -1,7 +1,7 @@
 // App shell is cached so the map UI opens with a weak signal on Halloween night.
 // Map tiles are cached as you view them (stale-while-revalidate).
-const SHELL = 'safewalk-shell-v4';
-const TILES = 'safewalk-tiles-v1';
+const SHELL = 'safewalk-shell-v5';
+const TILES = 'safewalk-tiles-v2'; // v1 may hold "Access blocked" tiles from the no-referrer bug
 const SHELL_FILES = [
   './', 'index.html', 'data.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png',
   'https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css',
