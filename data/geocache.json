@@ -24326,5 +24326,3040 @@
   "lng": -71.0607712,
   "src": "osm",
   "matched": "Hyatt Regency Boston, 1, Avenue De Lafayette"
+ },
+ "1597 FALMOUTH RD SUITE 4|02632": {
+  "lat": 41.657078318846,
+  "lng": -70.345262583173,
+  "src": "census",
+  "matched": "1597 FALMOUTH RD, CENTERVILLE, MA, 02632"
+ },
+ "36 SOL JOSEPH RD|02532": {
+  "lat": 41.781894669054,
+  "lng": -70.580056139993,
+  "src": "census",
+  "matched": "36 SOL JOSEPH RD, BOURNE, MA, 02532"
+ },
+ "570 MACARTHUR BLVD|02532": {
+  "lat": 41.703037022622,
+  "lng": -70.58423627434,
+  "src": "census",
+  "matched": "570 MAC ARTHUR BLVD, BOURNE, MA, 02532"
+ },
+ "14 CANDLEWOOD LN|02639": {
+  "lat": 41.669322167133,
+  "lng": -70.130283319116,
+  "src": "census",
+  "matched": "14 CANDLEWOOD LN, DENNIS PORT, MA, 02639"
+ },
+ "129 THOREAU WAY|02667": {
+  "lat": 41.961320888643,
+  "lng": -70.003886973627,
+  "src": "census",
+  "matched": "129 THOREAU WAY, WELLFLEET, MA, 02667"
+ },
+ "45 ST MARK RD|02536": {
+  "lat": 41.573872486996,
+  "lng": -70.580095902206,
+  "src": "census",
+  "matched": "45 ST MARKS RD, E FALMOUTH, MA, 02536"
+ },
+ "98 ADAMS ST|02052": {
+  "lat": 42.196816980609,
+  "lng": -71.322139644427,
+  "src": "census",
+  "matched": "98 ADAMS ST, MEDFIELD, MA, 02052"
+ },
+ "137 PELHAM ST|01844": {
+  "lat": 42.727642160294,
+  "lng": -71.201940196793,
+  "src": "census",
+  "matched": "137 PELHAM ST, METHUEN, MA, 01844"
+ },
+ "72 PLEASANT VALLEY ST|01844": {
+  "lat": 42.732512214117,
+  "lng": -71.180437962336,
+  "src": "census",
+  "matched": "72 PLEASANT VALLEY ST, METHUEN, MA, 01844"
+ },
+ "9 CLAYTON RD|02346": {
+  "lat": 41.905011762652,
+  "lng": -70.972387872789,
+  "src": "census",
+  "matched": "9 CLAYTON RD, MIDDLEBORO, MA, 02346"
+ },
+ "17 COWAN DR|02346": {
+  "lat": 41.813001515216,
+  "lng": -70.801974310214,
+  "src": "census",
+  "matched": "17 COWAN DR, MIDDLEBORO, MA, 02346"
+ },
+ "353 W GROVE ST|02346": {
+  "lat": 41.894674814991,
+  "lng": -70.943877678359,
+  "src": "census",
+  "matched": "353 W GROVE ST, MIDDLEBORO, MA, 02346"
+ },
+ "10 CLAUDETTE|01757": {
+  "lat": 42.161501815178,
+  "lng": -71.534254190936,
+  "src": "census",
+  "matched": "10 CLAUDETTE DR, MILFORD, MA, 01757"
+ },
+ "17-19 SEVENTH ST|02740": {
+  "lat": 41.632988622716,
+  "lng": -70.928486677999,
+  "src": "census",
+  "matched": "19 7TH ST, NEW BEDFORD, MA, 02740"
+ },
+ "159 HATHAWAY RD|02746": {
+  "lat": 41.68629634322,
+  "lng": -70.885894430755,
+  "src": "census",
+  "matched": "159 HATHAWAY RD, NEW BEDFORD, MA, 02743"
+ },
+ "215 DUCHAINE BLVD|02745": {
+  "lat": 41.726497956501,
+  "lng": -70.955762912736,
+  "src": "census",
+  "matched": "215 DUCHAINE BLVD, NEW BEDFORD, MA, 02745"
+ },
+ "127 RODNEY FRENCH BLVD|02744": {
+  "lat": 41.610711534141,
+  "lng": -70.917489143874,
+  "src": "census",
+  "matched": "127 RODNEY FRENCH BLVD, NEW BEDFORD, MA, 02744"
+ },
+ "55 ARNOLD PL|01247": {
+  "lat": 42.697562209233,
+  "lng": -73.107236144123,
+  "src": "census",
+  "matched": "55 ARNOLD PL, NORTH ADAMS, MA, 01247"
+ },
+ "1454 SOUTH STATE ST|01247": {
+  "lat": 42.657297371452,
+  "lng": -73.112399038948,
+  "src": "census",
+  "matched": "1454 S STATE ST, NORTH ADAMS, MA, 01247"
+ },
+ "299 EAST MAIN ST|01247": {
+  "lat": 42.698552456838,
+  "lng": -73.105092802046,
+  "src": "census",
+  "matched": "299 E MAIN ST, NORTH ADAMS, MA, 01247"
+ },
+ "7 OLD SOUTH ST|01060": {
+  "lat": 42.317662887767,
+  "lng": -72.630980883647,
+  "src": "census",
+  "matched": "7 OLD SOUTH ST, NORTHAMPTON, MA, 01060"
+ },
+ "251 RTE 6A|02653": {
+  "lat": 41.776131745851,
+  "lng": -70.00673764187,
+  "src": "census",
+  "matched": "251 RTE 6A, ORLEANS, MA, 02653"
+ },
+ "16 RTE 6A|": {
+  "lat": 41.794446309294,
+  "lng": -69.983729312753,
+  "src": "census",
+  "matched": "16 RTE 6A, ORLEANS, MA, 02653"
+ },
+ "3 FIRST AVE|01960": {
+  "lat": 42.520213527289,
+  "lng": -70.974977151255,
+  "src": "census",
+  "matched": "3 1ST AVE, PEABODY, MA, 01960"
+ },
+ "898 CRANE AVE|01201": {
+  "lat": 42.468239141733,
+  "lng": -73.207274072476,
+  "src": "census",
+  "matched": "898 CRANE AVE, PITTSFIELD, MA, 01201"
+ },
+ "50 FARNSWORTH TER|01201": {
+  "lat": 42.474409122958,
+  "lng": -73.203297211311,
+  "src": "census",
+  "matched": "50 FARNSWORTH TER, PITTSFIELD, MA, 01201"
+ },
+ "9 BETNR INDUSTRIAL DR|01201": {
+  "lat": 42.4389093713,
+  "lng": -73.29464910597,
+  "src": "census",
+  "matched": "9 BETNER INDUSTRIAL DR, PITTSFIELD, MA, 01201"
+ },
+ "17 MEDFORD ST|02150": {
+  "lat": 42.387545153063,
+  "lng": -71.043453346286,
+  "src": "census",
+  "matched": "17 MEDFORD ST, CHELSEA, MA, 02150"
+ },
+ "84 DALTON AVE|01201": {
+  "lat": 42.457291290752,
+  "lng": -73.229854959925,
+  "src": "census",
+  "matched": "84 DALTON AVE, PITTSFIELD, MA, 01201"
+ },
+ "203 FAYWOOD AV|02128": {
+  "lat": 42.392203901655,
+  "lng": -71.007682814293,
+  "src": "census",
+  "matched": "203 FAYWOOD AVE, EAST BOSTON, MA, 02128"
+ },
+ "54 WASHINGTON ST|02762": {
+  "lat": 42.005434130306,
+  "lng": -71.324007364973,
+  "src": "census",
+  "matched": "54 WASHINGTON ST, PLAINVILLE, MA, 02762"
+ },
+ "308 WASHINGTON ST|02135": {
+  "lat": 42.34896416427,
+  "lng": -71.151442847018,
+  "src": "census",
+  "matched": "308 WASHINGTON ST, BRIGHTON, MA, 02135"
+ },
+ "883 BROADWAY|02767": {
+  "lat": 41.950708598767,
+  "lng": -71.071767540212,
+  "src": "census",
+  "matched": "883 BROADWAY, RAYNHAM, MA, 02767"
+ },
+ "41 ALMEIDA RD|02769": {
+  "lat": 41.786952619016,
+  "lng": -71.289378371329,
+  "src": "census",
+  "matched": "41 ALMEIDA RD, REHOBOTH, MA, 02769"
+ },
+ "5 BLANVON RD|02130": {
+  "lat": 42.291215729543,
+  "lng": -71.118080479818,
+  "src": "census",
+  "matched": "5 BLANVON RD, JAMAICA PLAIN, MA, 02130"
+ },
+ "276 PROVIDENCE ST|02769": {
+  "lat": 41.809401733106,
+  "lng": -71.289180810307,
+  "src": "census",
+  "matched": "276 PROVIDENCE ST, REHOBOTH, MA, 02769"
+ },
+ "649 SQUIRE RD|02151": {
+  "lat": 42.429444694319,
+  "lng": -71.015774518673,
+  "src": "census",
+  "matched": "649 SQUIRE RD, REVERE, MA, 02151"
+ },
+ "920 BROADWAY|02151": {
+  "lat": 42.419798659539,
+  "lng": -71.005750775846,
+  "src": "census",
+  "matched": "920 BROADWAY, REVERE, MA, 02151"
+ },
+ "725 SHAWMUT AVE|02119": {
+  "lat": 42.332889597732,
+  "lng": -71.083439070394,
+  "src": "census",
+  "matched": "725 SHAWMUT AVE, ROXBURY, MA, 02119"
+ },
+ "1705 COLUMBUS AVE|02119": {
+  "lat": 42.320749636235,
+  "lng": -71.09851831075,
+  "src": "census",
+  "matched": "1705 COLUMBUS AVE, ROXBURY, MA, 02119"
+ },
+ "61 N BEACON ST|02134": {
+  "lat": 42.354077238104,
+  "lng": -71.140727946564,
+  "src": "census",
+  "matched": "61 N BEACON ST, BOSTON, MA, 02134"
+ },
+ "154 SEAVER ST|02121": {
+  "lat": 42.30881414554,
+  "lng": -71.090491729029,
+  "src": "census",
+  "matched": "154 SEAVER ST, DORCHESTER, MA, 02121"
+ },
+ "82 SPENCER ST|02124": {
+  "lat": 42.294174046834,
+  "lng": -71.076152661025,
+  "src": "census",
+  "matched": "82 SPENCER ST, DORCHESTER, MA, 02124"
+ },
+ "330 MARTIN LUTHER KING JR BLVD|02119": {
+  "lat": 42.318486707468,
+  "lng": -71.083431453396,
+  "src": "census",
+  "matched": "330 MARTIN LUTHER KING BLVD, ROXBURY, MA, 02119"
+ },
+ "11-13 DIXWELL ST|02119": {
+  "lat": 42.314729544642,
+  "lng": -71.097551306297,
+  "src": "census",
+  "matched": "13 DIXWELL ST, ROXBURY, MA, 02119"
+ },
+ "373 HIGHLAND AVE|01970": {
+  "lat": 42.497731467726,
+  "lng": -70.93039541389,
+  "src": "census",
+  "matched": "373 HIGHLAND AVE, SALEM, MA, 01970"
+ },
+ "17 LEOMINSTER RD|01464": {
+  "lat": 42.544296826787,
+  "lng": -71.659992489468,
+  "src": "census",
+  "matched": "17 LEOMINSTER RD, SHIRLEY, MA, 01464"
+ },
+ "85 TUTTLE ST|02151": {
+  "lat": 42.415583623721,
+  "lng": -71.003313728355,
+  "src": "census",
+  "matched": "85 TUTTLE ST, REVERE, MA, 02151"
+ },
+ "1876 WILBUR AVE|02725": {
+  "lat": 41.727353925727,
+  "lng": -71.189637916301,
+  "src": "census",
+  "matched": "1876 WILBUR AVE, SOMERSET, MA, 02725"
+ },
+ "80 NEWMARKET SQ|02118": {
+  "lat": 42.32939651132,
+  "lng": -71.06698127798,
+  "src": "census",
+  "matched": "80 NEWMARKET SQ, BOSTON, MA, 02118"
+ },
+ "775 SUMMER ST|02127": {
+  "lat": 42.340149741969,
+  "lng": -71.035638354195,
+  "src": "census",
+  "matched": "775 SUMMER ST, BOSTON, MA, 02210"
+ },
+ "110 PRATTS JUNCTION RD|01564": {
+  "lat": 42.459214210917,
+  "lng": -71.737200461342,
+  "src": "census",
+  "matched": "110 PRATTS JUNCTION RD, STERLING, MA, 01564"
+ },
+ "18 HAMILTON ST|01550": {
+  "lat": 42.076304843721,
+  "lng": -72.034700800232,
+  "src": "census",
+  "matched": "18 HAMILTON ST, SOUTHBRIDGE, MA, 01550"
+ },
+ "339 CANTON ST|02072": {
+  "lat": 42.127998095384,
+  "lng": -71.115935050134,
+  "src": "census",
+  "matched": "339 CANTON ST, STOUGHTON, MA, 02072"
+ },
+ "101R HARTWELL ST|01583": {
+  "lat": 42.337351919909,
+  "lng": -71.775456014982,
+  "src": "census",
+  "matched": "101R HARTWELL ST, WEST BOYLSTON, MA, 01583"
+ },
+ "630 PARK ST|02072": {
+  "lat": 42.117106394136,
+  "lng": -71.083157894329,
+  "src": "census",
+  "matched": "630 PARK ST, STOUGHTON, MA, 02072"
+ },
+ "6 PIONEER DR|01537": {
+  "lat": 42.161937936021,
+  "lng": -71.898603488292,
+  "src": "census",
+  "matched": "6 PIONEER DR, NORTH OXFORD, MA, 01537"
+ },
+ "99 PORTER ST|02027": {
+  "lat": 42.126089335271,
+  "lng": -71.10087161343,
+  "src": "census",
+  "matched": "99 PORTER ST, STOUGHTON, MA, 02072"
+ },
+ "11 DEAN ST|01550": {
+  "lat": 42.075825982878,
+  "lng": -72.027887156913,
+  "src": "census",
+  "matched": "11 DEAN ST, SOUTHBRIDGE, MA, 01550"
+ },
+ "29 BATES RD|01907": {
+  "lat": 42.467628491518,
+  "lng": -70.898414439936,
+  "src": "census",
+  "matched": "29 BATES RD, SWAMPSCOTT, MA, 01907"
+ },
+ "187 LITTLE RIVER RD|01085": {
+  "lat": 42.106635330432,
+  "lng": -72.718106482862,
+  "src": "census",
+  "matched": "187 LITTLE RIVER RD, WESTFIELD, MA, 01085"
+ },
+ "205 MYRICKS ST|02718": {
+  "lat": 41.841500506841,
+  "lng": -71.006999210206,
+  "src": "census",
+  "matched": "205 MYRICKS ST, EAST TAUNTON, MA, 02718"
+ },
+ "104 NORTH BLVD.|01089": {
+  "lat": 42.106826916587,
+  "lng": -72.633104701227,
+  "src": "census",
+  "matched": "104 NORTH BLVD, WEST SPRINGFIELD, MA, 01089"
+ },
+ "18 MONTERAY DR|01611": {
+  "lat": 42.240458032591,
+  "lng": -71.888914671638,
+  "src": "census",
+  "matched": "18 MONTEREY DR, CHERRY VALLEY, MA, 01611"
+ },
+ "16 PARK ST|02780": {
+  "lat": 41.904213829268,
+  "lng": -71.097278140999,
+  "src": "census",
+  "matched": "16 PARK ST, TAUNTON, MA, 02780"
+ },
+ "164 FORT PLEASANT AVE|01108": {
+  "lat": 42.086267316042,
+  "lng": -72.574930493798,
+  "src": "census",
+  "matched": "164 FORT PLEASANT AVE, SPRINGFIELD, MA, 01108"
+ },
+ "13 MORRIS ST|01550": {
+  "lat": 42.071920002601,
+  "lng": -72.026018683714,
+  "src": "census",
+  "matched": "13 MORRIS ST, SOUTHBRIDGE, MA, 01550"
+ },
+ "175 JOHN QUINCY ADAMS RD|02780": {
+  "lat": 41.948052816177,
+  "lng": -71.132870291323,
+  "src": "census",
+  "matched": "175 JOHN QUINCY ADAMS RD, TAUNTON, MA, 02780"
+ },
+ "657 CHESTNUT ST|01107": {
+  "lat": 42.11833543889,
+  "lng": -72.603336294197,
+  "src": "census",
+  "matched": "657 CHESTNUT ST, SPRINGFIELD, MA, 01107"
+ },
+ "103 CREEPER HILL RD|01536": {
+  "lat": 42.236185793607,
+  "lng": -71.728825278915,
+  "src": "census",
+  "matched": "103 CREEPER HILL RD, NORTH GRAFTON, MA, 01536"
+ },
+ "133 WILLIAMS ST|02780": {
+  "lat": 41.894667020169,
+  "lng": -71.058918236547,
+  "src": "census",
+  "matched": "133 WILLIAMS ST, TAUNTON, MA, 02780"
+ },
+ "28 APPLETON ST|01040": {
+  "lat": 42.199452878876,
+  "lng": -72.600690745214,
+  "src": "census",
+  "matched": "28 APPLETON ST, HOLYOKE, MA, 01040"
+ },
+ "513 BETTY SPRING RD|01440": {
+  "lat": 42.567778177541,
+  "lng": -71.952987971286,
+  "src": "census",
+  "matched": "513 BETTY SPRING RD, GARDNER, MA, 01440"
+ },
+ "71 HODGES AVE|02780": {
+  "lat": 41.905537667071,
+  "lng": -71.101282634194,
+  "src": "census",
+  "matched": "71 HODGES AVE, TAUNTON, MA, 02780"
+ },
+ "250 UNION ST|01105": {
+  "lat": 42.102273926613,
+  "lng": -72.580841242735,
+  "src": "census",
+  "matched": "250 UNION ST, SPRINGFIELD, MA, 01105"
+ },
+ "21 MYRTLE AVE|01570": {
+  "lat": 42.04728063329,
+  "lng": -71.880920374597,
+  "src": "census",
+  "matched": "21 MYRTLE AVE, WEBSTER, MA, 01570"
+ },
+ "1992 MAIN ST|01876": {
+  "lat": 42.58919952115,
+  "lng": -71.202134312301,
+  "src": "census",
+  "matched": "1992 MAIN ST, TEWKSBURY, MA, 01876"
+ },
+ "69 W MAIN ST|01071": {
+  "lat": 42.189501110971,
+  "lng": -72.860945982684,
+  "src": "census",
+  "matched": "69 W MAIN ST, RUSSELL, MA, 01071"
+ },
+ "199 CHANDLER ST|01605": {
+  "lat": 42.260654565576,
+  "lng": -71.817049408834,
+  "src": "census",
+  "matched": "199 CHANDLER ST, WORCESTER, MA, 01609"
+ },
+ "8 WESTECH DR|01879": {
+  "lat": 42.657913164276,
+  "lng": -71.424779673292,
+  "src": "census",
+  "matched": "8 WESTECH DR, TYNGSBORO, MA, 01879"
+ },
+ "44 BEMIS RD|01420": {
+  "lat": 42.565174556616,
+  "lng": -71.779709971964,
+  "src": "census",
+  "matched": "44 BEMIS RD, FITCHBURG, MA, 01420"
+ },
+ "610 LINCOLN ST|02451": {
+  "lat": 42.407702255692,
+  "lng": -71.252246887418,
+  "src": "census",
+  "matched": "610 LINCOLN ST, WALTHAM, MA, 02451"
+ },
+ "35 HEYWOOD ST|01104": {
+  "lat": 42.113401531239,
+  "lng": -72.585289129495,
+  "src": "census",
+  "matched": "35 HEYWOOD ST, SPRINGFIELD, MA, 01104"
+ },
+ "26 PARKER ST|01151": {
+  "lat": 42.154988609399,
+  "lng": -72.488084927827,
+  "src": "census",
+  "matched": "26 PARKER ST, INDIAN ORCHARD, MA, 01151"
+ },
+ "564 MAIN ST|02541": {
+  "lat": 42.376753160603,
+  "lng": -71.233129127571,
+  "src": "census",
+  "matched": "564 MAIN ST, WALTHAM, MA, 02452"
+ },
+ "28 PEABODY ST|04110": {
+  "lat": 42.574478099813,
+  "lng": -71.990470322682,
+  "src": "census",
+  "matched": "28 PEABODY ST, GARDNER, MA, 01440"
+ },
+ "31 FISHERDICK RD|01082": {
+  "lat": 42.267568552664,
+  "lng": -72.280784592315,
+  "src": "census",
+  "matched": "31 FISHERDICK RD, WARE, MA, 01082"
+ },
+ "249 MEMORIAL DR|01020": {
+  "lat": 42.166113477154,
+  "lng": -72.578990569072,
+  "src": "census",
+  "matched": "249 MEMORIAL DR, CHICOPEE, MA, 01020"
+ },
+ "49 PULASKI ST|01082": {
+  "lat": 42.259643553028,
+  "lng": -72.242482051491,
+  "src": "census",
+  "matched": "49 PULASKI ST, WARE, MA, 01082"
+ },
+ "86 WINDSOR ST|01089": {
+  "lat": 42.095281668889,
+  "lng": -72.616800541182,
+  "src": "census",
+  "matched": "86 WINDSOR ST, WEST SPRINGFIELD, MA, 01089"
+ },
+ "188 MEMORIAL DR|01545": {
+  "lat": 42.258080280341,
+  "lng": -71.711637815259,
+  "src": "census",
+  "matched": "188 MEMORIAL DR, SHREWSBURY, MA, 01545"
+ },
+ "21 GROVE ST|02558": {
+  "lat": 41.743587224075,
+  "lng": -70.651390495932,
+  "src": "census",
+  "matched": "21 GROVE ST, ONSET, MA, 02558"
+ },
+ "53 SUMMIT LOCK RD|01085": {
+  "lat": 42.177554951632,
+  "lng": -72.739827547599,
+  "src": "census",
+  "matched": "53 SUMMIT LOCK RD, WESTFIELD, MA, 01085"
+ },
+ "3 HOWE AVE.|01527": {
+  "lat": 42.193904727169,
+  "lng": -71.75919042906,
+  "src": "census",
+  "matched": "3 HOWE AVE, MILLBURY, MA, 01527"
+ },
+ "129 EAST MAIN ST|01570": {
+  "lat": 42.058969588116,
+  "lng": -71.866351739713,
+  "src": "census",
+  "matched": "129 E MAIN ST, WEBSTER, MA, 01570"
+ },
+ "79 ADMORE ST|01108": {
+  "lat": 42.141697590237,
+  "lng": -72.560187905001,
+  "src": "census",
+  "matched": "79 ARDMORE ST, SPRINGFIELD, MA, 01104"
+ },
+ "335 CHANDLER ST|01602": {
+  "lat": 42.262504319718,
+  "lng": -71.826827152369,
+  "src": "census",
+  "matched": "335 CHANDLER ST, WORCESTER, MA, 01602"
+ },
+ "8 EAST MAIN ST|01581": {
+  "lat": 42.26998086333,
+  "lng": -71.612982531388,
+  "src": "census",
+  "matched": "8 E MAIN ST, WESTBOROUGH, MA, 01581"
+ },
+ "183 CHURCH ST|01082": {
+  "lat": 42.269490850206,
+  "lng": -72.231730163079,
+  "src": "census",
+  "matched": "183 CHURCH ST, WARE, MA, 01082"
+ },
+ "3-5 EXETER ST|01603": {
+  "lat": 42.242530715341,
+  "lng": -71.824779591608,
+  "src": "census",
+  "matched": "3-5 EXETER ST, WORCESTER, MA, 01603"
+ },
+ "217 TURNPIKE RD|01581": {
+  "lat": 42.283950012814,
+  "lng": -71.631108606583,
+  "src": "census",
+  "matched": "217 TURNPIKE RD, WESTBOROUGH, MA, 01581"
+ },
+ "14B HIGHLAND VILLAGE|01082": {
+  "lat": 42.268117900116,
+  "lng": -72.234372104181,
+  "src": "census",
+  "matched": "14B HIGHLAND VILLAGE, WARE, MA, 01082"
+ },
+ "47 FOSTER ST|01608": {
+  "lat": 42.26442592921,
+  "lng": -71.799906414477,
+  "src": "census",
+  "matched": "47 FOSTER ST, WORCESTER, MA, 01608"
+ },
+ "27 OTIS ST|01581": {
+  "lat": 42.278716338369,
+  "lng": -71.649662602513,
+  "src": "census",
+  "matched": "27 OTIS ST, WESTBOROUGH, MA, 01581"
+ },
+ "95 NORTH HATFIELD RD|01035": {
+  "lat": 42.397627318604,
+  "lng": -72.613570650143,
+  "src": "census",
+  "matched": "95 N HATFIELD RD, HATFIELD, MA, 01038"
+ },
+ "470 HAMILTON ST|01550": {
+  "lat": 42.081724952195,
+  "lng": -72.041795968025,
+  "src": "census",
+  "matched": "470 HAMILTON ST, SOUTHBRIDGE, MA, 01550"
+ },
+ "66 OTIS ST|01581": {
+  "lat": 42.280258153512,
+  "lng": -71.651275000183,
+  "src": "census",
+  "matched": "66 OTIS ST, WESTBOROUGH, MA, 01581"
+ },
+ "21 OLANDER DR.|01060": {
+  "lat": 42.311996012178,
+  "lng": -72.64623621558,
+  "src": "census",
+  "matched": "21 OLANDER DR, NORTHAMPTON, MA, 01060"
+ },
+ "8 E MAIN ST|01581": {
+  "lat": 42.26998086333,
+  "lng": -71.612982531388,
+  "src": "census",
+  "matched": "8 E MAIN ST, WESTBOROUGH, MA, 01581"
+ },
+ "425 NORTH MAIN ST|01053": {
+  "lat": 42.346138659271,
+  "lng": -72.683935552667,
+  "src": "census",
+  "matched": "425 N MAIN ST, LEEDS, MA, 01053"
+ },
+ "17 WEST LAKE ST|01027": {
+  "lat": 42.263768858759,
+  "lng": -72.671754965352,
+  "src": "census",
+  "matched": "17 W LAKE ST, EASTHAMPTON, MA, 01027"
+ },
+ "4830 RT 28|02635": {
+  "lat": 41.635694499686,
+  "lng": -70.455552500968,
+  "src": "census",
+  "matched": "4830 STATE RTE 28, COTUIT, MA, 02635"
+ },
+ "61 CHESHIRE RD|01201": {
+  "lat": 42.469991658878,
+  "lng": -73.203909191827,
+  "src": "census",
+  "matched": "61 CHESHIRE RD, PITTSFIELD, MA, 01201"
+ },
+ "52 CURTIS ST|01235": {
+  "lat": 42.439408692326,
+  "lng": -73.128817517856,
+  "src": "census",
+  "matched": "52 CURTIS ST, HINSDALE, MA, 01235"
+ },
+ "6 LOWER LINDEN ST|01220": {
+  "lat": 42.616214904646,
+  "lng": -73.121462076514,
+  "src": "census",
+  "matched": "6 LOWER LINDEN ST, ADAMS, MA, 01220"
+ },
+ "13 SEYMOUR ST|01201": {
+  "lat": 42.456210580428,
+  "lng": -73.253638987025,
+  "src": "census",
+  "matched": "13 SEYMOUR ST, PITTSFIELD, MA, 01201"
+ },
+ "50 DOWNING INDUSTRIAL PKY|01201": {
+  "lat": 42.460193220577,
+  "lng": -73.19316500693,
+  "src": "census",
+  "matched": "50 DOWNING INDUSTRIAL PKWY, PITTSFIELD, MA, 01201"
+ },
+ "56 DOWNING INDUSTRIAL PARK|01201": {
+  "lat": 42.460161592963,
+  "lng": -73.193431209132,
+  "src": "census",
+  "matched": "56 DOWNING INDUSTRIAL PKWY, PITTSFIELD, MA, 01201"
+ },
+ "48 EAST OTIS RD|01253": {
+  "lat": 42.193062024065,
+  "lng": -73.09053707489,
+  "src": "census",
+  "matched": "48 E OTIS RD, OTIS, MA, 01253"
+ },
+ "181 WINTHROP ST|02152": {
+  "lat": 42.375621612856,
+  "lng": -70.98326885354,
+  "src": "census",
+  "matched": "181 WINTHROP ST, WINTHROP, MA, 02152"
+ },
+ "34 WEST HARTFORD AVE|01538": {
+  "lat": 42.090421502622,
+  "lng": -71.645663404508,
+  "src": "census",
+  "matched": "34 HARTFORD AVE W, UXBRIDGE, MA, 01569"
+ },
+ "911 MAIN ST|01801": {
+  "lat": 42.50933484133,
+  "lng": -71.160969655763,
+  "src": "census",
+  "matched": "911 MAIN ST, WOBURN, MA, 01801"
+ },
+ "101 BARRY RD|01609": {
+  "lat": 42.30195210448,
+  "lng": -71.833691362149,
+  "src": "census",
+  "matched": "101 BARRY RD, WORCESTER, MA, 01609"
+ },
+ "425 N. MAIN ST.|01053": {
+  "lat": 42.346138659271,
+  "lng": -72.683935552667,
+  "src": "census",
+  "matched": "425 N MAIN ST, LEEDS, MA, 01053"
+ },
+ "146 ATHOL RD|01331": {
+  "lat": 42.557979627234,
+  "lng": -72.141104065902,
+  "src": "census",
+  "matched": "146 ATHOL RD, PHILLIPSTON, MA, 01331"
+ },
+ "225 WHITES PATH|02664": {
+  "lat": 41.690638405196,
+  "lng": -70.196392378941,
+  "src": "census",
+  "matched": "225 WHITES PATH, S YARMOUTH, MA, 02664"
+ },
+ "491 BRIDGE RD|01062": {
+  "lat": 42.340987327073,
+  "lng": -72.660414046612,
+  "src": "census",
+  "matched": "491 BRIDGE RD, FLORENCE, MA, 01062"
+ },
+ "17A CIDER MILL RD|01535": {
+  "lat": 42.250635294233,
+  "lng": -72.102989616548,
+  "src": "census",
+  "matched": "17A CIDER MILL RD, NORTH BROOKFIELD, MA, 01535"
+ },
+ "19 JEWETT ST|01915": {
+  "lat": 42.562715082584,
+  "lng": -70.865924808082,
+  "src": "census",
+  "matched": "19 JEWETT RD, BEVERLY, MA, 01915"
+ },
+ "1 PUTNAM CT|01027": {
+  "lat": 42.272613168968,
+  "lng": -72.665441698336,
+  "src": "census",
+  "matched": "1 PUTNAM CT, EASTHAMPTON, MA, 01027"
+ },
+ "731 HARTFORD TURNPIKE|01545": {
+  "lat": 42.269129428424,
+  "lng": -71.688100152582,
+  "src": "census",
+  "matched": "731 HARTFORD PIKE, SHREWSBURY, MA, 01545"
+ },
+ "6 WIGGIN ST|01824": {
+  "lat": 42.612094692272,
+  "lng": -71.356586908963,
+  "src": "census",
+  "matched": "6 WIGGIN ST, CHELMSFORD, MA, 01824"
+ },
+ "22 SERVICE CENTER RD|01060": {
+  "lat": 42.314167336646,
+  "lng": -72.625021625498,
+  "src": "census",
+  "matched": "22 SERVICE CENTER RD, NORTHAMPTON, MA, 01060"
+ },
+ "8A E SECOND ST|01590": {
+  "lat": 42.093001791734,
+  "lng": -71.751077718451,
+  "src": "census",
+  "matched": "8A E 2ND ST, SUTTON, MA, 01590"
+ },
+ "76 TUTOR ST|02150": {
+  "lat": 42.398155318395,
+  "lng": -71.029358073749,
+  "src": "census",
+  "matched": "76 TUDOR ST, CHELSEA, MA, 02150"
+ },
+ "1 LACKEY DAM RD|01516": {
+  "lat": 42.091497897884,
+  "lng": -71.694602038443,
+  "src": "census",
+  "matched": "1 LACKEY DAM RD, DOUGLAS, MA, 01516"
+ },
+ "405 SLADEN ST|01826": {
+  "lat": 42.674697597949,
+  "lng": -71.32137810195,
+  "src": "census",
+  "matched": "405 SLADEN ST, DRACUT, MA, 01826"
+ },
+ "28 SWAIN ST|01826": {
+  "lat": 42.665438745721,
+  "lng": -71.318821928542,
+  "src": "census",
+  "matched": "28 SWAIN ST, DRACUT, MA, 01826"
+ },
+ "301 RUSSELL ST|01035": {
+  "lat": 42.353070039489,
+  "lng": -72.56015426036,
+  "src": "census",
+  "matched": "301 RUSSELL ST, HADLEY, MA, 01035"
+ },
+ "250 SPRING CIRCLE|01475": {
+  "lat": 42.679495295391,
+  "lng": -72.038569166612,
+  "src": "census",
+  "matched": "250 SPRING CIR, WINCHENDON, MA, 01475"
+ },
+ "45 AUBURN ST|01830": {
+  "lat": 42.781734221908,
+  "lng": -71.079538210638,
+  "src": "census",
+  "matched": "45 AUBURN ST, HAVERHILL, MA, 01830"
+ },
+ "1446 WORCESTER ST|01760": {
+  "lat": 42.29873630473,
+  "lng": -71.392515917891,
+  "src": "census",
+  "matched": "1446 WORCESTER ST, NATICK, MA, 01760"
+ },
+ "1376 MAIN ST|01603": {
+  "lat": 42.24095773883,
+  "lng": -71.852285198503,
+  "src": "census",
+  "matched": "1376 MAIN ST, WORCESTER, MA, 01603"
+ },
+ "15 PROGRESS AVE|01824": {
+  "lat": 42.597011588859,
+  "lng": -71.322537181589,
+  "src": "census",
+  "matched": "15 PROGRESS AVE, CHELMSFORD, MA, 01824"
+ },
+ "694 MERRILL RD|01201": {
+  "lat": 42.46720116743,
+  "lng": -73.203769352927,
+  "src": "census",
+  "matched": "694 MERRILL RD, PITTSFIELD, MA, 01201"
+ },
+ "5 SMITH AVE|02780": {
+  "lat": 41.897906625002,
+  "lng": -71.117012379831,
+  "src": "census",
+  "matched": "5 SMITH AVE, TAUNTON, MA, 02780"
+ },
+ "301 MYLES STANDISH BLVD|02780": {
+  "lat": 41.95310589124,
+  "lng": -71.137965441699,
+  "src": "census",
+  "matched": "301 MYLES STANDISH BLVD, TAUNTON, MA, 02780"
+ },
+ "11 CARRIAGE HOUSE LN|02375": {
+  "lat": 42.039423868325,
+  "lng": -71.104249550634,
+  "src": "census",
+  "matched": "11 CARRIAGE HOUSE LN, SOUTH EASTON, MA, 02375"
+ },
+ "419 PLYMOUTH AVE|02721": {
+  "lat": 41.695319767737,
+  "lng": -71.152673814259,
+  "src": "census",
+  "matched": "419 PLYMOUTH AVE, FALL RIVER, MA, 02721"
+ },
+ "226 NYES LN|02743": {
+  "lat": 41.702310290783,
+  "lng": -70.924325948811,
+  "src": "census",
+  "matched": "226 NYES LN, ACUSHNET, MA, 02743"
+ },
+ "202 PLEASANT ST|02721": {
+  "lat": 41.699868491438,
+  "lng": -71.151995767623,
+  "src": "census",
+  "matched": "202 PLEASANT ST, FALL RIVER, MA, 02721"
+ },
+ "1997 FALL RIVER AVE|02771": {
+  "lat": 41.777871287835,
+  "lng": -71.29064770974,
+  "src": "census",
+  "matched": "1997 FALL RIVER AVE, SEEKONK, MA, 02771"
+ },
+ "47 DEAN ST|02745": {
+  "lat": 41.661329601971,
+  "lng": -70.92696829995,
+  "src": "census",
+  "matched": "47 DEANE ST, NEW BEDFORD, MA, 02746",
+  "tries": 2,
+  "confirmed": true
+ },
+ "103 COGSWELL ST|01830": {
+  "lat": 42.792997983507,
+  "lng": -71.100732525462,
+  "src": "census",
+  "matched": "103 COGSWELL ST, HAVERHILL, MA, 01832"
+ },
+ "1100 UNION STREERT|01581": {
+  "lat": 42.26961035594,
+  "lng": -71.610043979968,
+  "src": "census",
+  "matched": "1100 UNION ST, WESTBOROUGH, MA, 01581"
+ },
+ "14 MARIQUE DR|01843": {
+  "lat": 42.679498533214,
+  "lng": -71.176669015573,
+  "src": "census",
+  "matched": "14 MARIQUE DR, LAWRENCE, MA, 01843"
+ },
+ "60 COTTAGE ST|01331": {
+  "lat": 42.592393932262,
+  "lng": -72.227168832415,
+  "src": "census",
+  "matched": "60 COTTAGE ST, ATHOL, MA, 01331"
+ },
+ "125 FOSTER ST|01843": {
+  "lat": 42.695018754063,
+  "lng": -71.154207554862,
+  "src": "census",
+  "matched": "125 FOSTER ST, LAWRENCE, MA, 01843"
+ },
+ "34 BANKS ST|02452": {
+  "lat": 42.376902366805,
+  "lng": -71.24940304232,
+  "src": "census",
+  "matched": "34 BANKS ST, WALTHAM, MA, 02451"
+ },
+ "257 MAIN ST|01720": {
+  "lat": 42.473899289567,
+  "lng": -71.454151083911,
+  "src": "census",
+  "matched": "257 MAIN ST, ACTON, MA, 01720"
+ },
+ "1 UNIVERSITY AVE|": {
+  "lat": 42.652605007151,
+  "lng": -71.325267092969,
+  "src": "census",
+  "matched": "1 UNIVERSITY AVE, LOWELL, MA, 01854"
+ },
+ "1975 MIDDLESEX ST|01851": {
+  "lat": 42.63574993197,
+  "lng": -71.362455743107,
+  "src": "census",
+  "matched": "1975 MIDDLESEX ST, LOWELL, MA, 01851"
+ },
+ "33 BUTTONWOOD RD|01913": {
+  "lat": 42.829502994918,
+  "lng": -70.966108494856,
+  "src": "census",
+  "matched": "33 BUTTONWOOD RD, AMESBURY, MA, 01913"
+ },
+ "20 WOODLAND DR|01850": {
+  "lat": 42.614379433846,
+  "lng": -71.310658031141,
+  "src": "census",
+  "matched": "20 WOODLAND DR, LOWELL, MA, 01852"
+ },
+ "196 HIGH ST|02453": {
+  "lat": 42.365740209425,
+  "lng": -71.228609583517,
+  "src": "census",
+  "matched": "196 HIGH ST, WALTHAM, MA, 02453"
+ },
+ "1080 MASSACHUSETTS AVE|02476": {
+  "lat": 42.421041263316,
+  "lng": -71.171266080947,
+  "src": "census",
+  "matched": "1080 MASSACHUSETTS AVE, ARLINGTON, MA, 02476"
+ },
+ "5 BEACH ST|02148": {
+  "lat": 42.434371792764,
+  "lng": -71.030746004694,
+  "src": "census",
+  "matched": "5 BEACH ST, MALDEN, MA, 02148"
+ },
+ "133 LEOMINSTER|01462": {
+  "lat": 42.541454867465,
+  "lng": -71.671389445456,
+  "src": "census",
+  "matched": "133 LEOMINSTER RD, SHIRLEY, MA, 01464"
+ },
+ "5 OAK PARK DR|01730": {
+  "lat": 42.517432131339,
+  "lng": -71.249196137705,
+  "src": "census",
+  "matched": "5 OAK PARK DR, BEDFORD, MA, 01730"
+ },
+ "115A W MAIN ST|01860": {
+  "lat": 42.823642802373,
+  "lng": -71.020501811337,
+  "src": "census",
+  "matched": "115A W MAIN ST, MERRIMAC, MA, 01860"
+ },
+ "20 GLIMORE ST|02149": {
+  "lat": 42.412604511319,
+  "lng": -71.053004741026,
+  "src": "census",
+  "matched": "20 GILMORE ST, EVERETT, MA, 02149"
+ },
+ "357 MAIN ST|01740": {
+  "lat": 42.43272039518,
+  "lng": -71.577393943869,
+  "src": "census",
+  "matched": "357 MAIN ST, BOLTON, MA, 01740"
+ },
+ "887 RIVERSIDE DR|01844": {
+  "lat": 42.701138972479,
+  "lng": -71.194889033406,
+  "src": "census",
+  "matched": "887 RIVERSIDE DR, METHUEN, MA, 01844"
+ },
+ "2 BROAD ST|02109": {
+  "lat": 42.359189119588,
+  "lng": -71.054535388479,
+  "src": "census",
+  "matched": "2 BROAD ST, BOSTON, MA, 02109"
+ },
+ "159 PELHAM ST|01844": {
+  "lat": 42.728679932274,
+  "lng": -71.206502020558,
+  "src": "census",
+  "matched": "159 PELHAM ST, METHUEN, MA, 01844"
+ },
+ "90 OLD FERRY RD|01854": {
+  "lat": 42.640732136535,
+  "lng": -71.360821258523,
+  "src": "census",
+  "matched": "90 OLD FERRY RD, LOWELL, MA, 01854"
+ },
+ "181 HIGH RD|01951": {
+  "lat": 42.778949742968,
+  "lng": -70.843128843699,
+  "src": "census",
+  "matched": "181 HIGH RD, NEWBURY, MA, 01951"
+ },
+ "1871 REVERE BEACH PKY|02149": {
+  "lat": 42.402753946596,
+  "lng": -71.04884236499,
+  "src": "census",
+  "matched": "1871 REVERE BEACH PKWY, EVERETT, MA, 02149"
+ },
+ "100 HANOVER ST|02108": {
+  "lat": 42.361849647431,
+  "lng": -71.057106926107,
+  "src": "census",
+  "matched": "100 HANOVER ST, BOSTON, MA, 02108"
+ },
+ "92 WINTHROP ST|02138": {
+  "lat": 42.37217292811,
+  "lng": -71.1206939812,
+  "src": "census",
+  "matched": "92 WINTHROP ST, CAMBRIDGE, MA, 02138"
+ },
+ "488 SOUTH CRANE AVE|02780": {
+  "lat": 41.934806548536,
+  "lng": -71.139296192211,
+  "src": "census",
+  "matched": "488 CRANE AVE S, TAUNTON, MA, 02780"
+ },
+ "8 KING ST|02780": {
+  "lat": 41.920994906759,
+  "lng": -71.09736277355,
+  "src": "census",
+  "matched": "8 KING ST, TAUNTON, MA, 02780"
+ },
+ "5 LITTLE BAY RD|02719": {
+  "lat": 41.635084829196,
+  "lng": -70.869670620894,
+  "src": "census",
+  "matched": "5 LITTLE BAY RD, FAIRHAVEN, MA, 02719"
+ },
+ "15 ANTONIO COSTA AVE|02740": {
+  "lat": 41.643013512456,
+  "lng": -70.922896675141,
+  "src": "census",
+  "matched": "15 ANTONIO COSTA AVE, NEW BEDFORD, MA, 02740"
+ },
+ "71 TECUMSEH|02724": {
+  "lat": 41.691943577717,
+  "lng": -71.156089625666,
+  "src": "census",
+  "matched": "71 TECUMSEH ST, FALL RIVER, MA, 02721"
+ },
+ "396 MIDDLE ST|02746": {
+  "lat": 41.63565860164,
+  "lng": -70.937624098036,
+  "src": "census",
+  "matched": "396 MIDDLE ST, NEW BEDFORD, MA, 02740"
+ },
+ "21 BACON ST|01463": {
+  "lat": 42.66663851746,
+  "lng": -71.542808373878,
+  "src": "census",
+  "matched": "21 BACON ST, PEPPERELL, MA, 01463"
+ },
+ "212 N CARY ST|02302": {
+  "lat": 42.094386627387,
+  "lng": -71.007178924775,
+  "src": "census",
+  "matched": "212 N CARY ST, BROCKTON, MA, 02302"
+ },
+ "19 COLINS ST|01952": {
+  "lat": 42.869744043455,
+  "lng": -70.867913673912,
+  "src": "census",
+  "matched": "19 COLLINS ST, SALISBURY, MA, 01952"
+ },
+ "104A SQUANNACOOK RD.|04464": {
+  "lat": 42.61114188157,
+  "lng": -71.642882122327,
+  "src": "census",
+  "matched": "104A SQUANNACOOK RD, SHIRLEY, MA, 01464"
+ },
+ "81 WARREN AVE|02301": {
+  "lat": 42.084668273284,
+  "lng": -71.023299373992,
+  "src": "census",
+  "matched": "81 WARREN AVE, BROCKTON, MA, 02301"
+ },
+ "755 EAST ST|01876": {
+  "lat": 42.615286927922,
+  "lng": -71.201600292987,
+  "src": "census",
+  "matched": "755 EAST ST, TEWKSBURY, MA, 01876"
+ },
+ "70 PRINCETON ST|01863": {
+  "lat": 42.635793768406,
+  "lng": -71.37910939948,
+  "src": "census",
+  "matched": "70 PRINCETON ST, N CHELMSFORD, MA, 01863"
+ },
+ "56 CHERRY ST|02301": {
+  "lat": 42.093521487114,
+  "lng": -71.025169785107,
+  "src": "census",
+  "matched": "56 CHERRY ST, BROCKTON, MA, 02301"
+ },
+ "7 BARLOW AVE|02576": {
+  "lat": 41.745510861753,
+  "lng": -70.755524583859,
+  "src": "census",
+  "matched": "7 BARLOW AVE, WEST WAREHAM, MA, 02576"
+ },
+ "244 NASHUA RD|01862": {
+  "lat": 42.537969991001,
+  "lng": -71.302872751704,
+  "src": "census",
+  "matched": "244 NASHUA RD, N BILLERICA, MA, 01862"
+ },
+ "36 EASTERN AVE|02150": {
+  "lat": 42.388850152769,
+  "lng": -71.023353601267,
+  "src": "census",
+  "matched": "36 EASTERN AVE, CHELSEA, MA, 02150"
+ },
+ "219 MAIN ST|01985": {
+  "lat": 42.791302257377,
+  "lng": -70.998232440662,
+  "src": "census",
+  "matched": "219 MAIN ST, WEST NEWBURY, MA, 01985"
+ },
+ "46 SPRING ST|02155": {
+  "lat": 42.413533577758,
+  "lng": -71.093829830415,
+  "src": "census",
+  "matched": "46 SPRING ST, MEDFORD, MA, 02155"
+ },
+ "12 WASHINGTON AVE|02150": {
+  "lat": 42.39283423859,
+  "lng": -71.034155343347,
+  "src": "census",
+  "matched": "12 WASHINGTON AVE, CHELSEA, MA, 02150"
+ },
+ "86 ELMWOOD RD|01475": {
+  "lat": 42.698146378365,
+  "lng": -72.034895167101,
+  "src": "census",
+  "matched": "86 ELMWOOD RD, WINCHENDON, MA, 01475"
+ },
+ "1660 MAIN ST|01876": {
+  "lat": 42.595607679506,
+  "lng": -71.214561871913,
+  "src": "census",
+  "matched": "1660 MAIN ST, TEWKSBURY, MA, 01876"
+ },
+ "601 MEMORIAL DR|01020": {
+  "lat": 42.173668749283,
+  "lng": -72.576297744563,
+  "src": "census",
+  "matched": "601 MEMORIAL DR, CHICOPEE, MA, 01020"
+ },
+ "85 OID MEADOW RD|01826": {
+  "lat": 42.661556738775,
+  "lng": -71.333502098175,
+  "src": "census",
+  "matched": "85 OLD MEADOW RD, DRACUT, MA, 01826"
+ },
+ "82 GLENNON AVE|01226": {
+  "lat": 42.475277209414,
+  "lng": -73.164927017596,
+  "src": "census",
+  "matched": "82 GLENNON AVE, DALTON, MA, 01226"
+ },
+ "47 WEBSTER ST|01801": {
+  "lat": 42.507303589461,
+  "lng": -71.168513864612,
+  "src": "census",
+  "matched": "47 WEBSTER ST, WOBURN, MA, 01801"
+ },
+ "2 INDUSTRIAL DR|01923": {
+  "lat": 42.574501387463,
+  "lng": -70.972061529902,
+  "src": "census",
+  "matched": "2 INDUSTRIAL DR, DANVERS, MA, 01923"
+ },
+ "498R OLD DUNSTABLE RD|01450": {
+  "lat": 42.634995962796,
+  "lng": -71.507914680728,
+  "src": "census",
+  "matched": "498R OLD DUNSTABLE RD, GROTON, MA, 01450"
+ },
+ "23 W SHERMAN ST|02747": {
+  "lat": 41.607456030215,
+  "lng": -70.960763635564,
+  "src": "census",
+  "matched": "23 W SHERMAN ST, DARTMOUTH, MA, 02747"
+ },
+ "217 WESTERN AVE|02139": {
+  "lat": 42.364806321344,
+  "lng": -71.110845714365,
+  "src": "census",
+  "matched": "217 WESTERN AVE, CAMBRIDGE, MA, 02139"
+ },
+ "185 PRINCETON ST|02128": {
+  "lat": 42.37861301449,
+  "lng": -71.032848637543,
+  "src": "census",
+  "matched": "185 PRINCETON ST, EAST BOSTON, MA, 02128"
+ },
+ "11-39 BERDON WAY|02719": {
+  "lat": 41.640169526404,
+  "lng": -70.884634324514,
+  "src": "census",
+  "matched": "39 BERDON WAY, FAIRHAVEN, MA, 02719"
+ },
+ "16 S WATER ST|02740": {
+  "lat": 41.633896888128,
+  "lng": -70.922562978406,
+  "src": "census",
+  "matched": "16 S WATER ST, NEW BEDFORD, MA, 02740"
+ },
+ "119 NYE ST|02740": {
+  "lat": 41.659683963514,
+  "lng": -70.930015067727,
+  "src": "census",
+  "matched": "119 NYE ST, NEW BEDFORD, MA, 02746"
+ },
+ "1619 NEW STATE HWY|02767": {
+  "lat": 41.903587455857,
+  "lng": -71.004445162665,
+  "src": "census",
+  "matched": "1619 NEW STATE HWY, RAYNHAM, MA, 02767"
+ },
+ "73 HODGES AVE|02780": {
+  "lat": 41.905567129199,
+  "lng": -71.101308340313,
+  "src": "census",
+  "matched": "73 HODGES AVE, TAUNTON, MA, 02780"
+ },
+ "80 SOMERSET AVE|02780": {
+  "lat": 41.894100197576,
+  "lng": -71.092224145899,
+  "src": "census",
+  "matched": "80 SOMERSET AVE, TAUNTON, MA, 02780"
+ },
+ "189 CHAUNCEY ST|": {
+  "lat": 42.030746627589,
+  "lng": -71.227253218507,
+  "src": "census",
+  "matched": "189 CHAUNCY ST, MANSFIELD, MA, 02048"
+ },
+ "543 WASHINGTON ST|02333": {
+  "lat": 42.05170268956,
+  "lng": -70.927539020883,
+  "src": "census",
+  "matched": "543 WASHINGTON ST, EAST BRIDGEWATER, MA, 02333"
+ },
+ "209 PLEASANT ST|01827": {
+  "lat": 42.67062076203,
+  "lng": -71.495209922476,
+  "src": "census",
+  "matched": "209 PLEASANT ST, DUNSTABLE, MA, 01827"
+ },
+ "40 PLYMOUTH ST|02149": {
+  "lat": 42.403905741339,
+  "lng": -71.064821544736,
+  "src": "census",
+  "matched": "40 PLYMOUTH ST, EVERETT, MA, 02149"
+ },
+ "200 CONCORD RD|01752": {
+  "lat": 42.355602937489,
+  "lng": -71.524141234097,
+  "src": "census",
+  "matched": "200 CONCORD RD, MARLBOROUGH, MA, 01752"
+ },
+ "167 IRVING ST|02773": {
+  "lat": 41.686503602776,
+  "lng": -71.128574865793,
+  "src": "census",
+  "matched": "167 IRVING ST, FALL RIVER, MA, 02723"
+ },
+ "80 JUNE ST|02720": {
+  "lat": 41.706716171951,
+  "lng": -71.153326472561,
+  "src": "census",
+  "matched": "80 JUNE ST, FALL RIVER, MA, 02720"
+ },
+ "19 DURHAM ST|02143": {
+  "lat": 42.37916849198,
+  "lng": -71.106541880319,
+  "src": "census",
+  "matched": "19 DURHAM ST, SOMERVILLE, MA, 02143"
+ },
+ "35 AETNA ST|02724": {
+  "lat": 41.682267873356,
+  "lng": -71.167376464969,
+  "src": "census",
+  "matched": "35 AETNA ST, FALL RIVER, MA, 02724"
+ },
+ "50 RIVER ST|01886": {
+  "lat": 42.595394254248,
+  "lng": -71.46257076997,
+  "src": "census",
+  "matched": "50 RIVER ST, WESTFORD, MA, 01886"
+ },
+ "243 WILLIAM S CANNING BLVD|02721": {
+  "lat": 41.674271828987,
+  "lng": -71.161775421906,
+  "src": "census",
+  "matched": "243 WILLIAM S CANNING BLVD, FALL RIVER, MA, 02721"
+ },
+ "56 BARNUM RD|01923": {
+  "lat": 42.550588269297,
+  "lng": -71.576633108585,
+  "src": "census",
+  "matched": "56 BARNUM RD, DEVENS, MA, 01434"
+ },
+ "70 FREDETTE ST|01440": {
+  "lat": 42.569279731538,
+  "lng": -72.010287366856,
+  "src": "census",
+  "matched": "70 FREDETTE ST, GARDNER, MA, 01440"
+ },
+ "326 MAIN RD|01354": {
+  "lat": 42.640824244396,
+  "lng": -72.500154325352,
+  "src": "census",
+  "matched": "326 MAIN RD, GILL, MA, 01354"
+ },
+ "200 BALLARDVALE ST|01833": {
+  "lat": 42.587411782381,
+  "lng": -71.155547025068,
+  "src": "census",
+  "matched": "200 BALLARDVALE ST, WILMINGTON, MA, 01887"
+ },
+ "527 WASHINGTON ST.|01930": {
+  "lat": 42.640092159056,
+  "lng": -70.67247977202,
+  "src": "census",
+  "matched": "527 WASHINGTON ST, GLOUCESTER, MA, 01930"
+ },
+ "111 RIDGE ST|01890": {
+  "lat": 42.444569945032,
+  "lng": -71.174498522984,
+  "src": "census",
+  "matched": "111 RIDGE ST, WINCHESTER, MA, 01890"
+ },
+ "212 PROSPECT ST|01236": {
+  "lat": 42.25584873232,
+  "lng": -73.371070932765,
+  "src": "census",
+  "matched": "212 PROSPECT ST, HOUSATONIC, MA, 01236"
+ },
+ "240 RIVER ST|02139": {
+  "lat": 42.362798693816,
+  "lng": -71.111774428073,
+  "src": "census",
+  "matched": "240 RIVER ST, CAMBRIDGE, MA, 02139"
+ },
+ "113 PALMER ST|02724": {
+  "lat": 41.687432624225,
+  "lng": -71.16776901551,
+  "src": "census",
+  "matched": "113 PALMER ST, FALL RIVER, MA, 02724"
+ },
+ "5 QUINTON AVE|02703": {
+  "lat": 41.911201685348,
+  "lng": -71.362981523752,
+  "src": "census",
+  "matched": "5 QUINTON AVE, ATTLEBORO, MA, 02703"
+ },
+ "137 EDGARTOWN-WEST TISBURY RD|02539": {
+  "lat": 41.389149224391,
+  "lng": -70.529813757247,
+  "src": "census",
+  "matched": "137 W TISBURY RD, EDGARTOWN, MA, 02539",
+  "rejected": true,
+  "tries": 3
+ },
+ "278 NEWBURY ST|01960": {
+  "lat": 42.553917348404,
+  "lng": -70.980846985316,
+  "src": "census",
+  "matched": "278 NEWBURY ST, PEABODY, MA, 01960"
+ },
+ "295R MAGNOLIA AVE.|01930": {
+  "lat": 42.60534672385,
+  "lng": -70.71066612526,
+  "src": "census",
+  "matched": "295R MAGNOLIA AVE, GLOUCESTER, MA, 01930"
+ },
+ "10 CCC RD|01952": {
+  "lat": 42.838200113323,
+  "lng": -70.849054236256,
+  "src": "census",
+  "matched": "10 CCC RD, SALISBURY, MA, 01952"
+ },
+ "119 LEWIS ST|01902": {
+  "lat": 42.466010432487,
+  "lng": -70.930273039459,
+  "src": "census",
+  "matched": "119 LEWIS ST, LYNN, MA, 01902"
+ },
+ "69 SCHOOL ST|01094": {
+  "lat": 42.265577674879,
+  "lng": -72.236996286953,
+  "src": "census",
+  "matched": "69 SCHOOL ST, HARDWICK, MA, 01082"
+ },
+ "128 KENNEDY CIRCLE|02458": {
+  "lat": 42.358697899577,
+  "lng": -71.196429219015,
+  "src": "census",
+  "matched": "128 KENNEDY CIR, NEWTON, MA, 02458"
+ },
+ "202 PLEASANT LAKE AVE|02645": {
+  "lat": 41.698731223695,
+  "lng": -70.073722155508,
+  "src": "census",
+  "matched": "202 PLEASANT LAKE AVE, HARWICH, MA, 02645"
+ },
+ "205 WASHINGTON ST|01749": {
+  "lat": 42.38084573508,
+  "lng": -71.567852950936,
+  "src": "census",
+  "matched": "205 WASHINGTON ST, HUDSON, MA, 01749"
+ },
+ "69 PROVIDENCE HIGHWAY|02062": {
+  "lat": 42.211793820239,
+  "lng": -71.183540897124,
+  "src": "census",
+  "matched": "69 PROVIDENCE HWY, NORWOOD, MA, 02062"
+ },
+ "420 OAK ST|01151": {
+  "lat": 42.14741506076,
+  "lng": -72.499850014332,
+  "src": "census",
+  "matched": "420 OAK ST, INDIAN ORCHARD, MA, 01151"
+ },
+ "34 WINTER ST|01841": {
+  "lat": 42.704811932473,
+  "lng": -71.171061734462,
+  "src": "census",
+  "matched": "34 WINTER ST, LAWRENCE, MA, 01841"
+ },
+ "98 PROVIDENCE HWY|02032": {
+  "lat": 42.155432439231,
+  "lng": -71.203698642038,
+  "src": "census",
+  "matched": "98 PROVIDENCE HWY, EAST WALPOLE, MA, 02032"
+ },
+ "245 BROADWAY ST|01843": {
+  "lat": 42.692122794106,
+  "lng": -71.160792329987,
+  "src": "census",
+  "matched": "245 S BROADWAY, LAWRENCE, MA, 01843",
+  "rejected": true,
+  "tries": 3
+ },
+ "147-149 WEARE ST|01843": {
+  "lat": 42.682036258909,
+  "lng": -71.159787817525,
+  "src": "census",
+  "matched": "149 WEARE ST, LAWRENCE, MA, 01843"
+ },
+ "1109 JEFFERSON PL|02019": {
+  "lat": 42.103171732703,
+  "lng": -71.470062456774,
+  "src": "census",
+  "matched": "1109 JEFFERSON PL, BELLINGHAM, MA, 02019"
+ },
+ "17 BALLARD WAY|01843": {
+  "lat": 42.684967914787,
+  "lng": -71.186194248529,
+  "src": "census",
+  "matched": "17 BALLARD WAY, LAWRENCE, MA, 01843"
+ },
+ "454 HAMPSHIRE ST|01841": {
+  "lat": 42.717377605993,
+  "lng": -71.171549434668,
+  "src": "census",
+  "matched": "454 HAMPSHIRE ST, LAWRENCE, MA, 01841"
+ },
+ "146 CAMPANELLI PARKWAY|02072": {
+  "lat": 42.112150245238,
+  "lng": -71.068494265422,
+  "src": "census",
+  "matched": "146 CAMPANELLI PKWY, STOUGHTON, MA, 02072"
+ },
+ "383 HAVERHILL ST|01840": {
+  "lat": 42.708493199141,
+  "lng": -71.171069080168,
+  "src": "census",
+  "matched": "383 HAVERHILL ST, LAWRENCE, MA, 01840"
+ },
+ "407 TECHNOLOGY DR|02072": {
+  "lat": 42.155956604566,
+  "lng": -71.065388441904,
+  "src": "census",
+  "matched": "407 TECHNOLOGY CENTER DR, STOUGHTON, MA, 02072",
+  "rejected": true,
+  "tries": 3
+ },
+ "370 MERRIMACK ST|01843": {
+  "lat": 42.703441386324,
+  "lng": -71.143014755353,
+  "src": "census",
+  "matched": "370 MERRIMACK ST, LAWRENCE, MA, 01843"
+ },
+ "164 ALLY ST|": {
+  "lat": 42.4573565,
+  "lng": -70.9557285,
+  "src": "osm-town",
+  "matched": "Alley Street, Lynn"
+ },
+ "14 SYDNEY AVE|01902": {
+  "lat": 42.469050406106,
+  "lng": -70.931561449071,
+  "src": "census",
+  "matched": "14 SIDNEY AVE, LYNN, MA, 01902"
+ },
+ "4 BEAVER DAM RD|01944": {
+  "lat": 42.593155000683,
+  "lng": -70.761191070542,
+  "src": "census",
+  "matched": "4 BEAVER DAM RD, MANCHESTER, MA, 01944"
+ },
+ "7 MAGNOLIA ST|01841": {
+  "lat": 42.704170249109,
+  "lng": -71.186591744101,
+  "src": "census",
+  "matched": "7 MAGNOLIA ST, LAWRENCE, MA, 01841"
+ },
+ "79 CONGRESS ST 3FL|01970": {
+  "lat": 42.516570010896,
+  "lng": -70.889267265558,
+  "src": "census",
+  "matched": "79 CONGRESS ST, SALEM, MA, 01970"
+ },
+ "2 SUMMIT INDUSTRIAL PARK|01960": {
+  "lat": 42.527289056219,
+  "lng": -70.952799086382,
+  "src": "census",
+  "matched": "2 SUMMIT INDUSTRIAL PARK, PEABODY, MA, 01960"
+ },
+ "30 CREEK BROOK RD|01832": {
+  "lat": 42.788479890087,
+  "lng": -71.125352802486,
+  "src": "census",
+  "matched": "30 CREEK BROOK DR, HAVERHILL, MA, 01832"
+ },
+ "158 PLEASANT ST|01453": {
+  "lat": 42.521164157458,
+  "lng": -71.765278263266,
+  "src": "census",
+  "matched": "158 PLEASANT ST, LEOMINSTER, MA, 01453"
+ },
+ "8 HIGHLAND AV|02368": {
+  "lat": 42.164346285645,
+  "lng": -71.046533444739,
+  "src": "census",
+  "matched": "8 HIGHLAND AVE, RANDOLPH, MA, 02368"
+ },
+ "12 W FIFTH ST|01850": {
+  "lat": 42.651389464657,
+  "lng": -71.303482561731,
+  "src": "census",
+  "matched": "12 W 5TH ST, LOWELL, MA, 01850"
+ },
+ "69 PROVIDENCE HWY|02062": {
+  "lat": 42.211793820239,
+  "lng": -71.183540897124,
+  "src": "census",
+  "matched": "69 PROVIDENCE HWY, NORWOOD, MA, 02062"
+ },
+ "425 CENTER ST|01056": {
+  "lat": 42.168053248129,
+  "lng": -72.481498670056,
+  "src": "census",
+  "matched": "425 CENTER ST, LUDLOW, MA, 01056"
+ },
+ "45 INDUSTRIAL DR|02021": {
+  "lat": 42.152187593295,
+  "lng": -71.104868978356,
+  "src": "census",
+  "matched": "45 INDUSTRIAL DR, CANTON, MA, 02021"
+ },
+ "163 ESSEX ST|01902": {
+  "lat": 42.472662499319,
+  "lng": -70.932723038902,
+  "src": "census",
+  "matched": "163 ESSEX ST, LYNN, MA, 01902"
+ },
+ "11 CHANCERY CT|01902": {
+  "lat": 42.458867772148,
+  "lng": -70.938487897171,
+  "src": "census",
+  "matched": "11 CHANCERY CT, LYNN, MA, 01902"
+ },
+ "43 STATE ST|01901": {
+  "lat": 42.461695549918,
+  "lng": -70.94933447274,
+  "src": "census",
+  "matched": "43 STATE ST, LYNN, MA, 01901"
+ },
+ "21 NORTH AVE|02370": {
+  "lat": 42.133522719233,
+  "lng": -70.917574242944,
+  "src": "census",
+  "matched": "21 NORTH AVE, ROCKLAND, MA, 02370"
+ },
+ "180 COMMERCIAL ST|01905": {
+  "lat": 42.456255799987,
+  "lng": -70.958160245827,
+  "src": "census",
+  "matched": "180 COMMERCIAL ST, LYNN, MA, 01905"
+ },
+ "210 SPRING ST|02790": {
+  "lat": 41.715791849575,
+  "lng": -70.771801304386,
+  "src": "census",
+  "matched": "210 SPRING ST, MARION, MA, 02738"
+ },
+ "37 WATERHILL ST|01905": {
+  "lat": 42.464830762756,
+  "lng": -70.969303523911,
+  "src": "census",
+  "matched": "37 WATERHILL ST, LYNN, MA, 01905"
+ },
+ "254 BEECH ST|02370": {
+  "lat": 42.102713964074,
+  "lng": -70.908890491051,
+  "src": "census",
+  "matched": "254 BEECH ST, ROCKLAND, MA, 02370"
+ },
+ "7 WILLOW ST|01902": {
+  "lat": 42.464196105206,
+  "lng": -70.945186491091,
+  "src": "census",
+  "matched": "7 WILLOW ST, LYNN, MA, 01901"
+ },
+ "70 ROYAL DANE|02050": {
+  "lat": 42.108735188492,
+  "lng": -70.758906695071,
+  "src": "census",
+  "matched": "70 ROYAL DANE DR, MARSHFIELD, MA, 02050"
+ },
+ "376 WASHINGTON ST|01901": {
+  "lat": 42.464640741295,
+  "lng": -70.947554569055,
+  "src": "census",
+  "matched": "376 WASHINGTON ST, LYNN, MA, 01901"
+ },
+ "1875 BEDFORD ST|02346": {
+  "lat": 41.940718456827,
+  "lng": -70.966599465751,
+  "src": "census",
+  "matched": "1875 BEDFORD ST, BRIDGEWATER, MA, 02324"
+ },
+ "10 CORWIN ST|01960": {
+  "lat": 42.517794841159,
+  "lng": -70.959055969804,
+  "src": "census",
+  "matched": "10 CORWIN ST, PEABODY, MA, 01960"
+ },
+ "2 1ST AVE|01960": {
+  "lat": 42.519564841345,
+  "lng": -70.974700978044,
+  "src": "census",
+  "matched": "2 1ST AVE, PEABODY, MA, 01960"
+ },
+ "35 NEW ENGLAND BUSINESS CTR|01810": {
+  "lat": 42.693880404485,
+  "lng": -71.202699222151,
+  "src": "census",
+  "matched": "35 NEW ENGLAND BUS CTR DR, ANDOVER, MA, 01810"
+ },
+ "30 CREEKBROOK DR|01832": {
+  "lat": 42.788479890087,
+  "lng": -71.125352802486,
+  "src": "census",
+  "matched": "30 CREEK BROOK DR, HAVERHILL, MA, 01832"
+ },
+ "2 GOVENOR DUKAKIS DR|01364": {
+  "lat": 42.565868826213,
+  "lng": -72.282913639749,
+  "src": "census",
+  "matched": "2 GOVENOR DUKAKIS DR, ORANGE, MA, 01364"
+ },
+ "94 OLD N DANA RD|01355": {
+  "lat": 42.50776701955,
+  "lng": -72.269494117606,
+  "src": "census",
+  "matched": "94 OLD N DANA RD, NEW SALEM, MA, 01355"
+ },
+ "47 OLD NORTH DANA RD|01007": {
+  "lat": 42.509447023985,
+  "lng": -72.26752778336,
+  "src": "census",
+  "matched": "47 OLD N DANA RD, NEW SALEM, MA, 01355"
+ },
+ "12 LOCUST ST|02558": {
+  "lat": 41.743795776421,
+  "lng": -70.651512192639,
+  "src": "census",
+  "matched": "12 LOCUST ST, ONSET, MA, 02558"
+ },
+ "401 VFW DR|02370": {
+  "lat": 42.150538129204,
+  "lng": -70.912047777199,
+  "src": "census",
+  "matched": "401 VFW DR, ROCKLAND, MA, 02370"
+ },
+ "254 PLEASANT ST|02379": {
+  "lat": 42.002833320656,
+  "lng": -71.03834532252,
+  "src": "census",
+  "matched": "254 PLEASANT ST, WEST BRIDGEWATER, MA, 02379"
+ },
+ "2A COURT ST|02360": {
+  "lat": 41.95708704575,
+  "lng": -70.665262778932,
+  "src": "census",
+  "matched": "2A COURT ST, PLYMOUTH, MA, 02360"
+ },
+ "5A FRESHMEADOW DR|02558": {
+  "lat": 41.75075262056,
+  "lng": -70.670843719151,
+  "src": "census",
+  "matched": "5A FRESH MEADOW DR, E WAREHAM, MA, 02538"
+ },
+ "403 PLEASANT ST|02379": {
+  "lat": 41.998720448547,
+  "lng": -71.037285678374,
+  "src": "census",
+  "matched": "403 PLEASANT ST, WEST BRIDGEWATER, MA, 02379"
+ },
+ "18 MINOT AVE|02538": {
+  "lat": 41.755718399362,
+  "lng": -70.699678097249,
+  "src": "census",
+  "matched": "18 MINOT AVE, WAREHAM, MA, 02571"
+ },
+ "20 RAILROAD ST|02151": {
+  "lat": 42.403414414329,
+  "lng": -71.007799315393,
+  "src": "census",
+  "matched": "20 RAILROAD ST, REVERE, MA, 02151"
+ },
+ "379 DUDLEY ST|02119": {
+  "lat": 42.326340806454,
+  "lng": -71.075753296308,
+  "src": "census",
+  "matched": "379 DUDLEY ST, ROXBURY, MA, 02119"
+ },
+ "184 GOVENOR DUKAKIS DR|01364": {
+  "lat": 42.561153990267,
+  "lng": -72.286861424197,
+  "src": "census",
+  "matched": "184 GOVENOR DUKAKIS DR, ORANGE, MA, 01364"
+ },
+ "41 E MAIN ST 1|01349": {
+  "lat": 42.578286470092,
+  "lng": -72.493339750581,
+  "src": "census",
+  "matched": "41 E MAIN ST, MILLERS FALLS, MA, 01349"
+ },
+ "41 E MAIN ST|01349": {
+  "lat": 42.578286470092,
+  "lng": -72.493339750581,
+  "src": "census",
+  "matched": "41 E MAIN ST, MILLERS FALLS, MA, 01349"
+ },
+ "55 ALLSTON ST|01089": {
+  "lat": 42.096083593527,
+  "lng": -72.625785839039,
+  "src": "census",
+  "matched": "55 ALLSTON AVE, WEST SPRINGFIELD, MA, 01089"
+ },
+ "3610 MAIN ST|01107": {
+  "lat": 42.126438768554,
+  "lng": -72.611105442012,
+  "src": "census",
+  "matched": "3610 MAIN ST, SPRINGFIELD, MA, 01107"
+ },
+ "40 WAREHOUSE ST|01118": {
+  "lat": 42.095512224965,
+  "lng": -72.55281288911,
+  "src": "census",
+  "matched": "40 WAREHOUSE ST, SPRINGFIELD, MA, 01118"
+ },
+ "150B BRIDGE ST|01103": {
+  "lat": 42.103053608518,
+  "lng": -72.592357187171,
+  "src": "census",
+  "matched": "150B BRIDGE ST, SPRINGFIELD, MA, 01103"
+ },
+ "70 CHESTNUT ST|01040": {
+  "lat": 42.209473154826,
+  "lng": -72.607837880036,
+  "src": "census",
+  "matched": "70 CHESTNUT ST, HOLYOKE, MA, 01040"
+ },
+ "34 CANAL ST|": {
+  "lat": 42.149003398271,
+  "lng": -72.604053789473,
+  "src": "census",
+  "matched": "34 CANAL ST, CHICOPEE, MA, 01013"
+ },
+ "420 E ST|02127": {
+  "lat": 42.340453854276,
+  "lng": -71.046285948276,
+  "src": "census",
+  "matched": "420 E ST, SOUTH BOSTON, MA, 02127"
+ },
+ "12-A EVERDEAN ST|02122": {
+  "lat": 42.300884518666,
+  "lng": -71.050630568041,
+  "src": "census",
+  "matched": "12 EVERDEAN ST, DORCHESTER, MA, 02122"
+ },
+ "150 SOUTH HUNTINGTON AVE|02130": {
+  "lat": 42.327440551062,
+  "lng": -71.110902872489,
+  "src": "census",
+  "matched": "150 S HUNTINGTON AVE, BOSTON, MA, 02130"
+ },
+ "306 NORTHERN AVE|02210": {
+  "lat": 42.347624362784,
+  "lng": -71.03601344697,
+  "src": "census",
+  "matched": "306 NORTHERN AVE, BOSTON, MA, 02210"
+ },
+ "77 DORCHESTER ST|02127": {
+  "lat": 42.335774750251,
+  "lng": -71.045203831335,
+  "src": "census",
+  "matched": "77 DORCHESTER ST, BOSTON, MA, 02127"
+ },
+ "17-19 WINTER ST.|02122": {
+  "lat": 42.309471126992,
+  "lng": -71.062682816681,
+  "src": "census",
+  "matched": "19 WINTER ST, DORCHESTER, MA, 02122"
+ },
+ "139 STATE ST|01103": {
+  "lat": 42.10159751817,
+  "lng": -72.586152275387,
+  "src": "census",
+  "matched": "139 STATE ST, SPRINGFIELD, MA, 01103"
+ },
+ "17 EAST HOOKER ST|01105": {
+  "lat": 42.116765174684,
+  "lng": -72.606502539042,
+  "src": "census",
+  "matched": "17 E HOOKER ST, SPRINGFIELD, MA, 01107"
+ },
+ "158 ELM ST|01085": {
+  "lat": 42.12383623342,
+  "lng": -72.748256512245,
+  "src": "census",
+  "matched": "158 ELM ST, WESTFIELD, MA, 01085"
+ },
+ "29 EDDYWOOD ST.|01118": {
+  "lat": 42.090672904762,
+  "lng": -72.539083701889,
+  "src": "census",
+  "matched": "29 EDDYWOOD ST, SPRINGFIELD, MA, 01118"
+ },
+ "29 PINEYWOODS AVE|01108": {
+  "lat": 42.079685057136,
+  "lng": -72.573771727718,
+  "src": "census",
+  "matched": "29 PINEYWOODS AVE, SPRINGFIELD, MA, 01108"
+ },
+ "285 WILBRAHAM ST|01069": {
+  "lat": 42.157957162683,
+  "lng": -72.361783321081,
+  "src": "census",
+  "matched": "285 WILBRAHAM ST, PALMER, MA, 01069"
+ },
+ "120 PALMER RD|01057": {
+  "lat": 42.125263767845,
+  "lng": -72.30695863234,
+  "src": "census",
+  "matched": "120 PALMER RD, MONSON, MA, 01057"
+ },
+ "3111 MAIN ST|01104": {
+  "lat": 42.120348007859,
+  "lng": -72.60836898659,
+  "src": "census",
+  "matched": "3111 MAIN ST, SPRINGFIELD, MA, 01107"
+ },
+ "237 MEMORIAL AVE|01104": {
+  "lat": 42.140024630767,
+  "lng": -72.53560924566,
+  "src": "census",
+  "matched": "237 MEMORIAL DR, SPRINGFIELD, MA, 01104"
+ },
+ "167 FORESTDALE ST|02563": {
+  "lat": 41.6547806,
+  "lng": -70.4913013,
+  "src": "osm",
+  "matched": "Main Street, Mashpee, Barnstable County",
+  "approx": true
+ },
+ "90 ADAMS ST|02532": {
+  "lat": 41.7690433,
+  "lng": -70.5430638,
+  "src": "osm",
+  "matched": "90, Adams Street, Bourne"
+ },
+ "1600 WEST ST|01201": {
+  "lat": 42.4477902,
+  "lng": -73.2608655,
+  "src": "osm",
+  "matched": "West Street, Pittsfield, Berkshire County",
+  "approx": true
+ },
+ "450 RICHMOND ST|02767": {
+  "lat": 41.8974376,
+  "lng": -70.9917632,
+  "src": "osm",
+  "matched": "450, Richmond Street, Taunton"
+ },
+ "150 JOHN VERTENTE BLVD|02745": {
+  "lat": 41.7300058,
+  "lng": -70.9695904,
+  "src": "osm",
+  "matched": "150, John Vertente Boulevard, Dartmouth"
+ },
+ "100 REVOLUTIONARY DR|02780": {
+  "lat": 41.8680651,
+  "lng": -71.0435294,
+  "src": "osm",
+  "matched": "100, Revolutionary Drive, East Taunton"
+ },
+ "16TH ST|02539": {
+  "lat": 41.4026276,
+  "lng": -70.559592,
+  "src": "osm",
+  "matched": "16th Street South, Jerneganville, Edgartown",
+  "approx": true
+ },
+ "51 ROBINSON CIRCLE|01936": {
+  "lat": 39.173736,
+  "lng": -84.5439926,
+  "src": "osm",
+  "matched": "Robinson Circle, Northside, Cincinnati",
+  "approx": true
+ },
+ "441|01834": {
+  "lat": 42.7657201,
+  "lng": -71.0404711,
+  "src": "osm",
+  "matched": "441, Groveland Street, Riverside"
+ },
+ "1450 OSGOOD|01845": {
+  "lat": 42.72801,
+  "lng": -71.1121453,
+  "src": "osm",
+  "matched": "1450, Osgood Street, North Andover"
+ },
+ "1 PERFORMANCE BLVD|01104": {
+  "lat": 42.1358063,
+  "lng": -72.5520077,
+  "src": "osm",
+  "matched": "Performance Boulevard, Smith & Wesson, East Springfield",
+  "approx": true
+ },
+ "100 OLD SPRINGFIELD RD|01027": {
+  "lat": 42.287634,
+  "lng": -72.6426653,
+  "src": "osm",
+  "matched": "Old Springfield Road, Easthampton, Hampshire County",
+  "approx": true
+ },
+ "17 BISSELL RD|01012": {
+  "lat": 42.412161,
+  "lng": -72.822834,
+  "src": "osm",
+  "matched": "17, Bissell Road, Chesterfield"
+ },
+ "109 MAIN ST|01096": {
+  "lat": 42.381002,
+  "lng": -72.7077507,
+  "src": "osm",
+  "matched": "Williamsburg Snack Bar, 109, Main Street"
+ },
+ "52 MAIN ST|02453": {
+  "lat": 42.3763873,
+  "lng": -71.2579516,
+  "src": "osm",
+  "matched": "Main Street, Ravenswood, Waltham",
+  "approx": true
+ },
+ "5 Y D RD|01730": {
+  "lat": 42.4838516,
+  "lng": -71.2609225,
+  "src": "osm",
+  "matched": "5, Y D Road, Bedford"
+ },
+ "294B LITTLETON RD|01886": {
+  "lat": 42.5549709,
+  "lng": -71.4405497,
+  "src": "osm",
+  "matched": "Dunkin', 294B, Littleton Road"
+ },
+ "269 3RD ST|02149": {
+  "lat": 40.0145175,
+  "lng": -78.3731644,
+  "src": "osm",
+  "matched": "East 3rd Street, Everett, Bedford County",
+  "approx": true
+ },
+ "300 TRADECENTER|01801": {
+  "lat": 42.5001295,
+  "lng": -71.1630874,
+  "src": "osm",
+  "matched": "200;300;400, Tradecenter Drive, TradeCenter 128"
+ },
+ "1180 PROVIDENCE HWY|02067": {
+  "lat": 42.1131084,
+  "lng": -71.2417089,
+  "src": "osm",
+  "matched": "Boston Providence Highway, South Walpole, Walpole",
+  "approx": true
+ },
+ "1000 PROVIDENCE HWY|02067": {
+  "lat": 42.1131084,
+  "lng": -71.2417089,
+  "src": "osm",
+  "matched": "Boston Providence Highway, South Walpole, Walpole",
+  "approx": true
+ },
+ "432 VICTORY RD|02171": {
+  "lat": 42.2933004,
+  "lng": -71.0235914,
+  "src": "osm",
+  "matched": "Victory Road, North Quincy, Quincy",
+  "approx": true
+ },
+ "1 WAREHAM|02571": {
+  "lat": 41.745784,
+  "lng": -70.661204,
+  "src": "osm",
+  "matched": "1, Wareham Avenue, Onset"
+ },
+ "3140 PLYMOUTH ST|02338": {
+  "lat": 41.9965121,
+  "lng": -70.8428279,
+  "src": "osm",
+  "matched": "Plymouth Street, Halifax Mobile Home Estates, Halifax",
+  "approx": true
+ },
+ "1 FRANKLIN PARK RD|02119": {
+  "lat": 42.3028346,
+  "lng": -71.0876281,
+  "src": "osm",
+  "matched": "Community Resource Center, 1, Franklin Park Road"
+ },
+ "1 SEAFOOD WAY|02210": {
+  "lat": 42.3497354,
+  "lng": -71.0321781,
+  "src": "osm",
+  "matched": "1, Seafood Way, Seaport"
+ },
+ "1205 JETTE CT|02135": {
+  "lat": 42.3461706,
+  "lng": -71.1431324,
+  "src": "osm",
+  "matched": "Jette Court, Commonwealth Apartments, Brighton",
+  "approx": true
+ },
+ "100 MORRISSEY BLVD|02125": {
+  "lat": 42.3134106,
+  "lng": -71.0354424,
+  "src": "osm",
+  "matched": "University Hall, 100, William T. Morrissey Boulevard"
+ },
+ "130 ROGERS ST|02127": {
+  "lat": 42.3289221,
+  "lng": -71.0552552,
+  "src": "osm",
+  "matched": "Rogers Street, South Boston, Boston",
+  "approx": true
+ },
+ "695 TRUMAN PARKWAY|02136": {
+  "lat": 42.2524581,
+  "lng": -71.1189622,
+  "src": "osm",
+  "matched": "695, Truman Parkway, Fairmount"
+ },
+ "294 WASHINGTON ST|02111": {
+  "lat": 42.3573289,
+  "lng": -71.0582485,
+  "src": "osm",
+  "matched": "294, Washington Street, Downtown Crossing"
+ },
+ "168 COMMERCIAL RD|01453": {
+  "lat": 42.5241004,
+  "lng": -71.7387688,
+  "src": "osm",
+  "matched": "Commercial Road, Leominster, Worcester County",
+  "approx": true
+ },
+ "1891 MILLBURY ST|01607": {
+  "lat": 42.2315318,
+  "lng": -71.7864478,
+  "src": "osm",
+  "matched": "Millbury Street, Oakland Heights, Quinsigamond Village",
+  "approx": true
+ },
+ "150 GROVE ST|01610": {
+  "lat": 42.2780905,
+  "lng": -71.8014273,
+  "src": "osm",
+  "matched": "150, Grove Street, Chadwick Square"
+ },
+ "6112 FLINT POND CIRCLE|01545": {
+  "lat": 42.2447947,
+  "lng": -71.7242374,
+  "src": "osm",
+  "matched": "6000;6111;6112;6113;6114;6121;6122;6123;6124;6131;6132;6133;6134;6211;6212;6213;6214;6221;6222;6223;6224;6231;6232;6233;6234, Flint Pond Circle, Shrewsbury"
+ },
+ "2 COMMERCE DR|01501": {
+  "lat": 42.1982797,
+  "lng": -71.8254545,
+  "src": "osm",
+  "matched": "Commerce Drive, Pondville, Auburn",
+  "approx": true
+ },
+ "2 FRANKLIN|01550": {
+  "lat": 42.074389,
+  "lng": -72.037864,
+  "src": "osm",
+  "matched": "2, Franklin Terrace, Upper Chapin Street Historic District"
+ },
+ "100 DEER ST|01757": {
+  "lat": 42.1720196,
+  "lng": -71.5127592,
+  "src": "osm",
+  "matched": "100, Deer Street, Milford"
+ },
+ "62 MAIN RD|01264": {
+  "lat": 42.206391,
+  "lng": -73.1693273,
+  "src": "osm-street",
+  "matched": "Main Road, Otis",
+  "approx": true,
+  "place": "street"
+ },
+ "16 KELLEY SQ 10|01610": {
+  "lat": 42.2552969,
+  "lng": -71.7981792,
+  "src": "osm-street",
+  "matched": "Kelley Square, Worcester",
+  "approx": true,
+  "place": "street"
+ },
+ "TOWN|FALMOUTH": {
+  "lat": 41.5514979,
+  "lng": -70.6147519,
+  "src": "osm-place",
+  "matched": "Falmouth, Barnstable County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HYANNIS": {
+  "lat": 41.6535345,
+  "lng": -70.2823287,
+  "src": "osm-place",
+  "matched": "Hyannis, Barnstable",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BOURNE": {
+  "lat": 41.7412166,
+  "lng": -70.5989196,
+  "src": "osm-place",
+  "matched": "Bourne, Barnstable County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ORLEANS": {
+  "lat": 41.7883108,
+  "lng": -69.99001,
+  "src": "osm-place",
+  "matched": "Orleans, Barnstable County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MARSTONS MILLS": {
+  "lat": 41.653384,
+  "lng": -70.4132249,
+  "src": "osm-place",
+  "matched": "Marstons Mills, Barnstable",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HARWICH": {
+  "lat": 41.6862224,
+  "lng": -70.0758508,
+  "src": "osm-place",
+  "matched": "Harwich, Barnstable County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|TRURO": {
+  "lat": 41.993437,
+  "lng": -70.0497457,
+  "src": "osm-place",
+  "matched": "Truro, Barnstable County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MASHPEE": {
+  "lat": 41.6484421,
+  "lng": -70.4811383,
+  "src": "osm-place",
+  "matched": "Mashpee, Barnstable County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PITTSFIELD": {
+  "lat": 42.4484778,
+  "lng": -73.2541069,
+  "src": "osm-place",
+  "matched": "Pittsfield, Berkshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTH ADAMS": {
+  "lat": 42.6990349,
+  "lng": -73.1118997,
+  "src": "osm-place",
+  "matched": "North Adams, Berkshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|FALL RIVER": {
+  "lat": 41.7010642,
+  "lng": -71.1546367,
+  "src": "osm-place",
+  "matched": "Fall River, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|TAUNTON": {
+  "lat": 41.9019257,
+  "lng": -71.0931485,
+  "src": "osm-place",
+  "matched": "Taunton, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NEW BEDFORD": {
+  "lat": 41.6362152,
+  "lng": -70.934205,
+  "src": "osm-place",
+  "matched": "New Bedford, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ATTLEBORO": {
+  "lat": 41.9439695,
+  "lng": -71.2804301,
+  "src": "osm-place",
+  "matched": "Attleboro, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WESTPORT": {
+  "lat": 41.6220399,
+  "lng": -71.0780195,
+  "src": "osm-place",
+  "matched": "Westport, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|FREETOWN": {
+  "lat": 41.7948769,
+  "lng": -71.0675348,
+  "src": "osm-place",
+  "matched": "Freetown, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|RAYNHAM": {
+  "lat": 41.9487118,
+  "lng": -71.0731008,
+  "src": "osm-place",
+  "matched": "Raynham, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ACUSHNET": {
+  "lat": 41.6806593,
+  "lng": -70.907816,
+  "src": "osm-place",
+  "matched": "Acushnet, Bristol County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EDGARTOWN": {
+  "lat": 41.3894198,
+  "lng": -70.5129682,
+  "src": "osm-place",
+  "matched": "Edgartown, Dukes County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|TISBURY": {
+  "lat": 41.4576223,
+  "lng": -70.6156969,
+  "src": "osm-place",
+  "matched": "Tisbury, Dukes County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|OAK BLUFFS": {
+  "lat": 41.4536222,
+  "lng": -70.5684337,
+  "src": "osm-place",
+  "matched": "Oak Bluffs, Dukes County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SALEM": {
+  "lat": 42.5214439,
+  "lng": -70.8956743,
+  "src": "osm-place",
+  "matched": "Salem, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LAWRENCE": {
+  "lat": 42.7070354,
+  "lng": -71.1631137,
+  "src": "osm-place",
+  "matched": "Lawrence, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ANDOVER": {
+  "lat": 42.65717,
+  "lng": -71.1408776,
+  "src": "osm-place",
+  "matched": "Andover, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HAMILTON": {
+  "lat": 42.6362052,
+  "lng": -70.8431049,
+  "src": "osm-place",
+  "matched": "Hamilton, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LYNN": {
+  "lat": 42.466763,
+  "lng": -70.9494939,
+  "src": "osm-place",
+  "matched": "Lynn, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PEABODY": {
+  "lat": 42.5258965,
+  "lng": -70.9272446,
+  "src": "osm-place",
+  "matched": "Peabody, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HAVERHILL": {
+  "lat": 42.7777829,
+  "lng": -71.0767724,
+  "src": "osm-place",
+  "matched": "Haverhill, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BEVERLY": {
+  "lat": 42.5489744,
+  "lng": -70.8781883,
+  "src": "osm-place",
+  "matched": "Beverly, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|METHUEN": {
+  "lat": 42.7262016,
+  "lng": -71.1908924,
+  "src": "osm-place",
+  "matched": "Methuen, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GLOUCESTER": {
+  "lat": 42.6153595,
+  "lng": -70.6624608,
+  "src": "osm-place",
+  "matched": "Gloucester, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SWAMPSCOTT": {
+  "lat": 42.4699241,
+  "lng": -70.9171507,
+  "src": "osm-place",
+  "matched": "Swampscott, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GREENFIELD": {
+  "lat": 42.5876342,
+  "lng": -72.6002068,
+  "src": "osm-place",
+  "matched": "Greenfield, Franklin County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SUNDERLAND": {
+  "lat": 42.4636924,
+  "lng": -72.5805642,
+  "src": "osm-place",
+  "matched": "Sunderland, Franklin County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MONTAGUE": {
+  "lat": 42.5901227,
+  "lng": -72.5497332,
+  "src": "osm-place",
+  "matched": "Montague, Franklin County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HAWLEY": {
+  "lat": 42.5644029,
+  "lng": -72.877557,
+  "src": "osm-place",
+  "matched": "Hawley, Franklin County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WESTFIELD": {
+  "lat": 42.1205411,
+  "lng": -72.7489158,
+  "src": "osm-place",
+  "matched": "Westfield, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HOLYOKE": {
+  "lat": 42.2071184,
+  "lng": -72.6075851,
+  "src": "osm-place",
+  "matched": "Holyoke, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SPRINGFIELD": {
+  "lat": 42.1018764,
+  "lng": -72.5886727,
+  "src": "osm-place",
+  "matched": "Springfield, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CHICOPEE": {
+  "lat": 42.1487691,
+  "lng": -72.6071119,
+  "src": "osm-place",
+  "matched": "Chicopee, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BRIMFIELD": {
+  "lat": 42.1224026,
+  "lng": -72.2003109,
+  "src": "osm-place",
+  "matched": "Brimfield, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PALMER": {
+  "lat": 42.1574489,
+  "lng": -72.3299783,
+  "src": "osm-place",
+  "matched": "Palmer, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WEST SPRINGFIELD": {
+  "lat": 42.105237,
+  "lng": -72.6213712,
+  "src": "osm-place",
+  "matched": "West Springfield, Hampden County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTHAMPTON": {
+  "lat": 42.3178989,
+  "lng": -72.6311006,
+  "src": "osm-place",
+  "matched": "Northampton, Hampshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WARE": {
+  "lat": 42.2599297,
+  "lng": -72.2397806,
+  "src": "osm-place",
+  "matched": "Ware, Hampshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EASTHAMPTON": {
+  "lat": 42.2708804,
+  "lng": -72.6719579,
+  "src": "osm-place",
+  "matched": "Easthampton, Hampshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|AMHERST": {
+  "lat": 42.3731948,
+  "lng": -72.5198761,
+  "src": "osm-place",
+  "matched": "Amherst, Hampshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BELCHERTOWN": {
+  "lat": 42.2772732,
+  "lng": -72.4007966,
+  "src": "osm-place",
+  "matched": "Belchertown, Hampshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LOWELL": {
+  "lat": 42.6414437,
+  "lng": -71.3085329,
+  "src": "osm-place",
+  "matched": "Lowell, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MALDEN": {
+  "lat": 42.4268484,
+  "lng": -71.0683741,
+  "src": "osm-place",
+  "matched": "Malden, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CAMBRIDGE": {
+  "lat": 42.3656347,
+  "lng": -71.1040018,
+  "src": "osm-place",
+  "matched": "Cambridge, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WALTHAM": {
+  "lat": 42.3762385,
+  "lng": -71.2355644,
+  "src": "osm-place",
+  "matched": "Waltham, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NEWTON": {
+  "lat": 42.3300435,
+  "lng": -71.194862,
+  "src": "osm-place",
+  "matched": "Newton, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LEXINGTON": {
+  "lat": 42.4473175,
+  "lng": -71.2245003,
+  "src": "osm-place",
+  "matched": "Lexington, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MARLBOROUGH": {
+  "lat": 42.3468589,
+  "lng": -71.5525188,
+  "src": "osm-place",
+  "matched": "Marlborough, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|FRAMINGHAM": {
+  "lat": 42.2773177,
+  "lng": -71.4165905,
+  "src": "osm-place",
+  "matched": "Framingham, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SOMERVILLE": {
+  "lat": 42.3875968,
+  "lng": -71.0994968,
+  "src": "osm-place",
+  "matched": "Somerville, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EVERETT": {
+  "lat": 42.4085897,
+  "lng": -71.0542002,
+  "src": "osm-place",
+  "matched": "Everett, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HUDSON": {
+  "lat": 42.3913503,
+  "lng": -71.5676895,
+  "src": "osm-place",
+  "matched": "Hudson, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WAKEFIELD": {
+  "lat": 42.506484,
+  "lng": -71.0728306,
+  "src": "osm-place",
+  "matched": "Wakefield, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MELROSE": {
+  "lat": 42.4564323,
+  "lng": -71.064182,
+  "src": "osm-place",
+  "matched": "Melrose, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BRAINTREE": {
+  "lat": 42.2205956,
+  "lng": -71.0041229,
+  "src": "osm-place",
+  "matched": "Braintree, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|QUINCY": {
+  "lat": 42.2509914,
+  "lng": -71.0037374,
+  "src": "osm-place",
+  "matched": "Quincy, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MILTON": {
+  "lat": 42.2501425,
+  "lng": -71.065573,
+  "src": "osm-place",
+  "matched": "Milton, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORWOOD": {
+  "lat": 42.194543,
+  "lng": -71.1994976,
+  "src": "osm-place",
+  "matched": "Norwood, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WALPOLE": {
+  "lat": 42.1459019,
+  "lng": -71.2538759,
+  "src": "osm-place",
+  "matched": "Walpole, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MEDFIELD": {
+  "lat": 42.1865609,
+  "lng": -71.30546,
+  "src": "osm-place",
+  "matched": "Medfield, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|STOUGHTON": {
+  "lat": 42.1252079,
+  "lng": -71.1022015,
+  "src": "osm-place",
+  "matched": "Stoughton, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BROOKLINE": {
+  "lat": 42.332918,
+  "lng": -71.1187829,
+  "src": "osm-place",
+  "matched": "Brookline, Norfolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BROCKTON": {
+  "lat": 42.0834335,
+  "lng": -71.0183787,
+  "src": "osm-place",
+  "matched": "Brockton, Plymouth County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CARVER": {
+  "lat": 41.8894422,
+  "lng": -70.7693304,
+  "src": "osm-place",
+  "matched": "Carver, Plymouth County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WAREHAM": {
+  "lat": 41.7626037,
+  "lng": -70.7217017,
+  "src": "osm-place",
+  "matched": "Wareham, Plymouth County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PLYMOUTH": {
+  "lat": 41.9583799,
+  "lng": -70.6673851,
+  "src": "osm-place",
+  "matched": "Plymouth, Plymouth County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ROCKLAND": {
+  "lat": 42.1306563,
+  "lng": -70.9161551,
+  "src": "osm-place",
+  "matched": "Rockland, Plymouth County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EAST BRIDGEWATER": {
+  "lat": 42.0332957,
+  "lng": -70.9588099,
+  "src": "osm-place",
+  "matched": "East Bridgewater, Plymouth County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BOSTON": {
+  "lat": 42.3588336,
+  "lng": -71.0578303,
+  "src": "osm-place",
+  "matched": "Boston, Suffolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ROXBURY": {
+  "lat": 42.3289067,
+  "lng": -71.0850853,
+  "src": "osm-place",
+  "matched": "Roxbury, Boston",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|REVERE": {
+  "lat": 42.4084302,
+  "lng": -71.0119948,
+  "src": "osm-place",
+  "matched": "Revere, Suffolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|DORCHESTER": {
+  "lat": 42.2973205,
+  "lng": -71.0744952,
+  "src": "osm-place",
+  "matched": "Dorchester, Boston",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HYDE PARK": {
+  "lat": 42.2556543,
+  "lng": -71.1244963,
+  "src": "osm-place",
+  "matched": "Hyde Park, Boston",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EAST BOSTON": {
+  "lat": 42.3750973,
+  "lng": -71.0392173,
+  "src": "osm-place",
+  "matched": "East Boston, Boston",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CHELSEA": {
+  "lat": 42.3912241,
+  "lng": -71.0369301,
+  "src": "osm-place",
+  "matched": "Chelsea, Suffolk County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BRIGHTON": {
+  "lat": 42.3491615,
+  "lng": -71.1533859,
+  "src": "osm-place",
+  "matched": "Brighton, Boston",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WORCESTER": {
+  "lat": 42.2625621,
+  "lng": -71.8018877,
+  "src": "osm-place",
+  "matched": "Worcester, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTHBRIDGE": {
+  "lat": 42.1145179,
+  "lng": -71.654404,
+  "src": "osm-place",
+  "matched": "Northbridge, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LEOMINSTER": {
+  "lat": 42.5267443,
+  "lng": -71.7614891,
+  "src": "osm-place",
+  "matched": "Leominster, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|FITCHBURG": {
+  "lat": 42.5838984,
+  "lng": -71.8038268,
+  "src": "osm-place",
+  "matched": "Fitchburg, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GARDNER": {
+  "lat": 42.5763523,
+  "lng": -71.9952737,
+  "src": "osm-place",
+  "matched": "Gardner, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SHREWSBURY": {
+  "lat": 42.2960187,
+  "lng": -71.71351,
+  "src": "osm-place",
+  "matched": "Shrewsbury, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WINCHENDON": {
+  "lat": 42.6815126,
+  "lng": -72.0499767,
+  "src": "osm-place",
+  "matched": "Winchendon, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ATHOL": {
+  "lat": 42.594001,
+  "lng": -72.2268141,
+  "src": "osm-place",
+  "matched": "Athol, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CLINTON": {
+  "lat": 42.4212463,
+  "lng": -71.6874099,
+  "src": "osm-place",
+  "matched": "Clinton, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTHBOROUGH": {
+  "lat": 42.3196015,
+  "lng": -71.6422408,
+  "src": "osm-place",
+  "matched": "Northborough, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SOUTHBRIDGE": {
+  "lat": 42.0750465,
+  "lng": -72.0337376,
+  "src": "osm-place",
+  "matched": "Southbridge, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BLACKSTONE": {
+  "lat": 42.0178352,
+  "lng": -71.5411133,
+  "src": "osm-place",
+  "matched": "Blackstone, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|AUBURN": {
+  "lat": 42.1945465,
+  "lng": -71.8358095,
+  "src": "osm-place",
+  "matched": "Auburn, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WEBSTER": {
+  "lat": 42.0501373,
+  "lng": -71.8803308,
+  "src": "osm-place",
+  "matched": "Webster, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WESTBOROUGH": {
+  "lat": 42.2694308,
+  "lng": -71.6129907,
+  "src": "osm-place",
+  "matched": "Westborough, Worcester County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BOXBOROUGH": {
+  "lat": 42.4827512,
+  "lng": -71.5142726,
+  "src": "osm-place",
+  "matched": "Boxborough, Middlesex County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NEW MARLBOROUGH": {
+  "lat": 42.1224344,
+  "lng": -73.2308937,
+  "src": "osm-place",
+  "matched": "New Marlborough, Berkshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTH ANDOVER": {
+  "lat": 42.7029687,
+  "lng": -71.1309117,
+  "src": "osm-place",
+  "matched": "North Andover, Essex County",
+  "approx": true,
+  "place": "town"
+ },
+ "1070 MA RTE 132|02601": {
+  "lat": 41.672284,
+  "lng": -70.3033962,
+  "src": "osm-street",
+  "matched": "MA 132, Hyannis",
+  "approx": true,
+  "place": "street"
  }
 }

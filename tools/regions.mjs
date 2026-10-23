@@ -26,7 +26,7 @@ export const REGIONS = {
     terms: false,
     intro: 'A Halloween walking map. Red pins mark the reported addresses of everyone on the New Hampshire State Police public offender registry, statewide.',
     sourceNote: 'From the New Hampshire State Police public offender registry',
-    scopeNote: 'New Hampshire does not publish risk tiers, so pins show no level. Out-of-state addresses are left off.',
+    scopeNote: 'New Hampshire does not publish risk tiers, so pins show no level. People on this list who live in Massachusetts are shown on the Massachusetts map.',
     law: 'Using registry information to commit a crime, or to harass, threaten or discriminate against anyone, is illegal.',
     description: 'Halloween walking map of addresses on the New Hampshire State Police public offender registry, statewide, with walk alerts.',
   },

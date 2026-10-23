@@ -1975,7 +1975,7 @@
   "src": "census",
   "matched": "16 WOOD CIR, GOFFSTOWN, NH, 03045",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "7 MILL ST|03045": {
   "lat": 43.018780836298,
@@ -2049,7 +2049,7 @@
   "src": "census",
   "matched": "18 ALPINE DR, GOFFSTOWN, NH, 03045",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "48 CORNWELL RD|03047": {
   "lat": 42.924396978613,
@@ -7643,7 +7643,7 @@
   "src": "census",
   "matched": "321 MOUNTAIN RD, CONCORD, NH, 03301",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "3 BARNARD HILL RD|03046": {
   "lat": 43.109551291147,
@@ -8191,7 +8191,7 @@
   "src": "census",
   "matched": "91 OLD CHERRY MOUNTAIN RD S, TWIN MOUNTAIN, NH, 03595",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "6 JEFFERSON RD|03598": {
   "lat": 44.3734340462,
@@ -8366,8 +8366,8 @@
   "lng": -71.719475411387,
   "src": "census",
   "matched": "266 HALL RD, BRISTOL, NH, 03222",
-  "rejected": true,
-  "tries": 2
+  "tries": 2,
+  "confirmed": true
  },
  "15 TIMBER LN|03222": {
   "lat": 43.589122064959,
@@ -11003,7 +11003,7 @@
   "src": "census",
   "matched": "53 STATE RTE 16B, CENTER OSSIPEE, NH, 03814",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "47 MOULTONVILLE RD|03814": {
   "lat": 43.755758553078,
@@ -11070,8 +11070,8 @@
   "lng": -70.993928430692,
   "src": "census",
   "matched": "10 ELMO LN, ROCHESTER, NH, 03867",
-  "rejected": true,
-  "tries": 2
+  "tries": 2,
+  "confirmed": true
  },
  "10 SARAH CT|03867": {
   "lat": 43.307554719628,
@@ -11127,7 +11127,7 @@
   "src": "census",
   "matched": "1251 WHITE MOUNTAIN RD, CONWAY, NH, 03818",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "124 N MAIN ST|03867": {
   "lat": 43.30526470948,
@@ -11249,7 +11249,7 @@
   "src": "census",
   "matched": "217 STATE RTE 16, INTERVALE, NH, 03845",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "14 PHILLIPS LN|03867": {
   "lat": 43.336289592142,
@@ -12703,7 +12703,7 @@
   "src": "census",
   "matched": "298 MAIN ST, KEENE, NH, 03431",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "528 RIVER RD|03608": {
   "lat": 43.036105519404,
@@ -12711,7 +12711,7 @@
   "src": "census",
   "matched": "528 RIVER RD S, WALPOLE, NH, 03608",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "2500 NORTH RIVER RD|03106": {
   "lat": 43.0374605,
@@ -12725,7 +12725,7 @@
   "src": "census",
   "matched": "500 MAIN ST, GORHAM, NH, 03581",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "30 MINERAL SPRINGS RD|03818": {
   "lat": 43.994369801428,
@@ -12733,7 +12733,7 @@
   "src": "census",
   "matched": "30 SPRING RD, CONWAY, NH, 03818",
   "rejected": true,
-  "tries": 2
+  "tries": 3
  },
  "3175 E MAIN ST|03813": {
   "lat": 43.9977315,
@@ -12792,5 +12792,586 @@
   "src": "osm-street",
   "matched": "Fordway, Derry",
   "approx": true
+ },
+ "125 HALLINS RD|03780": {
+  "lat": 44.034015158957,
+  "lng": -72.038734156917,
+  "src": "census",
+  "matched": "125 HOLLINS RD, PIKE, NH, 03780"
+ },
+ "446 RT 16|03864": {
+  "lat": 43.7900037,
+  "lng": -71.1751936,
+  "src": "osm-street",
+  "matched": "NH 16, Ossipee",
+  "approx": true,
+  "place": "street"
+ },
+ "1411 RT 175|03223": {
+  "lat": 43.8063931,
+  "lng": -71.6551132,
+  "src": "osm-street",
+  "matched": "NH 175, Campton",
+  "approx": true,
+  "place": "street"
+ },
+ "3469 RT 116|03785": {
+  "lat": 44.1389411,
+  "lng": -71.786156,
+  "src": "osm-street",
+  "matched": "NH 116, Easton",
+  "approx": true,
+  "place": "street"
+ },
+ "1394 RT 4A|03748": {
+  "lat": 43.6245201,
+  "lng": -72.1514971,
+  "src": "osm-street",
+  "matched": "State Route 4A, Enfield",
+  "approx": true,
+  "place": "street"
+ },
+ "1540 RT 4A|03748": {
+  "lat": 43.6245201,
+  "lng": -72.1514971,
+  "src": "osm-street",
+  "matched": "State Route 4A, Enfield",
+  "approx": true,
+  "place": "street"
+ },
+ "28 PINE ST|03290": {
+  "lat": 43.194407,
+  "lng": -71.1245634,
+  "src": "osm-town",
+  "matched": "Pine Street, Nottingham",
+  "approx": true
+ },
+ "307 RT 27|03077": {
+  "lat": 43.0529498,
+  "lng": -71.2126927,
+  "src": "osm-street",
+  "matched": "NH 27, Raymond",
+  "approx": true,
+  "place": "street"
+ },
+ "TOWN|GILFORD": {
+  "lat": 43.54805,
+  "lng": -71.407013,
+  "src": "osm-place",
+  "matched": "Gilford, Belknap County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LACONIA": {
+  "lat": 43.5278546,
+  "lng": -71.470351,
+  "src": "osm-place",
+  "matched": "Laconia, Belknap County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|TILTON": {
+  "lat": 43.4687346,
+  "lng": -71.5804893,
+  "src": "osm-place",
+  "matched": "Tilton, Belknap County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CENTER OSSIPEE": {
+  "lat": 43.7550527,
+  "lng": -71.1528506,
+  "src": "osm-place",
+  "matched": "Center Ossipee, Ossipee",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CHOCORUA": {
+  "lat": 43.8789622,
+  "lng": -71.2197925,
+  "src": "osm-place",
+  "matched": "Chocorua, Tamworth",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CONWAY": {
+  "lat": 44.0005465,
+  "lng": -71.0729557,
+  "src": "osm-place",
+  "matched": "Conway, Carroll County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|INTERVALE": {
+  "lat": 44.0744212,
+  "lng": -71.1399508,
+  "src": "osm-place",
+  "matched": "Intervale, Conway",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MOULTONBOROUGH": {
+  "lat": 43.7552444,
+  "lng": -71.396024,
+  "src": "osm-place",
+  "matched": "Moultonborough, Carroll County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTH CONWAY": {
+  "lat": 44.0537103,
+  "lng": -71.1282572,
+  "src": "osm-place",
+  "matched": "North Conway, Conway",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SANBORNVILLE": {
+  "lat": 43.5539309,
+  "lng": -71.0304858,
+  "src": "osm-place",
+  "matched": "Sanbornville, Wakefield",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|TAMWORTH": {
+  "lat": 43.860277,
+  "lng": -71.263504,
+  "src": "osm-place",
+  "matched": "Tamworth, Carroll County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WOLFEBORO": {
+  "lat": 43.6093756,
+  "lng": -71.1748676,
+  "src": "osm-place",
+  "matched": "Wolfeboro, Carroll County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|DUBLIN": {
+  "lat": 42.9059403,
+  "lng": -72.061978,
+  "src": "osm-place",
+  "matched": "Dublin, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|KEENE": {
+  "lat": 42.933597,
+  "lng": -72.2784264,
+  "src": "osm-place",
+  "matched": "Keene, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|RICHMOND": {
+  "lat": 42.7546949,
+  "lng": -72.2718887,
+  "src": "osm-place",
+  "matched": "Richmond, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|RINDGE": {
+  "lat": 42.7511964,
+  "lng": -72.0098021,
+  "src": "osm-place",
+  "matched": "Rindge, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SWANZEY": {
+  "lat": 42.8723464,
+  "lng": -72.3290406,
+  "src": "osm-place",
+  "matched": "Swanzey, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WALPOLE": {
+  "lat": 43.0794881,
+  "lng": -72.4259454,
+  "src": "osm-place",
+  "matched": "Walpole, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WINCHESTER": {
+  "lat": 42.7731997,
+  "lng": -72.3832522,
+  "src": "osm-place",
+  "matched": "Winchester, Cheshire County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BERLIN": {
+  "lat": 44.4696602,
+  "lng": -71.1810703,
+  "src": "osm-place",
+  "matched": "Berlin, Coös County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|COLEBROOK": {
+  "lat": 44.8942649,
+  "lng": -71.4964125,
+  "src": "osm-place",
+  "matched": "Colebrook, Coös County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GORHAM": {
+  "lat": 44.3878621,
+  "lng": -71.1729953,
+  "src": "osm-place",
+  "matched": "Gorham, Coös County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GROVETON": {
+  "lat": 44.5989767,
+  "lng": -71.5112299,
+  "src": "osm-place",
+  "matched": "Groveton, Northumberland",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|TWIN MOUNTAIN": {
+  "lat": 44.2710745,
+  "lng": -71.5399933,
+  "src": "osm-place",
+  "matched": "Twin Mountain, Carroll",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WEST STEWARTSTOWN": {
+  "lat": 44.9951051,
+  "lng": -71.5327645,
+  "src": "osm-place",
+  "matched": "West Stewartstown, Stewartstown",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CAMPTON": {
+  "lat": 43.8235868,
+  "lng": -71.6389687,
+  "src": "osm-place",
+  "matched": "Campton, Grafton County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LEBANON": {
+  "lat": 43.643032,
+  "lng": -72.251587,
+  "src": "osm-place",
+  "matched": "Lebanon, Grafton County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LISBON": {
+  "lat": 44.2135187,
+  "lng": -71.9107884,
+  "src": "osm-place",
+  "matched": "Lisbon, Grafton County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LITTLETON": {
+  "lat": 44.3063899,
+  "lng": -71.7710705,
+  "src": "osm-place",
+  "matched": "Littleton, Grafton County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ORANGE": {
+  "lat": 43.654956,
+  "lng": -71.972122,
+  "src": "osm-place",
+  "matched": "Orange, Grafton County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PLYMOUTH": {
+  "lat": 43.7440651,
+  "lng": -71.7238393,
+  "src": "osm-place",
+  "matched": "Plymouth, Grafton County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|DEERING": {
+  "lat": 43.073402,
+  "lng": -71.845093,
+  "src": "osm-place",
+  "matched": "Deering, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GOFFSTOWN": {
+  "lat": 43.020445,
+  "lng": -71.600257,
+  "src": "osm-place",
+  "matched": "Goffstown, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HUDSON": {
+  "lat": 42.7655784,
+  "lng": -71.4393423,
+  "src": "osm-place",
+  "matched": "Hudson, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MANCHESTER": {
+  "lat": 42.9956397,
+  "lng": -71.4547891,
+  "src": "osm-place",
+  "matched": "Manchester, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|MERRIMACK": {
+  "lat": 42.8665376,
+  "lng": -71.4936642,
+  "src": "osm-place",
+  "matched": "Merrimack, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NASHUA": {
+  "lat": 42.7656251,
+  "lng": -71.4677032,
+  "src": "osm-place",
+  "matched": "Nashua, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NEW BOSTON": {
+  "lat": 42.9762688,
+  "lng": -71.6928736,
+  "src": "osm-place",
+  "matched": "New Boston, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|WEARE": {
+  "lat": 43.094966,
+  "lng": -71.73111,
+  "src": "osm-place",
+  "matched": "Weare, Hillsborough County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|BOSCAWEN": {
+  "lat": 43.315187,
+  "lng": -71.621246,
+  "src": "osm-place",
+  "matched": "Boscawen, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CONCORD": {
+  "lat": 43.207178,
+  "lng": -71.537476,
+  "src": "osm-place",
+  "matched": "Concord, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EPSOM": {
+  "lat": 43.223191,
+  "lng": -71.332169,
+  "src": "osm-place",
+  "matched": "Epsom, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|FRANKLIN": {
+  "lat": 43.4442432,
+  "lng": -71.6472988,
+  "src": "osm-place",
+  "matched": "Franklin, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|HOOKSETT": {
+  "lat": 43.0939589,
+  "lng": -71.462516,
+  "src": "osm-place",
+  "matched": "Hooksett, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTHFIELD": {
+  "lat": 43.4400718,
+  "lng": -71.5932621,
+  "src": "osm-place",
+  "matched": "Northfield, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PEMBROKE": {
+  "lat": 43.1475795,
+  "lng": -71.458043,
+  "src": "osm-place",
+  "matched": "Pembroke, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SALISBURY": {
+  "lat": 43.380099,
+  "lng": -71.717377,
+  "src": "osm-place",
+  "matched": "Salisbury, Merrimack County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|DERRY": {
+  "lat": 42.8808677,
+  "lng": -71.3264492,
+  "src": "osm-place",
+  "matched": "Derry, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|EPPING": {
+  "lat": 43.0471211,
+  "lng": -71.0758436,
+  "src": "osm-place",
+  "matched": "Epping, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|LONDONDERRY": {
+  "lat": 42.8650869,
+  "lng": -71.3739532,
+  "src": "osm-place",
+  "matched": "Londonderry, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|NORTH HAMPTON": {
+  "lat": 42.9689814,
+  "lng": -70.8359489,
+  "src": "osm-place",
+  "matched": "North Hampton, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|PORTSMOUTH": {
+  "lat": 43.0751306,
+  "lng": -70.7601826,
+  "src": "osm-place",
+  "matched": "Portsmouth, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|RAYMOND": {
+  "lat": 43.0365037,
+  "lng": -71.183294,
+  "src": "osm-place",
+  "matched": "Raymond, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|RYE": {
+  "lat": 43.0120186,
+  "lng": -70.7719426,
+  "src": "osm-place",
+  "matched": "Rye, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SALEM": {
+  "lat": 42.7884957,
+  "lng": -71.2009035,
+  "src": "osm-place",
+  "matched": "Salem, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SEABROOK": {
+  "lat": 42.8773076,
+  "lng": -70.8706857,
+  "src": "osm-place",
+  "matched": "Seabrook, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SOUTH HAMPTON": {
+  "lat": 42.8809229,
+  "lng": -70.9625559,
+  "src": "osm-place",
+  "matched": "South Hampton, Rockingham County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|DOVER": {
+  "lat": 43.1981117,
+  "lng": -70.8739761,
+  "src": "osm-place",
+  "matched": "Dover, Strafford County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|GONIC": {
+  "lat": 43.2748308,
+  "lng": -70.9787931,
+  "src": "osm-place",
+  "matched": "Gonic, Rochester",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|ROCHESTER": {
+  "lat": 43.3050758,
+  "lng": -70.9753978,
+  "src": "osm-place",
+  "matched": "Rochester, Strafford County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SOMERSWORTH": {
+  "lat": 43.2625585,
+  "lng": -70.8645872,
+  "src": "osm-place",
+  "matched": "Somersworth, Strafford County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CLAREMONT": {
+  "lat": 43.3727579,
+  "lng": -72.3382504,
+  "src": "osm-place",
+  "matched": "Claremont, Sullivan County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|CROYDON": {
+  "lat": 43.4509369,
+  "lng": -72.1621924,
+  "src": "osm-place",
+  "matched": "Croydon, Sullivan County",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SOUTH ACWORTH": {
+  "lat": 43.1909099,
+  "lng": -72.2853647,
+  "src": "osm-place",
+  "matched": "South Acworth, Acworth",
+  "approx": true,
+  "place": "town"
+ },
+ "TOWN|SPRINGFIELD": {
+  "lat": 43.4950735,
+  "lng": -72.0334187,
+  "src": "osm-place",
+  "matched": "Springfield, Sullivan County",
+  "approx": true,
+  "place": "town"
  }
 }

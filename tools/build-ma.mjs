@@ -1,8 +1,11 @@
 // Builds site/ma/data.js from data/ma-raw.csv (statewide SORB pull made through tools/ma-pull.mjs):
-// columns county,level,type,address,link. Geocodes new addresses into data/geocache.json first.
-import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
-import { parseAddress, geoKey } from './registry.mjs';
-import { geocodeMissing, recheckGeocodes, pinFor } from './geocoder.mjs';
+// columns county,level,type,address,link. Also adds the NH State Police registry's Massachusetts residents
+// (data/nh-in-ma.csv from `node tools/nh-scrape.mjs --in-ma`) as their own entries with reg 'NH'; they are never merged with
+// SORB listings, since nothing says whether they are the same people. Geocodes new addresses into data/geocache.json first.
+// Every listing is placed: its building, else its street, else its town (or county).
+import { readFileSync, writeFileSync, mkdirSync, existsSync } from 'node:fs';
+import { parseAddress, parseNsorAddress } from './registry.mjs';
+import { geocodeMissing, recheckGeocodes, placeAll } from './geocoder.mjs';
 import { REGIONS } from './regions.mjs';
 
 const AS_OF = '2026-10-23'; // update on each registry refresh
@@ -28,11 +31,20 @@ for (const line of readFileSync('data/ma-raw.csv', 'utf8').trim().split(/\r?\n/)
   const key = `${link}|${type}|${address}`;
   if (seen.has(key)) continue;
   seen.add(key);
-  // "12 MAIN ST, SPRINGFIELD, MA 01105-1234" -> "12 MAIN ST, SPRINGFIELD 01105"; "BOSTON, MA (NM)" keeps BOSTON as the town
-  const clean = address.replace(/,\s*MA\s+(\d{5})(-\d{4})?/, ' $1');
-  const a = parseAddress(clean);
-  const town = /^[A-Z .'-]+, MA\b/.test(clean) ? clean.split(',')[0].trim() : a.city;
-  rows.push({ county, level: +level, type, link, ...a, city: town });
+  // "12 MAIN ST, SPRINGFIELD, MA 01105-1234" -> "12 MAIN ST, SPRINGFIELD 01105"; "BOSTON, MA (NM)" -> "BOSTON (NM)"
+  const clean = address.replace(/,\s*MA\b\s*(\d{5})?(-\d{4})?/, (m, zip) => zip ? ' ' + zip : '');
+  rows.push({ county, level: +level, type, link, ...parseAddress(clean) });
+}
+const sorbRows = rows.length;
+
+// NH registrants living in Massachusetts: public on New Hampshire's list, maybe not on SORB's (MA hides Level 1)
+const nhRows = existsSync('data/nh-in-ma.csv') ? readFileSync('data/nh-in-ma.csv', 'utf8').trim().split(/\r?\n/).slice(1) : [];
+for (const line of nhRows) {
+  const [id, address, city] = splitCsv(line);
+  const a = parseNsorAddress(address, city, 'MA');
+  if (!a) throw new Error('NH registry row is not a Massachusetts address: ' + id);
+  // The registry's city column is the town; a.city can be the postal village
+  rows.push({ county: '', type: 'LISTED', link: id, reg: 'NH', ...a, city });
 }
 
 const cache = await geocodeMissing(rows, 'MA');
@@ -40,33 +52,26 @@ const cache = await geocodeMissing(rows, 'MA');
 const fix = await recheckGeocodes(rows, cache, 'MA', r => r.city);
 console.log('recheck:', JSON.stringify({ ...fix, examples: undefined }));
 for (const e of fix.examples) console.log('  ' + e);
-const locs = new Map();
-const byStreet = new Map(); // street -> location keys, to merge one building listed under two zips
-const unmapped = [];
+const { locations, placement, fallbacks } = await placeAll(rows, cache, 'MA', {
+  townOf: r => r.city, countyOf: r => r.county, mergeTwins: true, stateCenter: REGIONS.ma.center,
+  entryOf: r => r.reg ? { type: r.type, link: r.link, reg: r.reg } : { level: r.level, type: r.type, link: r.link },
+});
+
 const perTown = {};
 for (const r of rows) {
   const town = r.city ? titleCase(r.city) : titleCase(r.county) + ' County';
   perTown[town] = (perTown[town] || 0) + 1;
-  // Pins outside Massachusetts and wrong-street matches are geocoder mistakes; list them as unmapped instead
-  const g = pinFor(r, cache, 'MA');
-  if (!g) {
-    unmapped.push({ town, level: r.level, type: r.type, link: r.link });
-    continue;
-  }
-  const twin = (byStreet.get(r.street) || []).map(k => locs.get(k)).find(l => Math.hypot((l.lat - g.lat) * 111, (l.lng - g.lng) * 82) < 0.1);
-  const key = twin ? twin.key : geoKey(r);
-  if (!locs.has(key)) {
-    locs.set(key, { key, street: r.street, city: r.city, zip: r.zip, lat: g.lat, lng: g.lng, ...(g.approx ? { approx: true } : {}), entries: [] });
-    byStreet.set(r.street, [...(byStreet.get(r.street) || []), key]);
-  }
-  locs.get(key).entries.push({ level: r.level, type: r.type, link: r.link });
 }
-
+const registries = {
+  MA: { name: REGIONS.ma.registryName, whoUrl: REGIONS.ma.whoUrl, terms: REGIONS.ma.terms },
+  NH: { name: REGIONS.nh.registryName, whoUrl: REGIONS.nh.whoUrl, terms: REGIONS.nh.terms },
+};
 const out = {
-  asOf: AS_OF, source: 'https://sorb.chs.state.ma.us/sorbpublic/', region: REGIONS.ma,
+  asOf: AS_OF, source: 'https://sorb.chs.state.ma.us/sorbpublic/', region: REGIONS.ma, registries,
   towns: Object.keys(perTown).filter(t => !/ County$/.test(t)).sort(), perTown,
-  total: rows.length, locations: [...locs.values()].map(({ key, ...l }) => l), unmapped,
+  total: rows.length, placement, locations, unmapped: [],
 };
 mkdirSync('site/ma', { recursive: true });
 writeFileSync('site/ma/data.js', '// Generated by tools/build-ma.mjs. Do not edit by hand.\nwindow.SAFEWALK_DATA = ' + JSON.stringify(out) + ';\n');
-console.log(`listings ${rows.length} | locations ${locs.size} | pinned ${rows.length - unmapped.length} | unmapped ${unmapped.length} | towns ${out.towns.length}`);
+console.log(`listings ${rows.length} (SORB ${sorbRows}, NH registry ${rows.length - sorbRows}) | locations ${locations.length} | placement ${JSON.stringify(placement)} | towns ${out.towns.length}`);
+console.log('town lookups that fell back to the county center:', fallbacks.county.length, fallbacks.county, '| to the state center:', fallbacks.state);

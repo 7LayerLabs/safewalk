@@ -20,8 +20,11 @@ Deploy: from `site/`, `vercel deploy --prod --yes --token <token> --scope 7layer
 Massachusetts (needs a person for the CAPTCHA):
 1. `node tools/ma-pull.mjs` opens Chrome on the SORB search. The person accepts the terms and CAPTCHA and opens the
    City, County, Zip search, then leaves the window open.
-2. Copy `tools/ma-pull-counties.js` to `data/ma-cmd/pull.js`. It searches every county (each comes back on one page) and
-   writes `data/ma-cmd/pull.out`; save the part after the `@@CSV@@` line as `data/ma-raw.csv`.
+2. Copy `tools/ma-pull-counties.js` to `data/ma-cmd/counties.js`; save the part of `counties.out` after `@@CSV@@` as
+   `data/ma-raw-counties.csv`. Then copy `tools/ma-pull-towns.js` to `data/ma-cmd/towns.js` and save its CSV as
+   `data/ma-towns-raw.csv`. Both are needed: the county search skips listings the registry could not map (no county on
+   file), and on 10/23 the town search found 176 listings and 24 people the county search missed.
+   `node tools/ma-merge.mjs` combines them into `data/ma-raw.csv`.
 3. `node tools/build-ma.mjs` (update `AS_OF`) geocodes new addresses (Census, then OpenStreetMap), re-checks Census hits
    that landed on a different street, and writes `site/ma/data.js`.
 

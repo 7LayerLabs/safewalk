@@ -6,5 +6,9 @@ site/.vercel/
 node_modules/
 data/nh-raw.csv
 data/nh-state-raw.csv
+data/nh-all-raw.csv
+data/nh-in-ma.csv
 data/ma-cmd/
 data/ma-raw.csv
+data/ma-towns-raw.csv
+data/ma-raw-counties.csv

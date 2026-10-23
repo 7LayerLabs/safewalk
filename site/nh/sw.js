@@ -2,7 +2,7 @@
 // Map tiles are cached as you view them (stale-while-revalidate).
 // Each state folder registers this same worker; its app cache is named after the folder so states never clear each other
 const CITY = new URL(self.registration.scope).pathname.split('/').filter(Boolean).pop() || 'home';
-const SHELL = `safewalk-${CITY}-shell-v8`;
+const SHELL = `safewalk-${CITY}-shell-v9`;
 const TILES = 'safewalk-tiles-v3'; // OpenFreeMap vector tiles; older caches held blocked OSM images
 const SHELL_FILES = [
   './', 'index.html', 'data.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png',
