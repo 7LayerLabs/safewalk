@@ -1,6 +1,8 @@
 // App shell is cached so the map UI opens with a weak signal on Halloween night.
 // Map tiles are cached as you view them (stale-while-revalidate).
-const SHELL = 'safewalk-shell-v6';
+// Each city folder registers this same worker; its app cache is named after the folder so cities never clear each other
+const CITY = new URL(self.registration.scope).pathname.split('/').filter(Boolean).pop() || 'home';
+const SHELL = `safewalk-${CITY}-shell-v7`;
 const TILES = 'safewalk-tiles-v3'; // OpenFreeMap vector tiles; older caches held blocked OSM images
 const SHELL_FILES = [
   './', 'index.html', 'data.js', 'manifest.webmanifest', 'icons/icon.svg', 'icons/icon-192.png',
@@ -16,7 +18,7 @@ self.addEventListener('install', e => {
   e.waitUntil(caches.open(SHELL).then(c => c.addAll(SHELL_FILES)).then(() => self.skipWaiting()));
 });
 self.addEventListener('activate', e => {
-  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => ![SHELL, TILES].includes(k)).map(k => caches.delete(k))))
+  e.waitUntil(caches.keys().then(keys => Promise.all(keys.filter(k => (k.startsWith(`safewalk-${CITY}-`) || k.startsWith('safewalk-shell-') || (k.startsWith('safewalk-tiles-') && k !== TILES)) && k !== SHELL).map(k => caches.delete(k))))
     .then(() => self.clients.claim()));
 });
 self.addEventListener('fetch', e => {

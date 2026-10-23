@@ -1,0 +1,1092 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>SafeWalk Nashua</title>
+<meta name="description" content="Halloween walking map of addresses on the New Hampshire State Police public offender registry in Nashua, Hudson, Merrimack, Litchfield, Hollis and Amherst, NH.">
+<meta name="theme-color" content="#0e1014">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="SafeWalk">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icons/icon-192.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.css">
+<style>
+  :root {
+    --bg: #f4f2ee;
+    --panel: rgba(255, 255, 255, 0.92);
+    --panel-solid: #ffffff;
+    --ink: #15171c;
+    --ink-2: #4a4f5a;
+    --ink-3: #7b808b;
+    --line: rgba(20, 22, 28, 0.10);
+    --chip: #eceae5;
+    --red: #e0222f;
+    --red-deep: #a8001a;
+    --red-soft: rgba(224, 34, 47, 0.12);
+    --blue: #2f7bff;
+    --ok: #1e9e62;
+    --shadow: 0 10px 30px rgba(10, 12, 18, 0.16), 0 2px 6px rgba(10, 12, 18, 0.08);
+    --radius: 18px;
+  }
+  :root[data-theme="dark"] {
+    --bg: #0e1014;
+    --panel: rgba(22, 24, 30, 0.90);
+    --panel-solid: #16181e;
+    --ink: #f2f3f5;
+    --ink-2: #b7bcc6;
+    --ink-3: #7d838f;
+    --line: rgba(255, 255, 255, 0.09);
+    --chip: #23262e;
+    --red: #ff3b47;
+    --red-deep: #d10024;
+    --red-soft: rgba(255, 59, 71, 0.16);
+    --shadow: 0 12px 34px rgba(0, 0, 0, 0.5), 0 2px 6px rgba(0, 0, 0, 0.35);
+  }
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html, body { height: 100%; margin: 0; }
+  body {
+    background: var(--bg);
+    color: var(--ink);
+    font: 15px/1.4 "Manrope", system-ui, -apple-system, "Segoe UI", sans-serif;
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+  button { font: inherit; color: inherit; border: 0; background: none; cursor: pointer; }
+  svg { display: block; }
+
+  #map { position: fixed; inset: 0; background: var(--bg); }
+  .leaflet-container { font: inherit; background: var(--bg); }
+  /* OpenFreeMap has a real dark style; only the raster fallback needs the color flip */
+  .leaflet-tile-pane { transition: filter .3s ease; }
+  :root.raster-tiles[data-theme="dark"] .leaflet-tile-pane { filter: invert(1) hue-rotate(180deg) brightness(0.92) contrast(0.88) saturate(0.6); }
+  .leaflet-control-attribution { font-size: 10px; background: var(--panel) !important; color: var(--ink-3); }
+  .leaflet-control-attribution a { color: var(--ink-2); }
+
+  /* Top bar */
+  .topbar {
+    position: fixed; z-index: 1000;
+    top: calc(env(safe-area-inset-top) + 12px); left: 12px; right: 12px;
+    display: flex; gap: 8px; align-items: center;
+  }
+  .brand {
+    display: flex; align-items: center; gap: 10px;
+    background: var(--panel); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 8px 12px 8px 8px; flex-shrink: 0; color: inherit; text-decoration: none;
+  }
+  .brand-mark { width: 30px; height: 30px; border-radius: 9px; background: var(--red); display: grid; place-items: center; color: #fff; }
+  .brand-name { font-weight: 800; letter-spacing: -0.02em; font-size: 15px; line-height: 1.1; }
+  .brand-sub { font-size: 11px; color: var(--ink-3); font-weight: 600; }
+  .search {
+    flex: 1; min-width: 0; display: flex; align-items: center; gap: 8px;
+    background: var(--panel); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow);
+    padding: 0 6px 0 12px; height: 48px;
+  }
+  .search svg { color: var(--ink-3); flex-shrink: 0; }
+  .search input {
+    flex: 1; min-width: 0; border: 0; outline: 0; background: transparent; color: var(--ink);
+    font: inherit; font-size: 16px; font-weight: 500;
+  }
+  .search input::placeholder { color: var(--ink-3); }
+  .search .clear { width: 34px; height: 34px; border-radius: 10px; display: none; place-items: center; color: var(--ink-3); }
+  .search.has-text .clear { display: grid; }
+  .icon-btn {
+    width: 48px; height: 48px; flex-shrink: 0; display: grid; place-items: center;
+    background: var(--panel); backdrop-filter: blur(14px); -webkit-backdrop-filter: blur(14px);
+    border: 1px solid var(--line); border-radius: 14px; box-shadow: var(--shadow); color: var(--ink);
+    transition: transform .15s ease, background .2s ease;
+  }
+  .icon-btn:active { transform: scale(0.94); }
+
+  /* Right-side floating controls */
+  .fabs {
+    position: fixed; z-index: 1000; right: 12px;
+    bottom: calc(var(--sheet-peek, 200px) + 14px);
+    display: flex; flex-direction: column; align-items: flex-end; gap: 10px;
+    transition: bottom .35s cubic-bezier(.2,.8,.2,1);
+  }
+  .fab.active { background: var(--blue); color: #fff; border-color: transparent; }
+  .fab.walk.active { background: var(--red); }
+
+  /* Alert banner */
+  .alert {
+    position: fixed; z-index: 1100; left: 12px; right: 12px;
+    top: calc(env(safe-area-inset-top) + 72px);
+    background: var(--red); color: #fff; border-radius: 16px; box-shadow: 0 14px 36px rgba(200, 0, 20, 0.45);
+    padding: 12px 14px; display: flex; gap: 12px; align-items: center;
+    transform: translateY(-140%); opacity: 0; transition: transform .35s cubic-bezier(.2,.8,.2,1), opacity .25s ease;
+    pointer-events: none;
+  }
+  .alert.show { transform: none; opacity: 1; pointer-events: auto; }
+  .alert-icon { width: 40px; height: 40px; border-radius: 12px; background: rgba(255,255,255,.18); display: grid; place-items: center; flex-shrink: 0; }
+  .alert-title { font-weight: 800; font-size: 15px; }
+  .alert-sub { font-size: 13px; opacity: .92; }
+  .alert .dist { margin-left: auto; font-weight: 800; font-size: 20px; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  /* Bottom sheet */
+  .sheet {
+    position: fixed; z-index: 1050; left: 0; right: 0; bottom: 0;
+    height: min(78vh, 680px);
+    background: var(--panel-solid); color: var(--ink);
+    border-radius: 22px 22px 0 0; box-shadow: 0 -10px 40px rgba(0,0,0,.22);
+    transform: translateY(calc(100% - var(--sheet-peek, 200px)));
+    transition: transform .35s cubic-bezier(.2,.8,.2,1);
+    display: flex; flex-direction: column;
+    padding-bottom: env(safe-area-inset-bottom);
+  }
+  .sheet.open { transform: none; }
+  .sheet.dragging { transition: none; }
+  .grab { padding: 10px 0 4px; display: grid; place-items: center; cursor: grab; touch-action: none; }
+  .grab span { width: 40px; height: 5px; border-radius: 3px; background: var(--line); background: color-mix(in srgb, var(--ink) 18%, transparent); }
+  .sheet-head { padding: 4px 18px 12px; touch-action: none; }
+  .status { display: flex; align-items: baseline; gap: 8px; }
+  .status-num { font-size: 32px; font-weight: 800; letter-spacing: -0.03em; line-height: 1; color: var(--red); font-variant-numeric: tabular-nums; }
+  .status-text { font-weight: 700; font-size: 15px; }
+  .status-sub { color: var(--ink-3); font-size: 13px; margin-top: 4px; font-weight: 500; }
+  .chips { display: flex; gap: 8px; overflow-x: auto; padding: 12px 18px 12px; scrollbar-width: none; border-bottom: 1px solid var(--line); }
+  .chips::-webkit-scrollbar { display: none; }
+  .chip {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 7px;
+    height: 36px; padding: 0 14px; border-radius: 999px; background: var(--chip);
+    font-weight: 700; font-size: 13px; color: var(--ink-2); transition: background .2s ease, color .2s ease;
+  }
+  .chip .dot { width: 9px; height: 9px; border-radius: 50%; background: currentColor; }
+  .chip[aria-pressed="true"] { background: var(--ink); color: var(--panel-solid); }
+  .chip.l3 .dot { background: var(--red-deep); }
+  .chip.l2 .dot { background: var(--red); }
+  .chip[aria-pressed="false"] .dot { opacity: .35; }
+  .radius-row { display: flex; align-items: center; gap: 10px; padding: 12px 18px 4px; font-size: 13px; color: var(--ink-2); font-weight: 600; }
+  .seg { display: inline-flex; background: var(--chip); border-radius: 10px; padding: 3px; margin-left: auto; }
+  .seg button { padding: 6px 10px; border-radius: 8px; font-size: 12px; font-weight: 700; color: var(--ink-2); }
+  .seg button[aria-pressed="true"] { background: var(--panel-solid); color: var(--ink); box-shadow: 0 1px 3px rgba(0,0,0,.15); }
+  .list-title { padding: 14px 18px 6px; font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); font-weight: 800; }
+  .list { flex: 1; overflow-y: auto; padding: 0 10px 20px; overscroll-behavior: contain; }
+  .row {
+    width: 100%; text-align: left; display: flex; gap: 12px; align-items: center;
+    padding: 11px 8px; border-radius: 12px;
+  }
+  .row:hover, .row:focus-visible { background: var(--chip); outline: none; }
+  .row-pin { width: 34px; height: 34px; border-radius: 10px; display: grid; place-items: center; font-weight: 800; color: #fff; flex-shrink: 0; font-size: 14px; }
+  .row-pin.l3 { background: var(--red-deep); }
+  .row-pin.l2 { background: var(--red); }
+  .row-main { flex: 1; min-width: 0; }
+  .row-addr { font-weight: 700; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .row-meta { font-size: 12.5px; color: var(--ink-3); font-weight: 600; }
+  .row-dist { font-weight: 800; font-variant-numeric: tabular-nums; font-size: 14px; white-space: nowrap; }
+  .row-dist.near { color: var(--red); }
+  .empty { padding: 26px 18px; text-align: center; color: var(--ink-3); font-weight: 600; }
+  .note { margin: 6px 8px 0; padding: 12px 14px; border-radius: 12px; background: var(--chip); font-size: 12.5px; color: var(--ink-2); font-weight: 500; }
+  .note a { color: var(--ink); font-weight: 700; }
+
+  /* Pins */
+  .pin { position: relative; transform-origin: 50% 100%; transition: transform .2s ease; }
+  .pin svg { filter: drop-shadow(0 3px 4px rgba(0,0,0,.35)); }
+  .pin .count {
+    position: absolute; top: -5px; right: -7px; min-width: 18px; height: 18px; padding: 0 4px;
+    border-radius: 9px; background: #fff; color: #a8001a; font: 800 11px/18px "Manrope", sans-serif; text-align: center;
+    box-shadow: 0 1px 4px rgba(0,0,0,.35);
+  }
+  .dot-pin { border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.45); }
+  .dot-pin.l3 { background: var(--red-deep); }
+  .dot-pin.l2 { background: var(--red); }
+  .pin.hot { animation: hot 1.1s ease-in-out infinite; }
+  @keyframes hot { 50% { transform: scale(1.18); } }
+  .me-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--blue); border: 3px solid #fff; box-shadow: 0 0 0 0 rgba(47,123,255,.6), 0 2px 6px rgba(0,0,0,.35); animation: ping 2s infinite; }
+  @keyframes ping { 0% { box-shadow: 0 0 0 0 rgba(47,123,255,.55), 0 2px 6px rgba(0,0,0,.35); } 100% { box-shadow: 0 0 0 18px rgba(47,123,255,0), 0 2px 6px rgba(0,0,0,.35); } }
+  /* Label hangs below the dot: red pins rise upward from their spot, so this keeps them visible */
+  .search-pin { position: absolute; left: 0; top: 0; transform: translate(-50%, -8px); display: flex; flex-direction: column-reverse; align-items: center; pointer-events: none; }
+  .search-pin .tag {
+    display: flex; align-items: center; gap: 6px; white-space: nowrap;
+    background: var(--blue); color: #fff; font: 800 13px/1 "Manrope", sans-serif;
+    padding: 8px 11px; border-radius: 11px; border: 2px solid #fff; box-shadow: 0 6px 16px rgba(20, 60, 160, .45);
+  }
+  .search-pin .stem { width: 3px; height: 12px; background: #fff; box-shadow: 0 1px 3px rgba(0,0,0,.3); }
+  .search-pin .base { width: 16px; height: 16px; margin-top: -2px; border-radius: 50%; background: var(--blue); border: 3px solid #fff; box-shadow: 0 0 0 0 rgba(47,123,255,.6); animation: ping 2s infinite; }
+  .row-tag { display: inline-block; margin-right: 6px; padding: 2px 6px; border-radius: 6px; background: rgba(47,123,255,.15); color: var(--blue); font-size: 11px; font-weight: 800; }
+
+  /* Popup */
+  .leaflet-popup-content-wrapper { background: var(--panel-solid); color: var(--ink); border-radius: 16px; box-shadow: var(--shadow); }
+  .leaflet-popup-tip { background: var(--panel-solid); }
+  .leaflet-popup-content { margin: 14px 16px; min-width: 210px; font-size: 14px; }
+  .leaflet-container a.leaflet-popup-close-button { color: var(--ink-3); top: 6px; right: 6px; }
+  .pop-addr { font-weight: 800; font-size: 16px; letter-spacing: -0.01em; padding-right: 14px; }
+  .pop-sub { color: var(--ink-3); font-size: 12px; font-weight: 600; margin-bottom: 10px; }
+  .pop-entry { display: flex; align-items: center; gap: 8px; padding: 6px 0; border-top: 1px solid var(--line); font-weight: 600; }
+  .lvl { font-size: 11px; font-weight: 800; color: #fff; padding: 3px 7px; border-radius: 6px; }
+  .lvl.l3 { background: var(--red-deep); }
+  .lvl.l2 { background: var(--red); }
+  .pop-count { margin-left: auto; font-size: 12px; font-weight: 800; color: var(--ink-3); white-space: nowrap; }
+  .pop-approx { font-size: 12px; color: var(--ink-3); margin-top: 6px; }
+  .pop-link { display: inline-block; margin-top: 10px; font-weight: 700; font-size: 13px; color: var(--blue) !important; }
+  .pop-people { max-height: 232px; overflow-y: auto; overscroll-behavior: contain; }
+  .pop-type { flex: 1; min-width: 0; font-size: 13px; }
+  .leaflet-container a.who, .who {
+    flex-shrink: 0; display: inline-flex; align-items: center; gap: 4px; height: 30px; padding: 0 10px; border-radius: 9px;
+    background: var(--ink); color: var(--panel-solid); font-size: 12px; font-weight: 800; text-decoration: none; white-space: nowrap;
+  }
+  .who:active { transform: scale(.96); }
+  .pop-hot { font-size: 13.5px; color: var(--ink-2); font-weight: 600; margin: 2px 0 0; }
+  .pop-hot b { color: var(--ink); }
+  .pop-zoom { margin-top: 10px; width: 100%; height: 36px; border-radius: 10px; background: var(--chip); font-weight: 800; font-size: 13px; }
+
+  /* Hotspots */
+  .hot-badge {
+    width: 30px; height: 30px; border-radius: 50%; display: grid; place-items: center;
+    background: #15171c; color: #fff; border: 2px solid #fff; font: 800 13px/1 "Manrope", sans-serif;
+    box-shadow: 0 3px 10px rgba(0,0,0,.45);
+  }
+  .hot-badge.top { background: var(--red-deep); width: 36px; height: 36px; font-size: 15px; }
+  .row-pin.rank { background: #15171c; }
+  :root[data-theme="dark"] .row-pin.rank { background: #3a3e48; }
+  .row-pin.rank.top { background: var(--red-deep); }
+  .close-in .hot-badge { display: none; }
+  .fab.pill { width: auto; display: flex; gap: 7px; padding: 0 15px 0 13px; font-weight: 800; font-size: 14px; color: #c2410c; }
+  :root[data-theme="dark"] .fab.pill:not(.active) { color: #ff9a3d; }
+  .fab.hot.active { background: #ff7a1a; color: #fff; border-color: transparent; }
+
+  /* Info modal */
+  .modal { position: fixed; inset: 0; z-index: 2000; display: none; align-items: flex-end; justify-content: center; background: rgba(5, 6, 9, .55); backdrop-filter: blur(3px); }
+  .modal.show { display: flex; }
+  .modal-card {
+    width: 100%; max-width: 520px; max-height: 88vh; overflow-y: auto;
+    background: var(--panel-solid); border-radius: 22px 22px 0 0; padding: 22px 20px calc(22px + env(safe-area-inset-bottom));
+    animation: up .35s cubic-bezier(.2,.8,.2,1);
+  }
+  @keyframes up { from { transform: translateY(40px); opacity: 0; } }
+  .modal h2 { margin: 0 0 4px; font-size: 22px; letter-spacing: -0.02em; }
+  .modal h3 { margin: 18px 0 6px; font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--ink-3); }
+  .modal p, .modal li { color: var(--ink-2); font-size: 14px; margin: 0 0 8px; }
+  .modal ul { padding-left: 18px; margin: 0; }
+  .modal a { color: var(--blue); font-weight: 700; }
+  .modal .primary { margin-top: 18px; width: 100%; height: 50px; border-radius: 14px; background: var(--red); color: #fff; font-weight: 800; font-size: 16px; }
+  .modal a.primary { display: grid; place-items: center; color: #fff; text-decoration: none; }
+  .modal .secondary { margin-top: 10px; width: 100%; height: 48px; border-radius: 14px; background: var(--chip); color: var(--ink); font-weight: 800; font-size: 15px; }
+  .modal ol { padding-left: 20px; margin: 0 0 8px; }
+  .modal .fine { font-size: 12.5px; color: var(--ink-3); }
+  .legend { display: flex; gap: 16px; margin: 6px 0 2px; }
+  .legend div { display: flex; align-items: center; gap: 8px; font-weight: 700; font-size: 13px; }
+
+  .toast {
+    position: fixed; z-index: 1500; left: 50%; bottom: calc(var(--sheet-peek, 200px) + 18px);
+    transform: translate(-50%, 20px); opacity: 0; transition: all .3s ease; pointer-events: none;
+    background: var(--ink); color: var(--panel-solid); padding: 10px 16px; border-radius: 12px; font-weight: 700; font-size: 13px;
+    max-width: calc(100vw - 32px); text-align: center;
+  }
+  .toast.show { opacity: 1; transform: translate(-50%, 0); }
+
+  /* Desktop: sheet becomes a side panel */
+  @media (min-width: 900px) {
+    .topbar { left: 16px; right: auto; width: 400px; top: 16px; }
+    .sheet {
+      left: 16px; right: auto; top: 80px; bottom: 16px; width: 400px; height: auto;
+      border-radius: 20px; transform: none !important; box-shadow: var(--shadow);
+    }
+    .grab { display: none; }
+    .chips { flex-wrap: wrap; }
+    .sheet-head { padding-top: 16px; }
+    .fabs { bottom: 28px !important; right: 16px; }
+    .alert { left: auto; right: 16px; width: 380px; top: 16px; }
+    .modal { align-items: center; }
+    .modal-card { border-radius: 22px; }
+    .toast { bottom: 28px; }
+  }
+  @media (max-width: 420px) {
+    .brand { padding: 8px; }
+    .desktop-only-brand { display: none; }
+  }
+  @media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation: none !important; transition: none !important; } }
+</style>
+</head>
+<body>
+<div id="map" aria-label="Map of registry addresses"></div>
+
+<header class="topbar">
+  <a class="brand" href="../" aria-label="SafeWalk home: all cities">
+    <div class="brand-mark" aria-hidden="true">
+      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><path d="M12 7v4"/><path d="M12 14.5h.01"/></svg>
+    </div>
+    <div class="desktop-only-brand">
+      <div class="brand-name">SafeWalk</div>
+      <div class="brand-sub" id="brandSub">Greater Lowell</div>
+    </div>
+  </a>
+  <form class="search" id="searchForm" role="search">
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+    <input id="searchInput" type="search" enterkeyhint="search" placeholder="Search an address" autocomplete="off" aria-label="Search a street or address">
+    <button type="button" class="clear" id="searchClear" aria-label="Clear search">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6 6 18"/></svg>
+    </button>
+  </form>
+  <button class="icon-btn" id="infoBtn" aria-label="About this map">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 7.5h.01"/></svg>
+  </button>
+</header>
+
+<div class="alert" id="alert" role="alert" aria-live="assertive">
+  <div class="alert-icon">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M10.3 3.9 1.8 18a2 2 0 0 0 1.7 3h17a2 2 0 0 0 1.7-3L13.7 3.9a2 2 0 0 0-3.4 0z"/><path d="M12 9v4"/><path d="M12 17h.01"/></svg>
+  </div>
+  <div>
+    <div class="alert-title" id="alertTitle">Heads up</div>
+    <div class="alert-sub" id="alertSub"></div>
+  </div>
+  <div class="dist" id="alertDist"></div>
+</div>
+
+<div class="fabs" id="fabs">
+  <button class="icon-btn fab hot pill" id="hotBtn" aria-label="Show the busiest areas" aria-pressed="false">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22c4.4 0 7-2.9 7-6.8 0-3.4-2.2-5.6-3.6-7.6-.4 1.8-1.4 3-2.6 3.6.3-3.2-1-6.4-3.8-8.2.2 3-1.4 5-2.9 6.9C4.9 11.4 5 13 5 15.2 5 19.1 7.6 22 12 22z"/></svg>
+    <span>Hot spots</span>
+  </button>
+  <button class="icon-btn fab" id="themeBtn" aria-label="Switch light or dark map">
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+  </button>
+  <button class="icon-btn fab walk" id="walkBtn" aria-label="Walk alerts" aria-pressed="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><circle cx="13" cy="4" r="2"/><path d="m9 20 3-6 3 3v4"/><path d="m6 12 3-4 4 1 3 4"/><path d="m12 14-2-5"/></svg>
+  </button>
+  <button class="icon-btn fab" id="locateBtn" aria-label="Show my location" aria-pressed="false">
+    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 21 3l-8 18-2-8-8-2z"/></svg>
+  </button>
+</div>
+
+<section class="sheet" id="sheet" aria-label="Nearby registered addresses">
+  <div class="grab" id="grab"><span></span></div>
+  <div class="sheet-head" id="sheetHead">
+    <div class="status"><span class="status-num" id="statusNum">0</span><span class="status-text" id="statusText">flagged addresses</span></div>
+    <div class="status-sub" id="statusSub">Tap the arrow to see what is near you.</div>
+  </div>
+  <div class="chips" id="chips" role="group" aria-label="Filters">
+    <button class="chip l3" data-filter="level3" aria-pressed="true"><span class="dot"></span>Level 3</button>
+    <button class="chip l2" data-filter="level2" aria-pressed="true"><span class="dot"></span>Level 2</button>
+    <button class="chip" data-filter="home" aria-pressed="true">Lives here</button>
+    <button class="chip" data-filter="work" aria-pressed="true">Work or school</button>
+    <button class="chip" data-filter="other" aria-pressed="true">Other address</button>
+  </div>
+  <div class="radius-row">
+    Alert distance
+    <div class="seg" id="radiusSeg">
+      <button data-ft="150" aria-pressed="false">150 ft</button>
+      <button data-ft="300" aria-pressed="true">300 ft</button>
+      <button data-ft="500" aria-pressed="false">500 ft</button>
+    </div>
+  </div>
+  <div class="list-title" id="listTitle">All flagged addresses</div>
+  <div class="list" id="list"></div>
+</section>
+
+<div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+  <div class="modal-card">
+    <h2 id="modalTitle">SafeWalk Lowell</h2>
+    <p id="introText"></p>
+    <div class="legend" id="legend">
+      <div><span class="lvl l3">3</span>Level 3, highest risk</div>
+      <div><span class="lvl l2">2</span>Level 2, moderate</div>
+    </div>
+    <h3>How to use it</h3>
+    <ul>
+      <li><b>Arrow button</b> shows where you are and lists the closest pins.</li>
+      <li><b>Walk button</b> turns on alerts. Your phone buzzes and a red banner shows when you get within your alert distance of a pin. Keep the app open while you walk.</li>
+      <li><b>Search</b> any street to check a route before you head out.</li>
+      <li><b>Hot spots</b> shows a heat map and ranks the busiest areas: the most people listed within a quarter mile.</li>
+      <li>Tap a pin, then <b>See who</b> to open that person's page on the official state registry.</li>
+      <li>On a phone, use your browser's <b>Add to Home Screen</b> to install it like an app.</li>
+    </ul>
+    <h3>About the data</h3>
+    <p id="dataNote"></p>
+    <p>Pins mark a building, not a unit. Apartment buildings, shelters and workplaces can hold many people who are not on any registry. Use this for awareness of where to be extra watchful, nothing more.</p>
+    <p>Always confirm current information on the official <a id="registryLink" href="https://sorb.chs.state.ma.us/" target="_blank" rel="noopener">MA SORB public registry</a>. Registry information changes often.</p>
+    <h3>Use it responsibly</h3>
+    <p><span id="lawText"></span> Do not approach, confront or contact anyone at these addresses. If you see something concerning, call 911.</p>
+    <button class="primary" id="modalClose">Got it</button>
+  </div>
+</div>
+
+<div class="modal" id="termsModal" role="dialog" aria-modal="true" aria-labelledby="termsTitle">
+  <div class="modal-card">
+    <h2 id="termsTitle">One quick step first</h2>
+    <p>The state registry shows a person's photo and details only after you agree to its terms. It asks about once per visit.</p>
+    <ol>
+      <li>Tap <b>Open the registry</b>. Tick the box, do the "I'm not a robot" check and tap to agree.</li>
+      <li>Come back to this tab and tap <b>Show this person</b>.</li>
+    </ol>
+    <p class="fine">If a See who button ever lands on the registry's home page, the state's session timed out. Agree again there, then tap See who again.</p>
+    <a class="primary" id="termsOpen" href="https://sorb.chs.state.ma.us/sorbpublic/" target="_blank" rel="noopener noreferrer">Open the registry</a>
+    <button class="secondary" id="termsGo">I agreed. Show this person</button>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet.heat/0.2.0/leaflet-heat.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/maplibre-gl/4.7.1/maplibre-gl.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@maplibre/maplibre-gl-leaflet@0.0.22/leaflet-maplibre-gl.js"></script>
+<script src="data.js"></script>
+<script>
+(() => {
+  const DATA = window.SAFEWALK_DATA;
+  const FT_PER_M = 3.28084;
+  // City settings (center, state, registry links, wording) come with the data, so every city runs this same page
+  const R = DATA.region;
+  const HAS_LEVELS = R.levels; // NH publishes no risk tiers
+  const TYPE_LABEL = {
+    LIVE: 'Lives here', WORK: 'Works here', SCHOOL: 'Attends school here',
+    SECONDARY: 'Secondary address', HOMELESS: 'Homeless, listed at this address', LISTED: 'Registry address'
+  };
+  const TYPE_GROUP = { LIVE: 'home', WORK: 'work', SCHOOL: 'work', SECONDARY: 'other', HOMELESS: 'other', LISTED: 'home' };
+  // Each listing's own page on the state registry (the code is the registry's, not a name)
+  const WHO_URL = R.whoUrl;
+  const lvlClass = lvl => HAS_LEVELS ? 'l' + lvl : 'l2';
+  const HOT_R = 402; // hotspot radius: 1/4 mile
+
+  const $ = id => document.getElementById(id);
+  const store = {
+    get(k) { try { return localStorage.getItem('safewalk.' + k); } catch { return null; } },
+    set(k, v) { try { localStorage.setItem('safewalk.' + k, v); } catch {} }
+  };
+
+  const state = {
+    filters: { level3: true, level2: true, home: true, work: true, other: true },
+    radiusFt: +(store.get('radius') || 300),
+    ref: null,          // { lat, lng, kind: 'gps' | 'search', label }
+    following: false,
+    walking: false,
+    hotspots: false,
+    hot: [],            // ranked busiest areas, rebuilt when filters change
+    watchId: null,
+    wakeLock: null,
+    alerted: new Set(),
+  };
+
+  // ---------- helpers ----------
+  const titleCase = s => s.toLowerCase().replace(/\b([a-z])([a-z]*)/g, (m, a, b) => a.toUpperCase() + b);
+  const addrOf = loc => titleCase(loc.street) + (loc.city !== R.home ? ', ' + titleCase(loc.city) : '');
+  function distM(a, b) {
+    const R = 6371000, toR = Math.PI / 180;
+    const dLat = (b.lat - a.lat) * toR, dLng = (b.lng - a.lng) * toR;
+    const h = Math.sin(dLat / 2) ** 2 + Math.cos(a.lat * toR) * Math.cos(b.lat * toR) * Math.sin(dLng / 2) ** 2;
+    return 2 * R * Math.asin(Math.sqrt(h));
+  }
+  // Meters from a point to the nearest spot on a set of polylines (flat projection is fine at city scale)
+  function distToLines(pt, lines) {
+    const kx = 111320 * Math.cos(pt.lat * Math.PI / 180), ky = 110540;
+    let best = Infinity;
+    for (const l of lines) for (let i = 1; i < l.length; i++) {
+      const ax = (l[i - 1].lng - pt.lng) * kx, ay = (l[i - 1].lat - pt.lat) * ky;
+      const bx = (l[i].lng - pt.lng) * kx, by = (l[i].lat - pt.lat) * ky;
+      const dx = bx - ax, dy = by - ay, len2 = dx * dx + dy * dy;
+      const t = len2 ? Math.max(0, Math.min(1, -(ax * dx + ay * dy) / len2)) : 0;
+      best = Math.min(best, Math.hypot(ax + t * dx, ay + t * dy));
+    }
+    return best;
+  }
+  // Distance from the current reference: a street (line) for street-only searches, otherwise a point
+  const refDist = loc => state.ref.line ? distToLines(loc, state.ref.line) : distM(state.ref, loc);
+  function fmtDist(m) {
+    const ft = m * FT_PER_M;
+    if (ft < 1000) return Math.round(ft / 10) * 10 + ' ft';
+    return (ft / 5280).toFixed(ft < 5280 * 10 ? 1 : 0) + ' mi';
+  }
+  let toastTimer;
+  function toast(msg) {
+    const t = $('toast'); t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer); toastTimer = setTimeout(() => t.classList.remove('show'), 2800);
+  }
+
+  // ---------- filtering ----------
+  function visibleEntries(loc) {
+    const f = state.filters;
+    return loc.entries.filter(e => (!HAS_LEVELS || (e.level === 3 ? f.level3 : f.level2)) && f[TYPE_GROUP[e.type]]);
+  }
+  function visibleLocs() {
+    return DATA.locations.map(loc => ({ loc, entries: visibleEntries(loc) })).filter(v => v.entries.length);
+  }
+  const topLevel = entries => HAS_LEVELS ? Math.max(...entries.map(e => e.level)) : 0;
+
+  // ---------- map ----------
+  const map = L.map('map', { zoomControl: false, attributionControl: true, tap: true }).setView(R.center, 14);
+  // Streets come from OpenFreeMap (free, no key, built for app traffic). OSM's volunteer tile servers
+  // block busy apps, so they are only a fallback for phones without WebGL.
+  const STYLES = { light: 'https://tiles.openfreemap.org/styles/liberty', dark: 'https://tiles.openfreemap.org/styles/dark' };
+  const ATTRIB = '<a href="https://openfreemap.org" target="_blank" rel="noopener">OpenFreeMap</a> &copy; <a href="https://www.openmaptiles.org/" target="_blank" rel="noopener">OpenMapTiles</a> Data from <a href="https://www.openstreetmap.org/copyright" target="_blank" rel="noopener">OpenStreetMap</a>';
+  const prefersDark = window.matchMedia && matchMedia('(prefers-color-scheme: dark)').matches;
+  const startTheme = store.get('theme') || (prefersDark ? 'dark' : 'light');
+  let base = null;
+  try {
+    if (window.maplibregl && maplibregl.supported?.() !== false && L.maplibreGL) {
+      base = L.maplibreGL({ style: STYLES[startTheme], attribution: ATTRIB }).addTo(map);
+    }
+  } catch { base = null; }
+  if (!base) {
+    document.documentElement.classList.add('raster-tiles');
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png', {
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors', maxZoom: 19
+    }).addTo(map);
+  }
+  let shownStyle = startTheme;
+  function setTheme(theme) {
+    document.documentElement.dataset.theme = theme;
+    document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#0e1014' : '#f4f2ee';
+    store.set('theme', theme);
+    if (base && theme !== shownStyle) { shownStyle = theme; base.getMaplibreMap().setStyle(STYLES[theme]); }
+  }
+  setTheme(startTheme);
+
+  const COMPACT_BELOW = 15; // zoomed out: dots instead of pins so the city view stays readable
+  function pinIcon(level, count, hot) {
+    const big = level === 3;
+    if (map.getZoom() < COMPACT_BELOW && !hot) {
+      const s = big ? 14 : 11;
+      const html = `<div class="dot-pin ${lvlClass(level)}" style="width:${s}px;height:${s}px"></div>`;
+      return L.divIcon({ html, className: '', iconSize: [s, s], iconAnchor: [s / 2, s / 2], popupAnchor: [0, -s / 2] });
+    }
+    const w = big ? 34 : 28, h = Math.round(w * 1.3);
+    const fill = big ? 'var(--red-deep)' : 'var(--red)';
+    const html = `<div class="pin${hot ? ' hot' : ''}" style="width:${w}px;height:${h}px">
+      <svg width="${w}" height="${h}" viewBox="0 0 30 39"><path d="M15 38s13-12.2 13-22.5A13 13 0 0 0 2 15.5C2 25.8 15 38 15 38z" fill="${fill}" stroke="#fff" stroke-width="2"/>
+      ${HAS_LEVELS ? `<text x="15" y="20.5" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#fff">${level}</text>` : '<circle cx="15" cy="15.5" r="4.5" fill="#fff"/>'}</svg>
+      ${count > 1 ? `<span class="count">${count}</span>` : ''}</div>`;
+    return L.divIcon({ html, className: '', iconSize: [w, h], iconAnchor: [w / 2, h], popupAnchor: [0, -h + 4] });
+  }
+
+  function popupHtml(loc, entries) {
+    // One row per person, highest level first. A hospital can hold 20, so the list scrolls.
+    const rows = [...entries].sort((a, b) => b.level - a.level).map(e => `<div class="pop-entry">
+      ${HAS_LEVELS ? `<span class="lvl l${e.level}">Level ${e.level}</span>` : ''}<span class="pop-type">${TYPE_LABEL[e.type]}</span>
+      ${e.link ? `<a class="who" href="${WHO_URL}${encodeURIComponent(e.link)}" target="_blank" rel="noopener noreferrer">See who</a>` : ''}</div>`).join('');
+    const dist = state.ref ? `${fmtDist(refDist(loc))} from ${state.ref.kind === 'gps' ? 'you' : state.ref.line ? state.ref.road : 'your search'}` : titleCase(loc.city) + `, ${R.state} ` + loc.zip;
+    const count = entries.length > 1 ? `. ${entries.length} people listed here` : '';
+    return `<div class="pop-addr">${addrOf(loc)}</div>
+      <div class="pop-sub">${dist}${count}</div><div class="pop-people">${rows}</div>
+      ${loc.approx ? '<div class="pop-approx">Street-level location. The exact building could not be pinned.</div>' : ''}
+      <a class="pop-link" href="${DATA.source}" target="_blank" rel="noopener">Verify on the official registry</a>`;
+  }
+
+  // Keep opened popups clear of the search bar (top) and the button column (right)
+  const POPUP_OPTS = { maxWidth: 280, autoPanPaddingTopLeft: L.point(12, 84), autoPanPaddingBottomRight: L.point(72, 20) };
+
+  let wasCompact = map.getZoom() < COMPACT_BELOW;
+  map.on('zoomend', () => {
+    const compact = map.getZoom() < COMPACT_BELOW;
+    map.getContainer().classList.toggle('close-in', map.getZoom() >= 16); // hotspot numbers are for the overview; up close the pins speak
+    if (compact !== wasCompact) { wasCompact = compact; renderPins(); }
+  });
+  const pinLayer = L.layerGroup().addTo(map);
+  const ringLayer = L.layerGroup().addTo(map);
+  const markers = new Map(); // street key -> marker
+
+  function renderPins() {
+    pinLayer.clearLayers(); ringLayer.clearLayers(); markers.clear();
+    for (const { loc, entries } of visibleLocs()) {
+      const lvl = topLevel(entries);
+      const key = loc.street + '|' + loc.city;
+      const hot = state.alerted.has(key);
+      const m = L.marker([loc.lat, loc.lng], { icon: pinIcon(lvl, entries.length, hot), riseOnHover: true, zIndexOffset: lvl === 3 ? 500 : 0, keyboard: true, title: addrOf(loc) })
+        .bindPopup(() => popupHtml(loc, entries), POPUP_OPTS);
+      m.addTo(pinLayer); markers.set(key, m);
+      if (state.walking) {
+        L.circle([loc.lat, loc.lng], {
+          radius: state.radiusFt / FT_PER_M, color: '#e0222f', weight: 1, opacity: .45, fillOpacity: .07, interactive: false
+        }).addTo(ringLayer);
+      }
+    }
+  }
+
+  // ---------- hotspots ----------
+  // Greedy: the spot with the most people within 1/4 mile wins, its neighbors are claimed, repeat
+  function findHotspots() {
+    const left = new Set(visibleLocs());
+    const out = [];
+    while (left.size && out.length < 10) {
+      let best = null;
+      for (const v of left) {
+        if (out.some(h => distM(h, v.loc) < HOT_R * 1.6)) continue; // keep hotspot circles from stacking
+        const members = [...left].filter(o => distM(v.loc, o.loc) <= HOT_R);
+        const people = members.reduce((s, o) => s + o.entries.length, 0);
+        if (!best || people > best.people || (people === best.people && members.length > best.members.length)) best = { members, people };
+      }
+      if (!best || best.people < 3) break;
+      best.members.forEach(m => left.delete(m));
+      const w = best.people;
+      const lat = best.members.reduce((s, m) => s + m.loc.lat * m.entries.length, 0) / w;
+      const lng = best.members.reduce((s, m) => s + m.loc.lng * m.entries.length, 0) / w;
+      // Name the area after the street holding the most people
+      const byStreet = new Map();
+      for (const m of best.members) {
+        const k = titleCase(m.loc.street.replace(/^[\d-]+[A-Z]?\s+/, '')) + (m.loc.city !== R.home ? ', ' + titleCase(m.loc.city) : '');
+        byStreet.set(k, (byStreet.get(k) || 0) + m.entries.length);
+      }
+      const streets = [...byStreet].sort((a, b) => b[1] - a[1]).map(s => s[0]);
+      // Two areas on one long street (Westford St) get a cross street to tell them apart
+      const name = out.some(h => h.street === streets[0]) && streets[1] ? `${streets[0]} near ${streets[1]}` : streets[0];
+      const biggest = Math.max(...best.members.map(m => m.entries.length));
+      out.push({
+        lat, lng, name, street: streets[0], people: w, addrs: best.members.length, members: best.members,
+        l3: best.members.reduce((s, m) => s + m.entries.filter(e => e.level === 3).length, 0),
+        oneBuilding: biggest / w >= 0.6 && biggest >= 5,
+      });
+    }
+    return out;
+  }
+  const heat = L.heatLayer([], { radius: 30, blur: 24, max: 4, minOpacity: .3, maxZoom: 16,
+    gradient: { .25: '#ffd36b', .5: '#ff9a3d', .75: '#ff3b47', 1: '#a8001a' } });
+  const hotLayer = L.layerGroup();
+  function hotPopup(h, i) {
+    return `<div class="pop-addr">#${i + 1} busiest area</div>
+      <div class="pop-sub">Around ${h.name}</div>
+      <p class="pop-hot"><b>${h.people} people</b> listed at <b>${h.addrs} address${h.addrs > 1 ? 'es' : ''}</b> within 1/4 mile.${HAS_LEVELS ? ` <b>${h.l3}</b> ${h.l3 === 1 ? 'is' : 'are'} Level 3.` : ''}</p>
+      ${h.oneBuilding ? '<p class="pop-hot">Most of these are at one building, likely a facility such as a hospital or shelter.</p>' : ''}
+      <button class="pop-zoom" data-zoom="${i}">Zoom in and see the pins</button>`;
+  }
+  function renderHot() {
+    hotLayer.clearLayers();
+    if (!state.hotspots) { state.hot = []; return; }
+    state.hot = findHotspots();
+    heat.setLatLngs(visibleLocs().map(v => [v.loc.lat, v.loc.lng, v.entries.length]));
+    state.hot.forEach((h, i) => {
+      const strength = Math.min(1, h.people / state.hot[0].people);
+      L.circle([h.lat, h.lng], { radius: HOT_R, color: '#d10024', weight: 2, opacity: .35 + .5 * strength, dashArray: i ? '5 7' : null,
+        fillColor: '#ff3b47', fillOpacity: .06 + .12 * strength, interactive: false }).addTo(hotLayer);
+      const s = i ? 30 : 36;
+      L.marker([h.lat, h.lng], { icon: L.divIcon({ html: `<div class="hot-badge${i ? '' : ' top'}">${i + 1}</div>`, className: '', iconSize: [s, s], iconAnchor: [s / 2, s / 2], popupAnchor: [0, -s / 2] }),
+        zIndexOffset: 3000 - i * 10, title: `#${i + 1} busiest area` }).bindPopup(hotPopup(h, i), POPUP_OPTS).addTo(hotLayer);
+    });
+  }
+  function zoomToHot(i) {
+    const h = state.hot[i]; if (!h) return;
+    map.closePopup();
+    if (window.innerWidth < 900) setSheet(false);
+    const b = L.latLngBounds(h.members.map(m => [m.loc.lat, m.loc.lng])).pad(0.3);
+    const wide = window.innerWidth >= 900;
+    map.flyToBounds(b, { paddingTopLeft: wide ? [440, 40] : [20, 90], paddingBottomRight: wide ? [40, 40] : [20, 220], maxZoom: 16, duration: .8 });
+  }
+  function setHotspots(on) {
+    state.hotspots = on;
+    $('hotBtn').classList.toggle('active', on);
+    $('hotBtn').setAttribute('aria-pressed', on);
+    if (on) { heat.addTo(map); hotLayer.addTo(map); } else { map.removeLayer(heat); map.removeLayer(hotLayer); }
+    refresh();
+    if (on && state.hot.length) {
+      toast(`Top ${state.hot.length} busiest areas. Tap a number for details.`);
+      const wide = window.innerWidth >= 900;
+      map.flyToBounds(L.latLngBounds(state.hot.map(h => [h.lat, h.lng])).pad(0.15), { paddingTopLeft: wide ? [440, 40] : [20, 90], paddingBottomRight: wide ? [40, 40] : [20, 220], maxZoom: 15, duration: .8 });
+    }
+  }
+  $('hotBtn').addEventListener('click', () => setHotspots(!state.hotspots));
+  document.addEventListener('click', e => {
+    const z = e.target.closest('[data-zoom]'); if (z) zoomToHot(+z.dataset.zoom);
+  });
+
+  // ---------- "See who" ----------
+  // The state shows a person's page only after its terms are accepted, so the first tap explains that.
+  const TERMS_FRESH_MS = 25 * 60 * 1000;
+  let pendingWho = null;
+  document.addEventListener('click', e => {
+    const a = e.target.closest('a.who'); if (!a) return;
+    if (!R.terms || Date.now() - (+store.get('termsAt') || 0) < TERMS_FRESH_MS) return; // let the link open
+    e.preventDefault();
+    pendingWho = a.href;
+    $('termsModal').classList.add('show');
+  });
+  $('termsGo').addEventListener('click', () => {
+    store.set('termsAt', String(Date.now()));
+    $('termsModal').classList.remove('show');
+    if (pendingWho) window.open(pendingWho, '_blank', 'noopener');
+    pendingWho = null;
+  });
+  $('termsModal').addEventListener('click', e => { if (e.target.id === 'termsModal') $('termsModal').classList.remove('show'); });
+
+  // ---------- list / sheet ----------
+  function renderHotList() {
+    const list = $('list');
+    $('statusNum').textContent = state.hot.length;
+    $('statusText').textContent = state.hot.length === 1 ? 'busy area' : 'busiest areas';
+    $('statusSub').textContent = 'Ranked by people listed within 1/4 mile. Tap one to zoom in.';
+    $('listTitle').textContent = 'Busiest areas';
+    if (!state.hot.length) { list.innerHTML = '<div class="empty">No area has 3 or more people with these filters.</div>'; return; }
+    list.innerHTML = state.hot.map((h, i) => `<button class="row" data-hot="${i}">
+        <span class="row-pin rank${i ? '' : ' top'}">${i + 1}</span>
+        <span class="row-main"><div class="row-addr">Around ${h.name}</div>
+          <div class="row-meta">${h.people} people at ${h.addrs} address${h.addrs > 1 ? 'es' : ''}.${HAS_LEVELS ? ` ${h.l3} Level 3.` : ''}${h.oneBuilding ? ' Mostly one building.' : ''}</div></span>
+        ${state.ref ? `<span class="row-dist">${fmtDist(distM(state.ref, h))}</span>` : ''}
+      </button>`).join('');
+  }
+  function renderList() {
+    if (state.hotspots) return renderHotList();
+    const vis = visibleLocs();
+    const nEntries = vis.reduce((s, v) => s + v.entries.length, 0);
+    const list = $('list');
+    const onStreetKey = state.ref && state.ref.kind === 'search' ? state.ref.street : null;
+    let items = vis.map(v => ({ ...v, d: state.ref ? refDist(v.loc) : null, onStreet: !!onStreetKey && streetKey(v.loc.street) === onStreetKey }));
+
+    if (state.ref) {
+      // Searched street first (nearest first), then everything else by distance
+      items.sort((a, b) => (b.onStreet - a.onStreet) || a.d - b.d);
+      const quarterMi = 402;
+      const near = items.filter(i => i.d <= quarterMi);
+      $('statusNum').textContent = near.length;
+      $('statusText').textContent = (near.length === 1 ? 'flagged address within 1/4 mile' : 'flagged addresses within 1/4 mile') + (state.ref.line ? ' of this street' : '');
+      $('statusSub').textContent = state.ref.kind === 'gps'
+        ? (items[0] ? `Closest is ${fmtDist(items[0].d)} away at ${addrOf(items[0].loc)}.` : 'No pins match your filters.')
+        : `${state.ref.line ? 'Along' : 'Around'} ${state.ref.label}.` + (state.ref.road
+          ? (() => { const n = items.filter(i => i.onStreet).length; return n ? ` ${n} on ${state.ref.road} itself.` : ` None on ${state.ref.road} itself.`; })()
+          : '');
+      $('listTitle').textContent = state.ref.kind === 'gps' ? 'Closest to you' : 'Your street first, then closest';
+    } else {
+      items.sort((a, b) => topLevel(b.entries) - topLevel(a.entries) || a.loc.street.localeCompare(b.loc.street, undefined, { numeric: true }));
+      $('statusNum').textContent = vis.length;
+      $('statusText').textContent = (vis.length === 1 ? 'flagged address in the ' : 'flagged addresses in the ') + R.area;
+      $('statusSub').textContent = `${nEntries} registry listings shown. Tap the arrow to see what is near you.`;
+      $('listTitle').textContent = 'All flagged addresses';
+    }
+
+    if (!items.length) {
+      list.innerHTML = '<div class="empty">No pins match these filters.</div>';
+      return;
+    }
+    const nearM = state.radiusFt / FT_PER_M;
+    list.innerHTML = items.map(({ loc, entries, d, onStreet }) => {
+      const lvl = topLevel(entries);
+      const types = [...new Set(entries.map(e => TYPE_LABEL[e.type]))].join(', ');
+      const meta = (onStreet ? '<span class="row-tag">On this street</span>' : '') + (entries.length > 1 ? `${entries.length} listings. ` : '') + types;
+      return `<button class="row" data-key="${loc.street}|${loc.city}">
+        <span class="row-pin ${lvlClass(lvl)}">${HAS_LEVELS ? lvl : entries.length}</span>
+        <span class="row-main"><div class="row-addr">${addrOf(loc)}</div><div class="row-meta">${meta}</div></span>
+        ${d != null ? `<span class="row-dist${d <= nearM ? ' near' : ''}">${fmtDist(d)}</span>` : ''}
+      </button>`;
+    }).join('') + `<div class="note">${DATA.unmapped.length} more listings in these towns have no mappable address (most are listed as homeless) and are not shown. <a href="${DATA.source}" target="_blank" rel="noopener">Official registry</a></div>`;
+  }
+
+  $('list').addEventListener('click', e => {
+    const row = e.target.closest('.row'); if (!row) return;
+    if (row.dataset.hot != null) { state.following = false; syncLocateBtn(); zoomToHot(+row.dataset.hot); return; }
+    const m = markers.get(row.dataset.key); if (!m) return;
+    state.following = false; syncLocateBtn();
+    if (window.innerWidth < 900) setSheet(false);
+    map.flyTo(m.getLatLng(), Math.max(map.getZoom(), 17), { duration: 0.8 });
+    // Zooming in past the dot view redraws every pin, so look the marker up again once the map lands
+    map.once('moveend', () => markers.get(row.dataset.key)?.openPopup());
+  });
+
+  document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
+    const k = chip.dataset.filter;
+    state.filters[k] = !state.filters[k];
+    chip.setAttribute('aria-pressed', state.filters[k]);
+    refresh();
+  }));
+
+  function syncRadius() {
+    document.querySelectorAll('#radiusSeg button').forEach(b => b.setAttribute('aria-pressed', +b.dataset.ft === state.radiusFt));
+  }
+  $('radiusSeg').addEventListener('click', e => {
+    const b = e.target.closest('button'); if (!b) return;
+    state.radiusFt = +b.dataset.ft; store.set('radius', state.radiusFt); syncRadius();
+    state.alerted.clear(); refresh(); if (state.ref) checkAlerts();
+  });
+  syncRadius();
+
+  // Bottom sheet: peek height + drag/tap to open
+  const sheet = $('sheet');
+  function setPeek() {
+    const head = $('sheetHead').getBoundingClientRect().height;
+    const peek = 20 + head + 62 + (parseFloat(getComputedStyle(sheet).paddingBottom) || 0);
+    document.documentElement.style.setProperty('--sheet-peek', peek + 'px');
+  }
+  function setSheet(open) { sheet.classList.toggle('open', open); }
+  let drag = null;
+  function onDown(e) {
+    if (window.innerWidth >= 900) return;
+    drag = { y: e.clientY, start: sheet.getBoundingClientRect().top, moved: false };
+    sheet.classList.add('dragging');
+    e.currentTarget.setPointerCapture(e.pointerId);
+  }
+  function onMove(e) {
+    if (!drag) return;
+    const dy = e.clientY - drag.y;
+    if (Math.abs(dy) > 4) drag.moved = true;
+    const full = window.innerHeight - sheet.offsetHeight;
+    const peekTop = window.innerHeight - parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sheet-peek'));
+    const top = Math.min(peekTop, Math.max(full, drag.start + dy));
+    sheet.style.transform = `translateY(${top - full}px)`;
+  }
+  function onUp(e) {
+    if (!drag) return;
+    sheet.classList.remove('dragging'); sheet.style.transform = '';
+    const dy = e.clientY - drag.y;
+    if (!drag.moved) setSheet(!sheet.classList.contains('open'));
+    else setSheet(dy < 0 ? true : dy > 0 ? false : sheet.classList.contains('open'));
+    drag = null;
+  }
+  for (const el of [$('grab'), $('sheetHead')]) {
+    el.addEventListener('pointerdown', onDown);
+    el.addEventListener('pointermove', onMove);
+    el.addEventListener('pointerup', onUp);
+    el.addEventListener('pointercancel', onUp);
+  }
+  map.on('click', () => setSheet(false));
+
+  // ---------- reference point (GPS or search) ----------
+  let meMarker, accCircle;
+  const searchLayer = L.layerGroup().addTo(map); // searched address: street highlight, 1/4 mile ring, label
+  function clearSearchLayer() { searchLayer.clearLayers(); }
+
+  // "15 E MERRIMACK ST" and "East Merrimack Street" both become "east merrimack"
+  const SUFFIXES = new Set(['st', 'street', 'ave', 'avenue', 'rd', 'road', 'dr', 'drive', 'way', 'ln', 'lane', 'ct', 'court', 'pl', 'place', 'blvd', 'boulevard', 'ter', 'terrace', 'hwy', 'highway', 'pkwy', 'parkway', 'cir', 'circle']);
+  const DIRS = { n: 'north', s: 'south', e: 'east', w: 'west' };
+  function streetKey(s) {
+    const words = s.toLowerCase().replace(/[.,]/g, '').split(/\s+/).filter(Boolean);
+    if (/^\d/.test(words[0] || '')) words.shift();
+    if (words.length > 1 && SUFFIXES.has(words[words.length - 1])) words.pop();
+    if (words.length > 1 && DIRS[words[0]]) words[0] = DIRS[words[0]];
+    return words.join(' ');
+  }
+  function setRef(ref) {
+    state.ref = ref;
+    refresh();
+  }
+
+  function syncLocateBtn() {
+    $('locateBtn').classList.toggle('active', state.following);
+    $('locateBtn').setAttribute('aria-pressed', state.following);
+  }
+
+  function onPosition(pos) {
+    const p = { lat: pos.coords.latitude, lng: pos.coords.longitude };
+    const ll = [p.lat, p.lng];
+    if (!meMarker) {
+      meMarker = L.marker(ll, { icon: L.divIcon({ html: '<div class="me-dot"></div>', className: '', iconSize: [20, 20], iconAnchor: [10, 10] }), zIndexOffset: 1000, interactive: false }).addTo(map);
+      accCircle = L.circle(ll, { radius: pos.coords.accuracy, color: '#2f7bff', weight: 1, opacity: .4, fillOpacity: .08, interactive: false }).addTo(map);
+    } else {
+      meMarker.setLatLng(ll); accCircle.setLatLng(ll).setRadius(pos.coords.accuracy);
+    }
+    if (!state.walking) clearSearchLayer();
+    const first = !state.ref || state.ref.kind !== 'gps';
+    setRef({ ...p, kind: 'gps' });
+    if (first) map.setView(ll, 17, { animate: false });
+    else if (state.following) map.panTo(ll, { animate: true });
+    checkAlerts();
+  }
+  // Only a permission denial ends tracking. Weak-signal blips keep the watch (and walk alerts) alive.
+  function onPosError(err) {
+    if (err.code === 1) {
+      toast('Location is blocked. Allow location for this site in your browser settings.');
+      stopWatch();
+    } else if (!state.ref || state.ref.kind !== 'gps') {
+      toast('Still looking for your location. Try near a window or outside.');
+    }
+  }
+  function startWatch() {
+    if (!('geolocation' in navigator)) { toast('This browser cannot share location.'); return false; }
+    if (state.watchId == null) {
+      state.watchId = navigator.geolocation.watchPosition(onPosition, onPosError, { enableHighAccuracy: true, maximumAge: 3000 });
+    }
+    return true;
+  }
+  function stopWatch() {
+    if (state.watchId != null) navigator.geolocation.clearWatch(state.watchId);
+    state.watchId = null; state.following = false; syncLocateBtn();
+    if (state.walking) setWalking(false);
+  }
+
+  $('locateBtn').addEventListener('click', () => {
+    if (!startWatch()) return;
+    state.following = true; syncLocateBtn();
+    if (state.ref && state.ref.kind === 'gps') map.flyTo([state.ref.lat, state.ref.lng], Math.max(map.getZoom(), 17), { duration: .6 });
+    else toast('Finding you...');
+  });
+  map.on('dragstart', () => { if (state.following) { state.following = false; syncLocateBtn(); } });
+
+  // ---------- walk alerts ----------
+  async function setWalking(on) {
+    state.walking = on;
+    $('walkBtn').classList.toggle('active', on);
+    $('walkBtn').setAttribute('aria-pressed', on);
+    state.alerted.clear();
+    if (on) {
+      if (!startWatch()) { state.walking = false; return setWalking(false); }
+      state.following = true; syncLocateBtn();
+      toast(`Walk alerts on. You will be warned within ${state.radiusFt} ft.`);
+      try { state.wakeLock = await navigator.wakeLock?.request('screen'); } catch {}
+      if (state.ref && state.ref.kind === 'gps') checkAlerts();
+    } else {
+      hideAlert();
+      try { await state.wakeLock?.release(); } catch {}
+      state.wakeLock = null;
+    }
+    renderPins();
+  }
+  $('walkBtn').addEventListener('click', () => setWalking(!state.walking));
+  document.addEventListener('visibilitychange', async () => {
+    if (document.visibilityState === 'visible' && state.walking && !state.wakeLock) {
+      try { state.wakeLock = await navigator.wakeLock?.request('screen'); } catch {}
+    }
+  });
+
+  function hideAlert() { $('alert').classList.remove('show'); }
+  function checkAlerts() {
+    if (!state.walking || !state.ref || state.ref.kind !== 'gps') return;
+    const rM = state.radiusFt / FT_PER_M;
+    let nearest = null, changed = false;
+    for (const { loc, entries } of visibleLocs()) {
+      const key = loc.street + '|' + loc.city;
+      const d = distM(state.ref, loc);
+      if (d <= rM) {
+        if (!state.alerted.has(key)) {
+          state.alerted.add(key); changed = true;
+          try { navigator.vibrate?.([220, 120, 220, 120, 320]); } catch {}
+        }
+        if (!nearest || d < nearest.d) nearest = { loc, entries, d };
+      } else if (d > rM * 1.3 && state.alerted.delete(key)) {
+        changed = true;
+      }
+    }
+    if (changed) renderPins();
+    if (nearest) {
+      const lvl = topLevel(nearest.entries);
+      $('alertTitle').textContent = HAS_LEVELS ? `Heads up: Level ${lvl} address nearby` : 'Heads up: registry address nearby';
+      $('alertSub').textContent = `${addrOf(nearest.loc)}. ${[...new Set(nearest.entries.map(e => TYPE_LABEL[e.type]))].join(', ')}.`;
+      $('alertDist').textContent = fmtDist(nearest.d);
+      $('alert').classList.add('show');
+    } else hideAlert();
+  }
+  $('alert').addEventListener('click', () => {
+    const k = [...state.alerted][0]; const m = k && markers.get(k);
+    if (m) m.openPopup();
+  });
+
+  // ---------- search ----------
+  const input = $('searchInput');
+  input.addEventListener('input', () => $('searchForm').classList.toggle('has-text', !!input.value));
+  $('searchClear').addEventListener('click', () => {
+    input.value = ''; $('searchForm').classList.remove('has-text');
+    clearSearchLayer();
+    if (state.ref && state.ref.kind === 'search') setRef(null);
+  });
+
+  // Every OSM segment of the named street in that town (dedupe=0 returns each piece), drawn as one glowing line
+  async function highlightStreet(road, town, token) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&polygon_geojson=1&dedupe=0&limit=50&countrycodes=us&state=${R.state}&city=`
+      + encodeURIComponent(town) + '&street=' + encodeURIComponent(road);
+    try {
+      const hits = await (await fetch(url)).json();
+      if (token !== searchToken) return null; // a newer search started
+      const lines = [];
+      for (const h of hits) {
+        const g = h.class === 'highway' && h.geojson;
+        if (!g) continue;
+        const parts = g.type === 'LineString' ? [g.coordinates] : g.type === 'MultiLineString' ? g.coordinates : [];
+        for (const part of parts) lines.push(part.map(([lng, lat]) => [lat, lng]));
+      }
+      if (!lines.length) return null;
+      L.polyline(lines, { color: '#2f7bff', weight: 16, opacity: .22, lineCap: 'round', lineJoin: 'round', interactive: false }).addTo(searchLayer);
+      return L.polyline(lines, { color: '#2f7bff', weight: 5, opacity: .95, lineCap: 'round', lineJoin: 'round', interactive: false }).addTo(searchLayer);
+    } catch { return null; }
+  }
+  let searchToken = 0;
+  $('searchForm').addEventListener('submit', async e => {
+    e.preventDefault();
+    const q = input.value.trim(); if (!q) return;
+    input.blur();
+    // Viewbox keeps results inside the covered towns. No town typed: try the main city first, then anywhere in the area.
+    const lookup = async text => (await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&countrycodes=us&bounded=1&viewbox=${R.viewbox}&q=`
+      + encodeURIComponent(text), { headers: { 'Accept-Language': 'en' } })).json();
+    const namesTown = DATA.towns.some(t => q.toLowerCase().includes(t.toLowerCase()));
+    try {
+      let hits = await lookup(namesTown ? `${q}, ${R.state}` : `${q}, ${R.homeName}, ${R.state}`);
+      if (!hits.length && !namesTown) hits = await lookup(`${q}, ${R.state}`);
+      if (!hits.length) { toast('No match nearby. Try a street, number and town.'); return; }
+      const h = hits[0];
+      let p = { lat: +h.lat, lng: +h.lon };
+      const a = h.address || {};
+      // Searching a flagged address exactly: snap to our pin (campuses like a hospital have many OSM points with one address)
+      if (a.house_number && a.road) {
+        const same = DATA.locations.filter(l => l.street.split(' ')[0] === a.house_number && streetKey(l.street) === streetKey(a.road))
+          .sort((x, y) => distM(p, x) - distM(p, y))[0];
+        if (same && distM(p, same) < 2000) p = { lat: same.lat, lng: same.lng };
+      }
+      // A bare street search comes back as the road itself
+      const road = a.road || (h.class === 'highway' ? h.name || h.display_name.split(',')[0] : '');
+      const label = [a.house_number, road].filter(Boolean).join(' ') || h.display_name.split(',')[0];
+      const token = ++searchToken;
+      clearSearchLayer();
+      if (a.house_number) {
+        L.circle([p.lat, p.lng], { radius: 402, color: '#2f7bff', weight: 2, dashArray: '6 8', opacity: .8, fillColor: '#2f7bff', fillOpacity: .05, interactive: false }).addTo(searchLayer);
+      }
+      const tag = `<div class="search-pin"><div class="tag"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11 12 4l9 7"/><path d="M5 10v10h14V10"/></svg>${label.replace(/[<>&]/g, '')}</div><div class="stem"></div><div class="base"></div></div>`;
+      const tagMarker = L.marker([p.lat, p.lng], { icon: L.divIcon({ html: tag, className: '', iconSize: [0, 0], iconAnchor: [0, 0] }), zIndexOffset: 2000, interactive: false }).addTo(searchLayer);
+      state.following = false; syncLocateBtn();
+      // While walking, GPS stays the reference so alerts keep working; otherwise the search becomes the reference
+      if (!state.walking) {
+        stopWatch();
+        if (meMarker) { map.removeLayer(meMarker); map.removeLayer(accCircle); meMarker = accCircle = null; }
+        setRef({ ...p, kind: 'search', label, road, street: road ? streetKey(road) : null });
+      }
+      map.flyTo([p.lat, p.lng], 16, { duration: .8 });
+      if (window.innerWidth < 900) setSheet(false); // keep the highlighted street in view
+      if (road) {
+        const line = await highlightStreet(road, a.town || a.city || a.village || R.homeName, token);
+        if (line && !a.house_number) {
+          // Street-only search: label the middle of the street, measure pins to the street itself, frame it all
+          const parts = line.getLatLngs();
+          const longest = parts.reduce((m, l) => l.length > m.length ? l : m, []);
+          tagMarker.setLatLng(longest[Math.floor(longest.length / 2)]);
+          if (state.ref && state.ref.kind === 'search' && token === searchToken) { state.ref.line = parts; refresh(); }
+          const wide = window.innerWidth >= 900;
+          map.flyToBounds(line.getBounds(), { paddingTopLeft: wide ? [440, 40] : [20, 90], paddingBottomRight: wide ? [40, 40] : [20, 220], maxZoom: 17, duration: .8 });
+        }
+      }
+    } catch {
+      toast('Search needs an internet connection.');
+    }
+  });
+
+  // ---------- theme + info ----------
+  $('themeBtn').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
+  const asOf = new Date(DATA.asOf + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
+  const townList = DATA.towns.slice(0, -1).join(', ') + ' and ' + DATA.towns[DATA.towns.length - 1];
+  $('dataNote').textContent = `${R.sourceNote} for ${townList}, captured ${asOf}. ${DATA.total} listings: ${DATA.total - DATA.unmapped.length} have a mappable address and are pinned; ${DATA.unmapped.length} are listed as homeless or have no mappable address. ${R.scopeNote} This app does not store names or photos. Each See who button opens that person's own page on the official state registry.`;
+  // City wording on the page
+  document.title = 'SafeWalk ' + R.homeName;
+  $('brandSub').textContent = R.name;
+  $('modalTitle').textContent = 'SafeWalk ' + R.homeName;
+  $('introText').textContent = R.intro;
+  $('registryLink').href = R.registryHome;
+  $('registryLink').textContent = R.registryName;
+  $('lawText').textContent = R.law;
+  if (!HAS_LEVELS) { $('legend').remove(); $('chips').remove(); }
+  function openModal() { $('modal').classList.add('show'); $('modalClose').focus(); }
+  function closeModal() { $('modal').classList.remove('show'); store.set('seenIntro', '1'); }
+  $('infoBtn').addEventListener('click', openModal);
+  $('modalClose').addEventListener('click', closeModal);
+  $('modal').addEventListener('click', e => { if (e.target.id === 'modal') closeModal(); });
+  document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); $('termsModal').classList.remove('show'); } });
+
+  // ---------- boot ----------
+  function refresh() { renderPins(); renderHot(); renderList(); requestAnimationFrame(setPeek); }
+  refresh();
+  window.addEventListener('resize', setPeek);
+  document.fonts?.ready.then(setPeek);
+  // Keep pins clear of the side panel (desktop) or bottom sheet (phone)
+  const vis = visibleLocs();
+  const wide = window.innerWidth >= 900;
+  const peekPx = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sheet-peek')) || 200;
+  map.fitBounds(L.latLngBounds(vis.map(v => [v.loc.lat, v.loc.lng])), wide
+    ? { paddingTopLeft: [440, 30], paddingBottomRight: [80, 30] }
+    : { paddingTopLeft: [16, 80], paddingBottomRight: [16, peekPx + 10] });
+  if (!store.get('seenIntro')) openModal();
+
+  if ('serviceWorker' in navigator && location.protocol !== 'file:') {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+})();
+</script>
+</body>
+</html>

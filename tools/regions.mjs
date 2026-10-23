@@ -1,0 +1,29 @@
+// Per-city settings the app reads from data.js. The app page itself is the same file in every city folder.
+export const REGIONS = {
+  lowell: {
+    slug: 'lowell', name: 'Greater Lowell', area: 'Lowell area', home: 'LOWELL', homeName: 'Lowell', state: 'MA',
+    center: [42.6395, -71.3165], viewbox: '-71.52,42.73,-71.15,42.50',
+    levels: true,
+    registryName: 'MA SORB public registry',
+    registryHome: 'https://sorb.chs.state.ma.us/',
+    whoUrl: 'https://sorb.chs.state.ma.us/sorbpublic/viewOffenderDetails.action?_p=',
+    terms: true, // the state shows a person only after its terms and CAPTCHA are accepted
+    intro: 'A Halloween walking map. Red pins mark addresses tied to Level 2 and Level 3 registrants on the Massachusetts Sex Offender Registry in Lowell and the six towns around it: Chelmsford, Dracut, Tewksbury, Billerica, Tyngsborough and Westford.',
+    sourceNote: 'From the Massachusetts Sex Offender Registry Board public search',
+    scopeNote: 'Level 1 registrants are not public and are not shown.',
+    law: 'Under Massachusetts law (M.G.L. c. 6, section 178N), using registry information to commit a crime, or to harass or discriminate against anyone, is illegal.',
+  },
+  nashua: {
+    slug: 'nashua', name: 'Greater Nashua', area: 'Nashua area', home: 'NASHUA', homeName: 'Nashua', state: 'NH',
+    center: [42.7654, -71.4676], viewbox: '-71.74,42.95,-71.30,42.69',
+    levels: false,
+    registryName: 'NH State Police public registry',
+    registryHome: 'https://business.nh.gov/nsor/',
+    whoUrl: 'https://business.nh.gov/nsor/Display.aspx?offenderID=',
+    terms: false,
+    intro: 'A Halloween walking map. Red pins mark the reported addresses of everyone on the New Hampshire State Police public offender registry in Nashua and the five towns around it: Hudson, Merrimack, Litchfield, Hollis and Amherst.',
+    sourceNote: 'From the New Hampshire State Police public offender registry',
+    scopeNote: 'New Hampshire does not publish risk tiers, so pins show no level. Out-of-state addresses are left off.',
+    law: 'Using registry information to commit a crime, or to harass, threaten or discriminate against anyone, is illegal.',
+  },
+};

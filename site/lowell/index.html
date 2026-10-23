@@ -306,7 +306,7 @@
 </style>
 </head>
 <body>
-<div id="map" aria-label="Map of the Lowell area"></div>
+<div id="map" aria-label="Map of registry addresses"></div>
 
 <header class="topbar">
   <a class="brand" href="../" aria-label="SafeWalk home: all cities">
@@ -315,7 +315,7 @@
     </div>
     <div class="desktop-only-brand">
       <div class="brand-name">SafeWalk</div>
-      <div class="brand-sub">Greater Lowell</div>
+      <div class="brand-sub" id="brandSub">Greater Lowell</div>
     </div>
   </a>
   <form class="search" id="searchForm" role="search">
@@ -363,7 +363,7 @@
     <div class="status"><span class="status-num" id="statusNum">0</span><span class="status-text" id="statusText">flagged addresses</span></div>
     <div class="status-sub" id="statusSub">Tap the arrow to see what is near you.</div>
   </div>
-  <div class="chips" role="group" aria-label="Filters">
+  <div class="chips" id="chips" role="group" aria-label="Filters">
     <button class="chip l3" data-filter="level3" aria-pressed="true"><span class="dot"></span>Level 3</button>
     <button class="chip l2" data-filter="level2" aria-pressed="true"><span class="dot"></span>Level 2</button>
     <button class="chip" data-filter="home" aria-pressed="true">Lives here</button>
@@ -385,8 +385,8 @@
 <div class="modal" id="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
   <div class="modal-card">
     <h2 id="modalTitle">SafeWalk Lowell</h2>
-    <p>A Halloween walking map. Red pins mark addresses tied to Level 2 and Level 3 registrants on the Massachusetts Sex Offender Registry in Lowell and the six towns around it: Chelmsford, Dracut, Tewksbury, Billerica, Tyngsborough and Westford.</p>
-    <div class="legend">
+    <p id="introText"></p>
+    <div class="legend" id="legend">
       <div><span class="lvl l3">3</span>Level 3, highest risk</div>
       <div><span class="lvl l2">2</span>Level 2, moderate</div>
     </div>
@@ -402,9 +402,9 @@
     <h3>About the data</h3>
     <p id="dataNote"></p>
     <p>Pins mark a building, not a unit. Apartment buildings, shelters and workplaces can hold many people who are not on any registry. Use this for awareness of where to be extra watchful, nothing more.</p>
-    <p>Always confirm current information on the official <a href="https://sorb.chs.state.ma.us/" target="_blank" rel="noopener">MA SORB public registry</a>. Registry information changes often.</p>
+    <p>Always confirm current information on the official <a id="registryLink" href="https://sorb.chs.state.ma.us/" target="_blank" rel="noopener">MA SORB public registry</a>. Registry information changes often.</p>
     <h3>Use it responsibly</h3>
-    <p>Under Massachusetts law (M.G.L. c. 6, section 178N), using registry information to commit a crime, or to harass or discriminate against anyone, is illegal. Do not approach, confront or contact anyone at these addresses. If you see something concerning, call 911.</p>
+    <p><span id="lawText"></span> Do not approach, confront or contact anyone at these addresses. If you see something concerning, call 911.</p>
     <button class="primary" id="modalClose">Got it</button>
   </div>
 </div>
@@ -434,14 +434,17 @@
 (() => {
   const DATA = window.SAFEWALK_DATA;
   const FT_PER_M = 3.28084;
-  const LOWELL = [42.6395, -71.3165];
+  // City settings (center, state, registry links, wording) come with the data, so every city runs this same page
+  const R = DATA.region;
+  const HAS_LEVELS = R.levels; // NH publishes no risk tiers
   const TYPE_LABEL = {
     LIVE: 'Lives here', WORK: 'Works here', SCHOOL: 'Attends school here',
-    SECONDARY: 'Secondary address', HOMELESS: 'Homeless, listed at this address'
+    SECONDARY: 'Secondary address', HOMELESS: 'Homeless, listed at this address', LISTED: 'Registry address'
   };
-  const TYPE_GROUP = { LIVE: 'home', WORK: 'work', SCHOOL: 'work', SECONDARY: 'other', HOMELESS: 'other' };
+  const TYPE_GROUP = { LIVE: 'home', WORK: 'work', SCHOOL: 'work', SECONDARY: 'other', HOMELESS: 'other', LISTED: 'home' };
   // Each listing's own page on the state registry (the code is the registry's, not a name)
-  const WHO_URL = 'https://sorb.chs.state.ma.us/sorbpublic/viewOffenderDetails.action?_p=';
+  const WHO_URL = R.whoUrl;
+  const lvlClass = lvl => HAS_LEVELS ? 'l' + lvl : 'l2';
   const HOT_R = 402; // hotspot radius: 1/4 mile
 
   const $ = id => document.getElementById(id);
@@ -465,7 +468,7 @@
 
   // ---------- helpers ----------
   const titleCase = s => s.toLowerCase().replace(/\b([a-z])([a-z]*)/g, (m, a, b) => a.toUpperCase() + b);
-  const addrOf = loc => titleCase(loc.street) + (loc.city !== 'LOWELL' ? ', ' + titleCase(loc.city) : '');
+  const addrOf = loc => titleCase(loc.street) + (loc.city !== R.home ? ', ' + titleCase(loc.city) : '');
   function distM(a, b) {
     const R = 6371000, toR = Math.PI / 180;
     const dLat = (b.lat - a.lat) * toR, dLng = (b.lng - a.lng) * toR;
@@ -501,15 +504,15 @@
   // ---------- filtering ----------
   function visibleEntries(loc) {
     const f = state.filters;
-    return loc.entries.filter(e => (e.level === 3 ? f.level3 : f.level2) && f[TYPE_GROUP[e.type]]);
+    return loc.entries.filter(e => (!HAS_LEVELS || (e.level === 3 ? f.level3 : f.level2)) && f[TYPE_GROUP[e.type]]);
   }
   function visibleLocs() {
     return DATA.locations.map(loc => ({ loc, entries: visibleEntries(loc) })).filter(v => v.entries.length);
   }
-  const topLevel = entries => Math.max(...entries.map(e => e.level));
+  const topLevel = entries => HAS_LEVELS ? Math.max(...entries.map(e => e.level)) : 0;
 
   // ---------- map ----------
-  const map = L.map('map', { zoomControl: false, attributionControl: true, tap: true }).setView(LOWELL, 14);
+  const map = L.map('map', { zoomControl: false, attributionControl: true, tap: true }).setView(R.center, 14);
   // Streets come from OpenFreeMap (free, no key, built for app traffic). OSM's volunteer tile servers
   // block busy apps, so they are only a fallback for phones without WebGL.
   const STYLES = { light: 'https://tiles.openfreemap.org/styles/liberty', dark: 'https://tiles.openfreemap.org/styles/dark' };
@@ -542,14 +545,14 @@
     const big = level === 3;
     if (map.getZoom() < COMPACT_BELOW && !hot) {
       const s = big ? 14 : 11;
-      const html = `<div class="dot-pin l${level}" style="width:${s}px;height:${s}px"></div>`;
+      const html = `<div class="dot-pin ${lvlClass(level)}" style="width:${s}px;height:${s}px"></div>`;
       return L.divIcon({ html, className: '', iconSize: [s, s], iconAnchor: [s / 2, s / 2], popupAnchor: [0, -s / 2] });
     }
     const w = big ? 34 : 28, h = Math.round(w * 1.3);
     const fill = big ? 'var(--red-deep)' : 'var(--red)';
     const html = `<div class="pin${hot ? ' hot' : ''}" style="width:${w}px;height:${h}px">
       <svg width="${w}" height="${h}" viewBox="0 0 30 39"><path d="M15 38s13-12.2 13-22.5A13 13 0 0 0 2 15.5C2 25.8 15 38 15 38z" fill="${fill}" stroke="#fff" stroke-width="2"/>
-      <text x="15" y="20.5" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#fff">${level}</text></svg>
+      ${HAS_LEVELS ? `<text x="15" y="20.5" text-anchor="middle" font-family="Manrope, sans-serif" font-weight="800" font-size="13" fill="#fff">${level}</text>` : '<circle cx="15" cy="15.5" r="4.5" fill="#fff"/>'}</svg>
       ${count > 1 ? `<span class="count">${count}</span>` : ''}</div>`;
     return L.divIcon({ html, className: '', iconSize: [w, h], iconAnchor: [w / 2, h], popupAnchor: [0, -h + 4] });
   }
@@ -557,9 +560,9 @@
   function popupHtml(loc, entries) {
     // One row per person, highest level first. A hospital can hold 20, so the list scrolls.
     const rows = [...entries].sort((a, b) => b.level - a.level).map(e => `<div class="pop-entry">
-      <span class="lvl l${e.level}">Level ${e.level}</span><span class="pop-type">${TYPE_LABEL[e.type]}</span>
+      ${HAS_LEVELS ? `<span class="lvl l${e.level}">Level ${e.level}</span>` : ''}<span class="pop-type">${TYPE_LABEL[e.type]}</span>
       ${e.link ? `<a class="who" href="${WHO_URL}${encodeURIComponent(e.link)}" target="_blank" rel="noopener noreferrer">See who</a>` : ''}</div>`).join('');
-    const dist = state.ref ? `${fmtDist(refDist(loc))} from ${state.ref.kind === 'gps' ? 'you' : state.ref.line ? state.ref.road : 'your search'}` : titleCase(loc.city) + ', MA ' + loc.zip;
+    const dist = state.ref ? `${fmtDist(refDist(loc))} from ${state.ref.kind === 'gps' ? 'you' : state.ref.line ? state.ref.road : 'your search'}` : titleCase(loc.city) + `, ${R.state} ` + loc.zip;
     const count = entries.length > 1 ? `. ${entries.length} people listed here` : '';
     return `<div class="pop-addr">${addrOf(loc)}</div>
       <div class="pop-sub">${dist}${count}</div><div class="pop-people">${rows}</div>
@@ -618,7 +621,7 @@
       // Name the area after the street holding the most people
       const byStreet = new Map();
       for (const m of best.members) {
-        const k = titleCase(m.loc.street.replace(/^[\d-]+[A-Z]?\s+/, '')) + (m.loc.city !== 'LOWELL' ? ', ' + titleCase(m.loc.city) : '');
+        const k = titleCase(m.loc.street.replace(/^[\d-]+[A-Z]?\s+/, '')) + (m.loc.city !== R.home ? ', ' + titleCase(m.loc.city) : '');
         byStreet.set(k, (byStreet.get(k) || 0) + m.entries.length);
       }
       const streets = [...byStreet].sort((a, b) => b[1] - a[1]).map(s => s[0]);
@@ -639,7 +642,7 @@
   function hotPopup(h, i) {
     return `<div class="pop-addr">#${i + 1} busiest area</div>
       <div class="pop-sub">Around ${h.name}</div>
-      <p class="pop-hot"><b>${h.people} people</b> listed at <b>${h.addrs} address${h.addrs > 1 ? 'es' : ''}</b> within 1/4 mile. <b>${h.l3}</b> ${h.l3 === 1 ? 'is' : 'are'} Level 3.</p>
+      <p class="pop-hot"><b>${h.people} people</b> listed at <b>${h.addrs} address${h.addrs > 1 ? 'es' : ''}</b> within 1/4 mile.${HAS_LEVELS ? ` <b>${h.l3}</b> ${h.l3 === 1 ? 'is' : 'are'} Level 3.` : ''}</p>
       ${h.oneBuilding ? '<p class="pop-hot">Most of these are at one building, likely a facility such as a hospital or shelter.</p>' : ''}
       <button class="pop-zoom" data-zoom="${i}">Zoom in and see the pins</button>`;
   }
@@ -688,7 +691,7 @@
   let pendingWho = null;
   document.addEventListener('click', e => {
     const a = e.target.closest('a.who'); if (!a) return;
-    if (Date.now() - (+store.get('termsAt') || 0) < TERMS_FRESH_MS) return; // let the link open
+    if (!R.terms || Date.now() - (+store.get('termsAt') || 0) < TERMS_FRESH_MS) return; // let the link open
     e.preventDefault();
     pendingWho = a.href;
     $('termsModal').classList.add('show');
@@ -712,7 +715,7 @@
     list.innerHTML = state.hot.map((h, i) => `<button class="row" data-hot="${i}">
         <span class="row-pin rank${i ? '' : ' top'}">${i + 1}</span>
         <span class="row-main"><div class="row-addr">Around ${h.name}</div>
-          <div class="row-meta">${h.people} people at ${h.addrs} address${h.addrs > 1 ? 'es' : ''}. ${h.l3} Level 3.${h.oneBuilding ? ' Mostly one building.' : ''}</div></span>
+          <div class="row-meta">${h.people} people at ${h.addrs} address${h.addrs > 1 ? 'es' : ''}.${HAS_LEVELS ? ` ${h.l3} Level 3.` : ''}${h.oneBuilding ? ' Mostly one building.' : ''}</div></span>
         ${state.ref ? `<span class="row-dist">${fmtDist(distM(state.ref, h))}</span>` : ''}
       </button>`).join('');
   }
@@ -740,7 +743,7 @@
     } else {
       items.sort((a, b) => topLevel(b.entries) - topLevel(a.entries) || a.loc.street.localeCompare(b.loc.street, undefined, { numeric: true }));
       $('statusNum').textContent = vis.length;
-      $('statusText').textContent = vis.length === 1 ? 'flagged address in the Lowell area' : 'flagged addresses in the Lowell area';
+      $('statusText').textContent = (vis.length === 1 ? 'flagged address in the ' : 'flagged addresses in the ') + R.area;
       $('statusSub').textContent = `${nEntries} registry listings shown. Tap the arrow to see what is near you.`;
       $('listTitle').textContent = 'All flagged addresses';
     }
@@ -755,7 +758,7 @@
       const types = [...new Set(entries.map(e => TYPE_LABEL[e.type]))].join(', ');
       const meta = (onStreet ? '<span class="row-tag">On this street</span>' : '') + (entries.length > 1 ? `${entries.length} listings. ` : '') + types;
       return `<button class="row" data-key="${loc.street}|${loc.city}">
-        <span class="row-pin l${lvl}">${lvl}</span>
+        <span class="row-pin ${lvlClass(lvl)}">${HAS_LEVELS ? lvl : entries.length}</span>
         <span class="row-main"><div class="row-addr">${addrOf(loc)}</div><div class="row-meta">${meta}</div></span>
         ${d != null ? `<span class="row-dist${d <= nearM ? ' near' : ''}">${fmtDist(d)}</span>` : ''}
       </button>`;
@@ -769,7 +772,8 @@
     state.following = false; syncLocateBtn();
     if (window.innerWidth < 900) setSheet(false);
     map.flyTo(m.getLatLng(), Math.max(map.getZoom(), 17), { duration: 0.8 });
-    map.once('moveend', () => m.openPopup());
+    // Zooming in past the dot view redraws every pin, so look the marker up again once the map lands
+    map.once('moveend', () => markers.get(row.dataset.key)?.openPopup());
   });
 
   document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
@@ -947,7 +951,7 @@
     if (changed) renderPins();
     if (nearest) {
       const lvl = topLevel(nearest.entries);
-      $('alertTitle').textContent = `Heads up: Level ${lvl} address nearby`;
+      $('alertTitle').textContent = HAS_LEVELS ? `Heads up: Level ${lvl} address nearby` : 'Heads up: registry address nearby';
       $('alertSub').textContent = `${addrOf(nearest.loc)}. ${[...new Set(nearest.entries.map(e => TYPE_LABEL[e.type]))].join(', ')}.`;
       $('alertDist').textContent = fmtDist(nearest.d);
       $('alert').classList.add('show');
@@ -969,7 +973,7 @@
 
   // Every OSM segment of the named street in that town (dedupe=0 returns each piece), drawn as one glowing line
   async function highlightStreet(road, town, token) {
-    const url = 'https://nominatim.openstreetmap.org/search?format=json&polygon_geojson=1&dedupe=0&limit=50&countrycodes=us&state=MA&city='
+    const url = `https://nominatim.openstreetmap.org/search?format=json&polygon_geojson=1&dedupe=0&limit=50&countrycodes=us&state=${R.state}&city=`
       + encodeURIComponent(town) + '&street=' + encodeURIComponent(road);
     try {
       const hits = await (await fetch(url)).json();
@@ -991,13 +995,13 @@
     e.preventDefault();
     const q = input.value.trim(); if (!q) return;
     input.blur();
-    // Viewbox keeps results inside the covered towns. No town typed: try Lowell first, then anywhere in the area.
-    const lookup = async text => (await fetch('https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&countrycodes=us&bounded=1&viewbox=-71.52,42.73,-71.15,42.50&q='
+    // Viewbox keeps results inside the covered towns. No town typed: try the main city first, then anywhere in the area.
+    const lookup = async text => (await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&countrycodes=us&bounded=1&viewbox=${R.viewbox}&q=`
       + encodeURIComponent(text), { headers: { 'Accept-Language': 'en' } })).json();
     const namesTown = DATA.towns.some(t => q.toLowerCase().includes(t.toLowerCase()));
     try {
-      let hits = await lookup(namesTown ? q + ', MA' : q + ', Lowell, MA');
-      if (!hits.length && !namesTown) hits = await lookup(q + ', MA');
+      let hits = await lookup(namesTown ? `${q}, ${R.state}` : `${q}, ${R.homeName}, ${R.state}`);
+      if (!hits.length && !namesTown) hits = await lookup(`${q}, ${R.state}`);
       if (!hits.length) { toast('No match nearby. Try a street, number and town.'); return; }
       const h = hits[0];
       let p = { lat: +h.lat, lng: +h.lon };
@@ -1028,7 +1032,7 @@
       map.flyTo([p.lat, p.lng], 16, { duration: .8 });
       if (window.innerWidth < 900) setSheet(false); // keep the highlighted street in view
       if (road) {
-        const line = await highlightStreet(road, a.town || a.city || a.village || 'Lowell', token);
+        const line = await highlightStreet(road, a.town || a.city || a.village || R.homeName, token);
         if (line && !a.house_number) {
           // Street-only search: label the middle of the street, measure pins to the street itself, frame it all
           const parts = line.getLatLngs();
@@ -1048,7 +1052,16 @@
   $('themeBtn').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
   const asOf = new Date(DATA.asOf + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   const townList = DATA.towns.slice(0, -1).join(', ') + ' and ' + DATA.towns[DATA.towns.length - 1];
-  $('dataNote').textContent = `From the Massachusetts Sex Offender Registry Board public search for ${townList}, captured ${asOf}. ${DATA.total} listings: ${DATA.total - DATA.unmapped.length} have a mappable address and are pinned; ${DATA.unmapped.length} are listed as homeless or have no mappable address. Level 1 registrants are not public and are not shown. This app does not store names or photos. Each See who button opens that person's own page on the official state registry.`;
+  $('dataNote').textContent = `${R.sourceNote} for ${townList}, captured ${asOf}. ${DATA.total} listings: ${DATA.total - DATA.unmapped.length} have a mappable address and are pinned; ${DATA.unmapped.length} are listed as homeless or have no mappable address. ${R.scopeNote} This app does not store names or photos. Each See who button opens that person's own page on the official state registry.`;
+  // City wording on the page
+  document.title = 'SafeWalk ' + R.homeName;
+  $('brandSub').textContent = R.name;
+  $('modalTitle').textContent = 'SafeWalk ' + R.homeName;
+  $('introText').textContent = R.intro;
+  $('registryLink').href = R.registryHome;
+  $('registryLink').textContent = R.registryName;
+  $('lawText').textContent = R.law;
+  if (!HAS_LEVELS) { $('legend').remove(); $('chips').remove(); }
   function openModal() { $('modal').classList.add('show'); $('modalClose').focus(); }
   function closeModal() { $('modal').classList.remove('show'); store.set('seenIntro', '1'); }
   $('infoBtn').addEventListener('click', openModal);
