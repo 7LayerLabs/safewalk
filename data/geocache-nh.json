@@ -1,0 +1,964 @@
+{
+ "261C MAIN ST|03060": {
+  "lat": 42.756074897829,
+  "lng": -71.463222182104,
+  "src": "census",
+  "matched": "261C MAIN ST, NASHUA, NH, 03060"
+ },
+ "6 VENUS LN|03062": {
+  "lat": 42.720937158509,
+  "lng": -71.521360109109,
+  "src": "census",
+  "matched": "6 VENUS LN, NASHUA, NH, 03062"
+ },
+ "16 OAKWOOD ST|03051": {
+  "lat": 42.766416377527,
+  "lng": -71.433949217101,
+  "src": "census",
+  "matched": "16 OAKWOOD ST, HUDSON, NH, 03051"
+ },
+ "58 GRIFFIN RD|03051": {
+  "lat": 42.80115780877,
+  "lng": -71.369114949481,
+  "src": "census",
+  "matched": "58 GRIFFIN RD, HUDSON, NH, 03051"
+ },
+ "41 KIENIA RD|03051": {
+  "lat": 42.817451704613,
+  "lng": -71.384735557584,
+  "src": "census",
+  "matched": "41 KIENIA RD, HUDSON, NH, 03051"
+ },
+ "7 RICHMAN DR|03051": {
+  "lat": 42.715582408205,
+  "lng": -71.392682805244,
+  "src": "census",
+  "matched": "7 RICHMAN RD, HUDSON, NH, 03051"
+ },
+ "12 ALPINE AVE|03051": {
+  "lat": 42.768041594341,
+  "lng": -71.418702928561,
+  "src": "census",
+  "matched": "12 ALPINE AVE, HUDSON, NH, 03051"
+ },
+ "50 HIGHLAND ST|03051": {
+  "lat": 42.7698851698,
+  "lng": -71.434030207879,
+  "src": "census",
+  "matched": "50 HIGHLAND ST, HUDSON, NH, 03051"
+ },
+ "27C LOWELL RD|03051": {
+  "lat": 42.759622313176,
+  "lng": -71.431613039698,
+  "src": "census",
+  "matched": "27C LOWELL RD, HUDSON, NH, 03051"
+ },
+ "20 BEECH ST|03060": {
+  "lat": 42.757205602425,
+  "lng": -71.466177072689,
+  "src": "census",
+  "matched": "20 BEECH ST, NASHUA, NH, 03060"
+ },
+ "927 FOX HOLLOW DR|03051": {
+  "lat": 42.747840603392,
+  "lng": -71.428046205183,
+  "src": "census",
+  "matched": "927 FOX HOLLOW DR, HUDSON, NH, 03051"
+ },
+ "54 CYPRESS LN|03063": {
+  "lat": 42.772072222001,
+  "lng": -71.494336655963,
+  "src": "census",
+  "matched": "54 CYPRESS LN, NASHUA, NH, 03063"
+ },
+ "27 WINNHAVEN DR|03051": {
+  "lat": 42.7531231601,
+  "lng": -71.435867465071,
+  "src": "census",
+  "matched": "27 WINNHAVEN DR, HUDSON, NH, 03051"
+ },
+ "238B PINE ST|03060": {
+  "lat": 42.746129816465,
+  "lng": -71.46816033145,
+  "src": "census",
+  "matched": "238B PINE ST, NASHUA, NH, 03060"
+ },
+ "31 WASON RD|03051": {
+  "lat": 42.732987298098,
+  "lng": -71.415977493595,
+  "src": "census",
+  "matched": "31 WASON RD, HUDSON, NH, 03051"
+ },
+ "10A LOCK ST|03060": {
+  "lat": 42.76571481937,
+  "lng": -71.465847477704,
+  "src": "census",
+  "matched": "10A LOCK ST, NASHUA, NH, 03064"
+ },
+ "28 RAILROAD SQ|03060": {
+  "lat": 42.76467756739,
+  "lng": -71.465722732662,
+  "src": "census",
+  "matched": "28 RAILROAD SQ, NASHUA, NH, 03064"
+ },
+ "53 COX ST|03060": {
+  "lat": 42.779861991508,
+  "lng": -71.483679702563,
+  "src": "census",
+  "matched": "53 COX ST, NASHUA, NH, 03064"
+ },
+ "81 BLOSSOM ST|03060": {
+  "lat": 42.751481456393,
+  "lng": -71.475158081514,
+  "src": "census",
+  "matched": "81 BLOSSOM ST, NASHUA, NH, 03060"
+ },
+ "11 WILDER ST|03060": {
+  "lat": 42.754695007795,
+  "lng": -71.471926408615,
+  "src": "census",
+  "matched": "11 WILDER ST, NASHUA, NH, 03060"
+ },
+ "21 CALDWELL RD|03060": {
+  "lat": 42.745042657705,
+  "lng": -71.480066878957,
+  "src": "census",
+  "matched": "21 CALDWELL RD, NASHUA, NH, 03060"
+ },
+ "6 WHITNEY ST|03060": {
+  "lat": 42.765802049593,
+  "lng": -71.463690083903,
+  "src": "census",
+  "matched": "6 WHITNEY ST, NASHUA, NH, 03064"
+ },
+ "8 CHERRY ST|03060": {
+  "lat": 42.755307379785,
+  "lng": -71.449518503024,
+  "src": "census",
+  "matched": "8 CHERRY ST, NASHUA, NH, 03060"
+ },
+ "19 HAYDEN ST|03060": {
+  "lat": 42.738266702781,
+  "lng": -71.461237921165,
+  "src": "census",
+  "matched": "19 HAYDEN ST, NASHUA, NH, 03060"
+ },
+ "17 FAIRLANE AVE|03060": {
+  "lat": 42.739781894839,
+  "lng": -71.47607127385,
+  "src": "census",
+  "matched": "17 FAIRLANE AVE, NASHUA, NH, 03060"
+ },
+ "507 BROAD ST|03060": {
+  "lat": 42.750931034152,
+  "lng": -71.519004955411,
+  "src": "census",
+  "matched": "507 BROAD ST, NASHUA, NH, 03063"
+ },
+ "16 KILLIAN DR|03060": {
+  "lat": 42.727462383176,
+  "lng": -71.487535047251,
+  "src": "census",
+  "matched": "16 KILLIAN DR, NASHUA, NH, 03062"
+ },
+ "225 HARRIS RD|03060": {
+  "lat": 42.725442028071,
+  "lng": -71.490707971068,
+  "src": "census",
+  "matched": "225 HARRIS RD, NASHUA, NH, 03062"
+ },
+ "31A UNDERHILL ST|03060": {
+  "lat": 42.752968487342,
+  "lng": -71.448444822876,
+  "src": "census",
+  "matched": "31A UNDERHILL ST, NASHUA, NH, 03060"
+ },
+ "2 MILLPOND DR|03062": {
+  "lat": 42.715868558197,
+  "lng": -71.488140072161,
+  "src": "census",
+  "matched": "2 MILL POND DR, NASHUA, NH, 03062"
+ },
+ "47 TEMPLE ST|03060": {
+  "lat": 42.761759648389,
+  "lng": -71.461814562542,
+  "src": "census",
+  "matched": "47 TEMPLE ST, NASHUA, NH, 03060"
+ },
+ "98 WALNUT ST|03060": {
+  "lat": 42.756180805684,
+  "lng": -71.466557253628,
+  "src": "census",
+  "matched": "98 WALNUT ST, NASHUA, NH, 03060"
+ },
+ "7 GLORIA AVE|03051": {
+  "lat": 42.769531725434,
+  "lng": -71.43028106519,
+  "src": "census",
+  "matched": "7 GLORIA ST, HUDSON, NH, 03051"
+ },
+ "300 CANDLEWOOD PARK|03060": {
+  "lat": 42.738412878615,
+  "lng": -71.514703994992,
+  "src": "census",
+  "matched": "300 CANDLEWOOD PARK, NASHUA, NH, 03062"
+ },
+ "7 LORRAINE ST|03051": {
+  "lat": 42.754160782411,
+  "lng": -71.424150826586,
+  "src": "census",
+  "matched": "7 LORRAINE ST, HUDSON, NH, 03051"
+ },
+ "14 HARTFORD LN|03060": {
+  "lat": 42.783000059739,
+  "lng": -71.496846429089,
+  "src": "census",
+  "matched": "14 HARTFORD LN, NASHUA, NH, 03063"
+ },
+ "95 WALNUT ST|03060": {
+  "lat": 42.756270284015,
+  "lng": -71.466767652714,
+  "src": "census",
+  "matched": "95 WALNUT ST, NASHUA, NH, 03060"
+ },
+ "7 RENA ST|03051": {
+  "lat": 42.724152213123,
+  "lng": -71.419479963612,
+  "src": "census",
+  "matched": "7 RENA AVE, HUDSON, NH, 03051"
+ },
+ "84 LAKE ST|03060": {
+  "lat": 42.748507696511,
+  "lng": -71.46963869796,
+  "src": "census",
+  "matched": "84 LAKE ST, NASHUA, NH, 03060"
+ },
+ "15 ALPINE AVE|03051": {
+  "lat": 42.767893428424,
+  "lng": -71.419822902939,
+  "src": "census",
+  "matched": "15 ALPINE AVE, HUDSON, NH, 03051"
+ },
+ "25 ELM ST|03060": {
+  "lat": 42.758603654228,
+  "lng": -71.466046741252,
+  "src": "census",
+  "matched": "25 ELM ST, NASHUA, NH, 03060"
+ },
+ "10 MOUNTAIN VIEW DR|03051": {
+  "lat": 42.752869292382,
+  "lng": -71.398378754095,
+  "src": "census",
+  "matched": "10 MOUNTAIN VIEW DR, HUDSON, NH, 03051"
+ },
+ "117 CANNONGATE III RD|03060": {
+  "lat": 42.78358043082,
+  "lng": -71.499085174383,
+  "src": "census",
+  "matched": "117 CANNONGATE III, NASHUA, NH, 03063"
+ },
+ "2 MARIE LN|03051": {
+  "lat": 42.811825356482,
+  "lng": -71.381646939756,
+  "src": "census",
+  "matched": "2 MARIE LN, HUDSON, NH, 03051"
+ },
+ "6 DUNNLOGGIN RD|03060": {
+  "lat": 42.773395179284,
+  "lng": -71.502475784392,
+  "src": "census",
+  "matched": "6 DUNLOGGIN RD, NASHUA, NH, 03063"
+ },
+ "34A SPEARE RD|03051": {
+  "lat": 42.759712127789,
+  "lng": -71.393062380169,
+  "src": "census",
+  "matched": "34A SPEARE RD, HUDSON, NH, 03051"
+ },
+ "23 TEMPLE ST|03060": {
+  "lat": 42.761699976845,
+  "lng": -71.463144507188,
+  "src": "census",
+  "matched": "23 TEMPLE ST, NASHUA, NH, 03060"
+ },
+ "912 ELMWOOD DR|03051": {
+  "lat": 42.778868269696,
+  "lng": -71.44634626643,
+  "src": "census",
+  "matched": "912 ELMWOOD DR, HUDSON, NH, 03051"
+ },
+ "84C W HOLLIS ST|03060": {
+  "lat": 42.75569796107,
+  "lng": -71.471528057757,
+  "src": "census",
+  "matched": "84C W HOLLIS ST, NASHUA, NH, 03060"
+ },
+ "14 WINDHAM RD|03051": {
+  "lat": 42.773741261482,
+  "lng": -71.405252886756,
+  "src": "census",
+  "matched": "14 WINDHAM RD, HUDSON, NH, 03051"
+ },
+ "36 LOCK ST|03064": {
+  "lat": 42.766367966727,
+  "lng": -71.463206004044,
+  "src": "census",
+  "matched": "36 LOCK ST, NASHUA, NH, 03064"
+ },
+ "160 W HOLLIS ST|03060": {
+  "lat": 42.762259614571,
+  "lng": -71.447471902983,
+  "src": "census",
+  "matched": "160 E HOLLIS ST, NASHUA, NH, 03060"
+ },
+ "22 LOCK ST|03060": {
+  "lat": 42.766042047724,
+  "lng": -71.464579490845,
+  "src": "census",
+  "matched": "22 LOCK ST, NASHUA, NH, 03064"
+ },
+ "309 BROOK VILLAGE RD|03062": {
+  "lat": 42.704554413504,
+  "lng": -71.452796690348,
+  "src": "census",
+  "matched": "309 BROOK VILLAGE RD, NASHUA, NH, 03062"
+ },
+ "30 WALDEN POND RD|03060": {
+  "lat": 42.766675655095,
+  "lng": -71.450553448015,
+  "src": "census",
+  "matched": "30 WALDEN POND RD, NASHUA, NH, 03064"
+ },
+ "14 WHITNEY ST|03060": {
+  "lat": 42.765739939709,
+  "lng": -71.462911024837,
+  "src": "census",
+  "matched": "14 WHITNEY ST, NASHUA, NH, 03064"
+ },
+ "29 GREENWOOD DR|03060": {
+  "lat": 42.733542816527,
+  "lng": -71.482148296991,
+  "src": "census",
+  "matched": "29 GREENWOOD DR, NASHUA, NH, 03062"
+ },
+ "25 EDINBURGH DR|03060": {
+  "lat": 42.717906595979,
+  "lng": -71.494653122062,
+  "src": "census",
+  "matched": "25 EDINBURGH DR, NASHUA, NH, 03062"
+ },
+ "7C COMMERCIAL ST|03060": {
+  "lat": 42.761138843711,
+  "lng": -71.455045538362,
+  "src": "census",
+  "matched": "7C COMMERCIAL ST, NASHUA, NH, 03060"
+ },
+ "6 LABINE ST|03060": {
+  "lat": 42.747378330116,
+  "lng": -71.477761469657,
+  "src": "census",
+  "matched": "6 LABINE ST, NASHUA, NH, 03060"
+ },
+ "5 QUINCY ST|03061": {
+  "lat": 42.760783464881,
+  "lng": -71.461839581886,
+  "src": "census",
+  "matched": "5 QUINCY ST, NASHUA, NH, 03060"
+ },
+ "11 CHALIFOUX RD|03051": {
+  "lat": 42.708726780335,
+  "lng": -71.421914951796,
+  "src": "census",
+  "matched": "11 CHALIFOUX RD, HUDSON, NH, 03051"
+ },
+ "3 REGINA ST|03051": {
+  "lat": 42.756743023679,
+  "lng": -71.421737241715,
+  "src": "census",
+  "matched": "3 REGINA ST, HUDSON, NH, 03051"
+ },
+ "113 BACKRIVER RD|03054": {
+  "lat": 42.908164219713,
+  "lng": -71.475301599204,
+  "src": "census",
+  "matched": "113 BACK RIVER RD, MERRIMACK, NH, 03054"
+ },
+ "8 DICK DR|03054": {
+  "lat": 42.873867598784,
+  "lng": -71.537749717539,
+  "src": "census",
+  "matched": "8 DICK DR, MERRIMACK, NH, 03054"
+ },
+ "7 RUTHERFORD ST|03054": {
+  "lat": 42.852531469202,
+  "lng": -71.507330013012,
+  "src": "census",
+  "matched": "7 RUTHERFORD ST, MERRIMACK, NH, 03054"
+ },
+ "251 DANIEL WEBSTER HWY|03054": {
+  "lat": 42.83233101059,
+  "lng": -71.49110743211,
+  "src": "census",
+  "matched": "251 DANIEL WEBSTER HWY, MERRIMACK, NH, 03054"
+ },
+ "29 BERKLEY ST|03054": {
+  "lat": 42.878596761093,
+  "lng": -71.502476381133,
+  "src": "census",
+  "matched": "29 BERKLEY ST, MERRIMACK, NH, 03054"
+ },
+ "22 RAILROAD AVE|03054": {
+  "lat": 42.860107070088,
+  "lng": -71.489423576368,
+  "src": "census",
+  "matched": "22 RAILROAD AVE, MERRIMACK, NH, 03054"
+ },
+ "18 CONIFER ST|03054": {
+  "lat": 42.865589376177,
+  "lng": -71.514350366406,
+  "src": "census",
+  "matched": "18 CONIFER ST, MERRIMACK, NH, 03054"
+ },
+ "34 NEW DUNSTABLE RD|03060": {
+  "lat": 42.749871181147,
+  "lng": -71.485267751696,
+  "src": "census",
+  "matched": "34 NEW DUNSTABLE RD, NASHUA, NH, 03060"
+ },
+ "40 CHESTNUT ST|03060": {
+  "lat": 42.757830393646,
+  "lng": -71.468198980196,
+  "src": "census",
+  "matched": "40 CHESTNUT ST, NASHUA, NH, 03060"
+ },
+ "5 NEPTUNE LN|03062": {
+  "lat": 42.721049295945,
+  "lng": -71.520911749441,
+  "src": "census",
+  "matched": "5 NEPTUNE LN, NASHUA, NH, 03062"
+ },
+ "6 BAHL ST|03062": {
+  "lat": 42.795600192819,
+  "lng": -71.517792979063,
+  "src": "census",
+  "matched": "6 BAHL ST, NASHUA, NH, 03063"
+ },
+ "1 CLEVELAND ST|03060": {
+  "lat": 42.743835307978,
+  "lng": -71.476600074658,
+  "src": "census",
+  "matched": "1 CLEVELAND ST, NASHUA, NH, 03060"
+ },
+ "49 LEMOINE ST|03060": {
+  "lat": 42.754330962583,
+  "lng": -71.470948581121,
+  "src": "census",
+  "matched": "49 LEMOINE ST, NASHUA, NH, 03060"
+ },
+ "3 DENTON ST|03060": {
+  "lat": 42.761070517716,
+  "lng": -71.450517123606,
+  "src": "census",
+  "matched": "3 DENTON ST, NASHUA, NH, 03060"
+ },
+ "67 ASH ST|03060": {
+  "lat": 42.755786582917,
+  "lng": -71.469540793892,
+  "src": "census",
+  "matched": "67 ASH ST, NASHUA, NH, 03060"
+ },
+ "41 TENBY DR|03060": {
+  "lat": 42.719694967583,
+  "lng": -71.487609660704,
+  "src": "census",
+  "matched": "41 TENBY DR, NASHUA, NH, 03062"
+ },
+ "57 HARBOR AVE|03060": {
+  "lat": 42.754536597258,
+  "lng": -71.457477684415,
+  "src": "census",
+  "matched": "57 HARBOR AVE, NASHUA, NH, 03060"
+ },
+ "6 BROOKSIDE DR|03054": {
+  "lat": 42.882119560788,
+  "lng": -71.524779459632,
+  "src": "census",
+  "matched": "6 BROOKSIDE DR, MERRIMACK, NH, 03054"
+ },
+ "18 CONSTANCE ST|03054": {
+  "lat": 42.891927846975,
+  "lng": -71.488742942996,
+  "src": "census",
+  "matched": "18 CONSTANCE ST, MERRIMACK, NH, 03054"
+ },
+ "1 BEL AIR AVE|03054": {
+  "lat": 42.872956197713,
+  "lng": -71.493368759315,
+  "src": "census",
+  "matched": "1 BEL AIRE AVE, MERRIMACK, NH, 03054"
+ },
+ "5 COWIN RD|03054": {
+  "lat": 42.839547461813,
+  "lng": -71.521277246053,
+  "src": "census",
+  "matched": "5 COWIN RD, MERRIMACK, NH, 03054"
+ },
+ "246 DANIEL WEBSTER HWY|03054": {
+  "lat": 42.830309233749,
+  "lng": -71.49130829423,
+  "src": "census",
+  "matched": "246 DANIEL WEBSTER HWY, MERRIMACK, NH, 03054"
+ },
+ "11 CHRISTOPHER RD|03054": {
+  "lat": 42.853975345584,
+  "lng": -71.506059384478,
+  "src": "census",
+  "matched": "11 CHRISTOPHER RD, MERRIMACK, NH, 03054"
+ },
+ "14 BEL AIRE AVE|03054": {
+  "lat": 42.87404881382,
+  "lng": -71.493060374767,
+  "src": "census",
+  "matched": "14 BEL AIRE AVE, MERRIMACK, NH, 03054"
+ },
+ "99 TURKEY HILL RD|03054": {
+  "lat": 42.853088005656,
+  "lng": -71.511339927609,
+  "src": "census",
+  "matched": "99 TURKEY HILL RD, MERRIMACK, NH, 03054"
+ },
+ "49 WINTERGREEN DR|03054": {
+  "lat": 42.845823176822,
+  "lng": -71.508182313317,
+  "src": "census",
+  "matched": "49 WINTERGREEN LN, MERRIMACK, NH, 03054"
+ },
+ "15 WILDER ST|03060": {
+  "lat": 42.754407471856,
+  "lng": -71.471746043428,
+  "src": "census",
+  "matched": "15 WILDER ST, NASHUA, NH, 03060"
+ },
+ "20 EDWARDS ST|03060": {
+  "lat": 42.750279242651,
+  "lng": -71.484382499065,
+  "src": "census",
+  "matched": "20 EDWARDS ST, NASHUA, NH, 03060"
+ },
+ "74 ASH ST|03060": {
+  "lat": 42.755361225215,
+  "lng": -71.469139318859,
+  "src": "census",
+  "matched": "74 ASH ST, NASHUA, NH, 03060"
+ },
+ "2 STRAWBERRY BANK RD|03062": {
+  "lat": 42.701577765246,
+  "lng": -71.452298556465,
+  "src": "census",
+  "matched": "2 STRAWBERRY BANK RD, NASHUA, NH, 03062"
+ },
+ "7 SOUTH ST|03060": {
+  "lat": 42.761723592297,
+  "lng": -71.45909159864,
+  "src": "census",
+  "matched": "7 SOUTH ST, NASHUA, NH, 03060"
+ },
+ "4 COURTLAND ST|03060": {
+  "lat": 42.771787813063,
+  "lng": -71.470021286712,
+  "src": "census",
+  "matched": "4 COURTLAND ST, NASHUA, NH, 03064"
+ },
+ "12 STRAWBERRY BANK RD|03060": {
+  "lat": 42.701034752779,
+  "lng": -71.454921788076,
+  "src": "census",
+  "matched": "12 STRAWBERRY BANK RD, NASHUA, NH, 03062"
+ },
+ "185 MAIN ST|03060": {
+  "lat": 42.760447531524,
+  "lng": -71.465221836245,
+  "src": "census",
+  "matched": "185 MAIN ST, NASHUA, NH, 03060"
+ },
+ "20 LUTHERAN DR|03063": {
+  "lat": 42.761459396506,
+  "lng": -71.51690115069,
+  "src": "census",
+  "matched": "20 LUTHERAN DR, NASHUA, NH, 03063"
+ },
+ "2 HENRY DAVID DR|03060": {
+  "lat": 42.737083130504,
+  "lng": -71.49171408027,
+  "src": "census",
+  "matched": "2 HENRY DAVID DR, NASHUA, NH, 03062"
+ },
+ "19 WESTMINSTER LN|03054": {
+  "lat": 42.88419071102,
+  "lng": -71.555979524126,
+  "src": "census",
+  "matched": "19 WESTMINSTER LN, MERRIMACK, NH, 03054"
+ },
+ "19 BROOK RD|03052": {
+  "lat": 42.890116155324,
+  "lng": -71.451962718332,
+  "src": "census",
+  "matched": "19 BROOK RD, LITCHFIELD, NH, 03052"
+ },
+ "2 ROTTERDAM DR|03052": {
+  "lat": 42.807680506138,
+  "lng": -71.442155127432,
+  "src": "census",
+  "matched": "2 ROTTERDAM DR, LITCHFIELD, NH, 03052"
+ },
+ "40 LOUISE DR|03052": {
+  "lat": 42.817081068826,
+  "lng": -71.434267630233,
+  "src": "census",
+  "matched": "40 LOUISE DR, LITCHFIELD, NH, 03052"
+ },
+ "119 CHARLES BANCROFT HWY|03052": {
+  "lat": 42.818243276476,
+  "lng": -71.471000837139,
+  "src": "census",
+  "matched": "119 CHARLES BANCROFT HWY, LITCHFIELD, NH, 03052"
+ },
+ "50 WEST HOLLIS RD|03049": {
+  "lat": 42.710495442038,
+  "lng": -71.624362062811,
+  "src": "census",
+  "matched": "50 W HOLLIS RD, HOLLIS, NH, 03049"
+ },
+ "453 BOSTON POST RD|03031": {
+  "lat": 42.817000403531,
+  "lng": -71.574431954066,
+  "src": "census",
+  "matched": "453 BOSTON POST RD, AMHERST, NH, 03031"
+ },
+ "41 STEARNS RD|03031": {
+  "lat": 42.820695003931,
+  "lng": -71.590266612074,
+  "src": "census",
+  "matched": "41 STEARNS RD, AMHERST, NH, 03031"
+ },
+ "68 LYNDEBOROUGH RD|03031": {
+  "lat": 42.85730388725,
+  "lng": -71.661362107191,
+  "src": "census",
+  "matched": "68 LYNDEBOROUGH RD, AMHERST, NH, 03031"
+ },
+ "10 TAMPA ST|03064": {
+  "lat": 42.761737511699,
+  "lng": -71.479606477626,
+  "src": "census",
+  "matched": "10 TAMPA ST, NASHUA, NH, 03064"
+ },
+ "16C LOCK ST|03060": {
+  "lat": 42.765868471399,
+  "lng": -71.465322270925,
+  "src": "census",
+  "matched": "16C LOCK ST, NASHUA, NH, 03064"
+ },
+ "25 STARK ST|03064": {
+  "lat": 42.77382570419,
+  "lng": -71.469282461886,
+  "src": "census",
+  "matched": "25 STARK ST, NASHUA, NH, 03064"
+ },
+ "13 DUCAS AVE|03060": {
+  "lat": 42.748700839336,
+  "lng": -71.525648342113,
+  "src": "census",
+  "matched": "13 DUCAS AVE, NASHUA, NH, 03063"
+ },
+ "36 VINE ST|03060": {
+  "lat": 42.757456273317,
+  "lng": -71.469074122788,
+  "src": "census",
+  "matched": "36 VINE ST, NASHUA, NH, 03060"
+ },
+ "491 AMHERST ST|03060": {
+  "lat": 42.79262400088,
+  "lng": -71.522228558133,
+  "src": "census",
+  "matched": "491 AMHERST ST, NASHUA, NH, 03063"
+ },
+ "71 PALM ST|03060": {
+  "lat": 42.755449263661,
+  "lng": -71.470328494093,
+  "src": "census",
+  "matched": "71 PALM ST, NASHUA, NH, 03060"
+ },
+ "30 RAILROAD SQ|03060": {
+  "lat": 42.764682594543,
+  "lng": -71.465756018894,
+  "src": "census",
+  "matched": "30 RAILROAD SQ, NASHUA, NH, 03064"
+ },
+ "18A PIERCE ST|03060": {
+  "lat": 42.754077711641,
+  "lng": -71.473114798362,
+  "src": "census",
+  "matched": "18A PIERCE ST, NASHUA, NH, 03060"
+ },
+ "169 W HOLLIS ST|03060": {
+  "lat": 42.75346232752,
+  "lng": -71.478665684542,
+  "src": "census",
+  "matched": "169 W HOLLIS ST, NASHUA, NH, 03060"
+ },
+ "9A DEERWOOD DR|03031": {
+  "lat": 42.832870936223,
+  "lng": -71.585867828808,
+  "src": "census",
+  "matched": "9A DEERWOOD DR, AMHERST, NH, 03031"
+ },
+ "32 CHESTNUT ST|03060": {
+  "lat": 42.758033425373,
+  "lng": -71.468291800484,
+  "src": "census",
+  "matched": "32 CHESTNUT ST, NASHUA, NH, 03060"
+ },
+ "50 WORCESTER ST|03060": {
+  "lat": 42.760735541972,
+  "lng": -71.456002859256,
+  "src": "census",
+  "matched": "50 WORCESTER ST, NASHUA, NH, 03060"
+ },
+ "11 KINSLEY ST|03060": {
+  "lat": 42.756007746705,
+  "lng": -71.464874678743,
+  "src": "census",
+  "matched": "11 KINSLEY ST, NASHUA, NH, 03060"
+ },
+ "165 PINE ST|03060": {
+  "lat": 42.750595061152,
+  "lng": -71.46900348051,
+  "src": "census",
+  "matched": "165 PINE ST, NASHUA, NH, 03060"
+ },
+ "1 TOLLES ST|03060": {
+  "lat": 42.764201635454,
+  "lng": -71.460369771336,
+  "src": "census",
+  "matched": "1 TOLLES ST, NASHUA, NH, 03064"
+ },
+ "12 AUBURN ST|03060": {
+  "lat": 42.765048776877,
+  "lng": -71.470017260318,
+  "src": "census",
+  "matched": "12 AUBURN ST, NASHUA, NH, 03064"
+ },
+ "15 BANGOR ST|03060": {
+  "lat": 42.796552433776,
+  "lng": -71.514391504179,
+  "src": "census",
+  "matched": "15 BANGOR ST, NASHUA, NH, 03063"
+ },
+ "12 MULBERRY ST|03060": {
+  "lat": 42.756593862863,
+  "lng": -71.464528898044,
+  "src": "census",
+  "matched": "12 MULBERRY ST, NASHUA, NH, 03060"
+ },
+ "44 TEMPLE ST|03060": {
+  "lat": 42.761875713272,
+  "lng": -71.461788207996,
+  "src": "census",
+  "matched": "44 TEMPLE ST, NASHUA, NH, 03060"
+ },
+ "33 ASH ST|03060": {
+  "lat": 42.757245506708,
+  "lng": -71.470081210966,
+  "src": "census",
+  "matched": "33 ASH ST, NASHUA, NH, 03060"
+ },
+ "30 SANBORN DR|03062": {
+  "lat": 42.7533066788,
+  "lng": -71.509932595213,
+  "src": "census",
+  "matched": "30 SANBORN DR, NASHUA, NH, 03063"
+ },
+ "181 KINSLEY ST|03060": {
+  "lat": 42.749300742964,
+  "lng": -71.48323332147,
+  "src": "census",
+  "matched": "181 KINSLEY ST, NASHUA, NH, 03060"
+ },
+ "7B HARVARD ST|03060": {
+  "lat": 42.758754566715,
+  "lng": -71.452931777993,
+  "src": "census",
+  "matched": "7B HARVARD ST, NASHUA, NH, 03060"
+ },
+ "190 LEDGE ST|03060": {
+  "lat": 42.754214411446,
+  "lng": -71.486310808521,
+  "src": "census",
+  "matched": "190 LEDGE ST, NASHUA, NH, 03060"
+ },
+ "4A PINEGROVE AVE|03060": {
+  "lat": 42.743360668056,
+  "lng": -71.486526171414,
+  "src": "census",
+  "matched": "4A PINE GROVE AVE, NASHUA, NH, 03060"
+ },
+ "26 MORGAN ST|03060": {
+  "lat": 42.766205644721,
+  "lng": -71.459118576154,
+  "src": "census",
+  "matched": "26 MORGAN ST, NASHUA, NH, 03064"
+ },
+ "25 FRANKLIN ST|03064": {
+  "lat": 42.763922106864,
+  "lng": -71.467813038245,
+  "src": "census",
+  "matched": "25 FRANKLIN ST, NASHUA, NH, 03064"
+ },
+ "4 CARDINAL CIR|03060": {
+  "lat": 42.754347908322,
+  "lng": -71.519655416109,
+  "src": "census",
+  "matched": "4 CARDINAL CIR, NASHUA, NH, 03063"
+ },
+ "6 CALDWELL DR|03031": {
+  "lat": 42.808049229601,
+  "lng": -71.573774449435,
+  "src": "census",
+  "matched": "6 CALDWELL DR, AMHERST, NH, 03031"
+ },
+ "3B AUBURN ST|03060": {
+  "lat": 42.765637618194,
+  "lng": -71.469134438775,
+  "src": "census",
+  "matched": "3B AUBURN ST, NASHUA, NH, 03064"
+ },
+ "43 KINSLEY ST|03060": {
+  "lat": 42.754792308928,
+  "lng": -71.468183627631,
+  "src": "census",
+  "matched": "43 KINSLEY ST, NASHUA, NH, 03060"
+ },
+ "16 OAK GROVE TRL|03060": {
+  "lat": 42.731700362482,
+  "lng": -71.529925013268,
+  "src": "census",
+  "matched": "16 OAK GROVE TRL, NASHUA, NH, 03062"
+ },
+ "2 FOUNDRY ST|03060": {
+  "lat": 42.759819053067,
+  "lng": -71.461252528199,
+  "src": "census",
+  "matched": "2 FOUNDRY ST, NASHUA, NH, 03060"
+ },
+ "588 S MAIN ST|03060": {
+  "lat": 42.731251030212,
+  "lng": -71.445147093666,
+  "src": "census",
+  "matched": "588 MAIN ST, NASHUA, NH, 03060"
+ },
+ "15 MEADOWLARK DR|03051": {
+  "lat": 42.78606988461,
+  "lng": -71.439416485371,
+  "src": "census",
+  "matched": "15 MEADOWLARK DR, HUDSON, NH, 03051"
+ },
+ "6 HEMLOCK ST|03051": {
+  "lat": 42.753375528731,
+  "lng": -71.43209463323,
+  "src": "census",
+  "matched": "6 HEMLOCK ST, HUDSON, NH, 03051"
+ },
+ "1 RIVERVIEW ST|03051": {
+  "lat": 42.756783478852,
+  "lng": -71.438779302549,
+  "src": "census",
+  "matched": "1 RIVERVIEW AVE, HUDSON, NH, 03051"
+ },
+ "2 PLUTO LN|03062": {
+  "lat": 42.719449250502,
+  "lng": -71.519725602992,
+  "src": "census",
+  "matched": "2 PLUTO LN, NASHUA, NH, 03062"
+ },
+ "10 MEGAN DR|03051": {
+  "lat": 42.780180083403,
+  "lng": -71.443674944898,
+  "src": "census",
+  "matched": "10 MEGAN DR, HUDSON, NH, 03051"
+ },
+ "34 PITTSBURGH DR|03060": {
+  "lat": 42.734806392303,
+  "lng": -71.493705549396,
+  "src": "census",
+  "matched": "34 PITTSBURGH DR, NASHUA, NH, 03062"
+ },
+ "8 SHERATON DR|03051": {
+  "lat": 42.760841028116,
+  "lng": -71.417454398164,
+  "src": "census",
+  "matched": "8 SHERATON DR, HUDSON, NH, 03051"
+ },
+ "3 NEW HAVEN DR|03063": {
+  "lat": 42.800358851953,
+  "lng": -71.529972508321,
+  "src": "census",
+  "matched": "3 NEW HAVEN DR, NASHUA, NH, 03063"
+ },
+ "16 GEORGE ST|03051": {
+  "lat": 42.770350633623,
+  "lng": -71.428047432323,
+  "src": "census",
+  "matched": "16 GEORGE ST, HUDSON, NH, 03051"
+ },
+ "18 DEERHAVEN DR|03060": {
+  "lat": 42.78598280728,
+  "lng": -71.485372526448,
+  "src": "census",
+  "matched": "18 DEERHAVEN DR, NASHUA, NH, 03064"
+ },
+ "93 DUBLIN AVE|03062": {
+  "lat": 42.772624967459,
+  "lng": -71.51002244101,
+  "src": "census",
+  "matched": "93 DUBLIN AVE, NASHUA, NH, 03063"
+ },
+ "13 BRIARWOOD DR|03063": {
+  "lat": 42.771801801446,
+  "lng": -71.504604776322,
+  "src": "census",
+  "matched": "13 BRIARWOOD DR, NASHUA, NH, 03063"
+ },
+ "27C ELM ST|03060": {
+  "lat": 42.758471520133,
+  "lng": -71.465987499235,
+  "src": "census",
+  "matched": "27C ELM ST, NASHUA, NH, 03060"
+ },
+ "24 ELGIN ST|03060": {
+  "lat": 42.732902893394,
+  "lng": -71.438373736599,
+  "src": "census",
+  "matched": "24 ELGIN ST, NASHUA, NH, 03060"
+ },
+ "3B HAMPTON LN|03051": {
+  "lat": 42.8110297,
+  "lng": -71.4160549,
+  "src": "osm",
+  "matched": "Hampton Lane, Nadeau Village, Potash Corner",
+  "approx": true
+ },
+ "56 JOPPA RD|03054": {
+  "lat": 42.875155,
+  "lng": -71.513723,
+  "src": "osm",
+  "matched": "56, Joppa Road, Woodland Park"
+ },
+ "15 KOKOKEHAS CIR|03052": {
+  "lat": 42.8399205,
+  "lng": -71.4469599,
+  "src": "manual",
+  "matched": "Kokokehas Drive, Litchfield (registry says Cir)",
+  "approx": true
+ }
+}
