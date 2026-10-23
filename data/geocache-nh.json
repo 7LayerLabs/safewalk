@@ -1974,7 +1974,8 @@
   "lng": -71.632954305819,
   "src": "census",
   "matched": "16 WOOD CIR, GOFFSTOWN, NH, 03045",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "7 MILL ST|03045": {
   "lat": 43.018780836298,
@@ -2047,7 +2048,8 @@
   "lng": -71.569626371271,
   "src": "census",
   "matched": "18 ALPINE DR, GOFFSTOWN, NH, 03045",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "48 CORNWELL RD|03047": {
   "lat": 42.924396978613,
@@ -7640,7 +7642,8 @@
   "lng": -71.553517129693,
   "src": "census",
   "matched": "321 MOUNTAIN RD, CONCORD, NH, 03301",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "3 BARNARD HILL RD|03046": {
   "lat": 43.109551291147,
@@ -8187,7 +8190,8 @@
   "lng": -71.472194535407,
   "src": "census",
   "matched": "91 OLD CHERRY MOUNTAIN RD S, TWIN MOUNTAIN, NH, 03595",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "6 JEFFERSON RD|03598": {
   "lat": 44.3734340462,
@@ -8362,7 +8366,8 @@
   "lng": -71.719475411387,
   "src": "census",
   "matched": "266 HALL RD, BRISTOL, NH, 03222",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "15 TIMBER LN|03222": {
   "lat": 43.589122064959,
@@ -10997,7 +11002,8 @@
   "lng": -71.14159614994,
   "src": "census",
   "matched": "53 STATE RTE 16B, CENTER OSSIPEE, NH, 03814",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "47 MOULTONVILLE RD|03814": {
   "lat": 43.755758553078,
@@ -11064,7 +11070,8 @@
   "lng": -70.993928430692,
   "src": "census",
   "matched": "10 ELMO LN, ROCHESTER, NH, 03867",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "10 SARAH CT|03867": {
   "lat": 43.307554719628,
@@ -11119,7 +11126,8 @@
   "lng": -71.145913193534,
   "src": "census",
   "matched": "1251 WHITE MOUNTAIN RD, CONWAY, NH, 03818",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "124 N MAIN ST|03867": {
   "lat": 43.30526470948,
@@ -11240,7 +11248,8 @@
   "lng": -71.148874831579,
   "src": "census",
   "matched": "217 STATE RTE 16, INTERVALE, NH, 03845",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "14 PHILLIPS LN|03867": {
   "lat": 43.336289592142,
@@ -12693,14 +12702,16 @@
   "lng": -72.27714317576,
   "src": "census",
   "matched": "298 MAIN ST, KEENE, NH, 03431",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "528 RIVER RD|03608": {
   "lat": 43.036105519404,
   "lng": -72.454609723712,
   "src": "census",
   "matched": "528 RIVER RD S, WALPOLE, NH, 03608",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "2500 NORTH RIVER RD|03106": {
   "lat": 43.0374605,
@@ -12713,14 +12724,16 @@
   "lng": -71.193997589768,
   "src": "census",
   "matched": "500 MAIN ST, GORHAM, NH, 03581",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "30 MINERAL SPRINGS RD|03818": {
   "lat": 43.994369801428,
   "lng": -71.214392423532,
   "src": "census",
   "matched": "30 SPRING RD, CONWAY, NH, 03818",
-  "rejected": true
+  "rejected": true,
+  "tries": 2
  },
  "3175 E MAIN ST|03813": {
   "lat": 43.9977315,

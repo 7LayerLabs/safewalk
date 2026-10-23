@@ -2,7 +2,7 @@
 // columns county,level,type,address,link. Geocodes new addresses into data/geocache.json first.
 import { readFileSync, writeFileSync, mkdirSync } from 'node:fs';
 import { parseAddress, geoKey } from './registry.mjs';
-import { geocodeMissing } from './geocoder.mjs';
+import { geocodeMissing, recheckGeocodes, pinFor } from './geocoder.mjs';
 import { REGIONS } from './regions.mjs';
 
 const AS_OF = '2026-10-23'; // update on each registry refresh
@@ -31,11 +31,15 @@ for (const line of readFileSync('data/ma-raw.csv', 'utf8').trim().split(/\r?\n/)
   // "12 MAIN ST, SPRINGFIELD, MA 01105-1234" -> "12 MAIN ST, SPRINGFIELD 01105"; "BOSTON, MA (NM)" keeps BOSTON as the town
   const clean = address.replace(/,\s*MA\s+(\d{5})(-\d{4})?/, ' $1');
   const a = parseAddress(clean);
-  const town = /^[A-Z .'-]+, MA\b/.test(clean) ? clean.split(',')[0].trim() : a.city === 'LOWELL' && !/LOWELL/.test(clean) ? '' : a.city;
+  const town = /^[A-Z .'-]+, MA\b/.test(clean) ? clean.split(',')[0].trim() : a.city;
   rows.push({ county, level: +level, type, link, ...a, city: town });
 }
 
 const cache = await geocodeMissing(rows, 'MA');
+// Misses and wrong-street Census hits get a second try from OpenStreetMap; see recheckGeocodes in geocoder.mjs
+const fix = await recheckGeocodes(rows, cache, 'MA', r => r.city);
+console.log('recheck:', JSON.stringify({ ...fix, examples: undefined }));
+for (const e of fix.examples) console.log('  ' + e);
 const locs = new Map();
 const byStreet = new Map(); // street -> location keys, to merge one building listed under two zips
 const unmapped = [];
@@ -43,9 +47,9 @@ const perTown = {};
 for (const r of rows) {
   const town = r.city ? titleCase(r.city) : titleCase(r.county) + ' County';
   perTown[town] = (perTown[town] || 0) + 1;
-  const g = r.mappable && cache[geoKey(r)];
-  // Pins outside Massachusetts are geocoder mistakes; list them as unmapped instead
-  if (!g || g.lat < 41.18 || g.lat > 42.89 || g.lng < -73.51 || g.lng > -69.86) {
+  // Pins outside Massachusetts and wrong-street matches are geocoder mistakes; list them as unmapped instead
+  const g = pinFor(r, cache, 'MA');
+  if (!g) {
     unmapped.push({ town, level: r.level, type: r.type, link: r.link });
     continue;
   }

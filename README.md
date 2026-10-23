@@ -1,36 +1,32 @@
 # SafeWalk
 
-Halloween walking maps (installable phone web app) of registered addresses from public state registries (MA Level 2 and 3; NH public list).
+Halloween walking maps (installable phone web app) of addresses on the public state sex offender registries:
+all of Massachusetts (SORB, Level 2 and 3) at `/ma/` and all of New Hampshire (State Police public list) at `/nh/`.
 LIVE: https://safewalkmap.vercel.app (Vercel project `safewalkmap` on the 7LayerLabs account).
 
-- `site/` is exactly what gets deployed. `site/index.html` is the city picker; each area lives in its own folder (`site/lowell/`, `site/nashua/`).
-- `site/lowell/index.html` and `sw.js` are the master app. Every city folder runs the same page; city wording, center,
-  state and registry links come from the `region` block in its `data.js` (settings in `tools/regions.mjs`).
-- `data/` and `tools/` stay local and are never deployed.
+- `site/` is exactly what gets deployed: `index.html` (home page), `ma/`, `nh/`, `vercel.json`.
+- `site/ma/index.html` and `site/ma/sw.js` are the master app. `node tools/sync-app.mjs` copies them to `site/nh/` with that
+  state's title, description and manifest. Wording, map start and registry links come from `tools/regions.mjs` via each `data.js`.
+- `site/lowell/sw.js` and `site/nashua/sw.js` only clean up phones that installed the old city apps; `vercel.json` redirects
+  every other old city URL to the state map (`/ma/?town=Lowell`, `/nh/?town=Nashua`).
+- `data/` and `tools/` stay local. Raw registry pulls (`data/ma-raw.csv`, `data/nh-state-raw.csv`, `data/ma-cmd/`) are
+  gitignored. Names, aliases and birth dates are never saved anywhere; each listing keeps only the registry's own link code.
 
-Names and photos are never stored. Each listing carries only the registry's own page code (data/sorb-links.csv), so a pin's
-"See who" button opens that person's official registry page. Hot spots shows a heat map and the 10 busiest quarter-mile areas.
-
+Deep links: `/ma/?town=Boston`, `/nh/?q=12 Main St, Concord`.
 Run locally: `python -m http.server 8793` inside `site/`, then open http://127.0.0.1:8793
-Deploy: from `site/`, `vercel deploy --prod --yes --token <token> --scope 7layerlabs-projects --name safewalkmap`
+Deploy: from `site/`, `vercel deploy --prod --yes --token <token> --scope 7layerlabs-projects`
 
-## Refresh the Lowell data (registry changes often; redo right before Halloween)
-1. A person opens https://sorb.chs.state.ma.us/sorbpublic/ and accepts the acknowledgement + CAPTCHA themselves.
-2. In that tab, POST the "City, County, Zip" form for each town and export the results table to `data/sorb-raw.csv`
-   (columns: town code, level, status, type, address, salted name hash for de-duping, dupe flag). No names.
-   Save each row's viewOffenderDetails `_p` code, in the same row order, to `data/sorb-links.csv`; the build checks every row matches.
-3. `node tools/geocode.mjs` looks up only new addresses (Census first, OpenStreetMap for misses) into `data/geocache.json`.
-   `node tools/check-geocodes.mjs` flags Census guesses more than 150 m from an OSM building; fix those in the cache.
-4. `node tools/build-data.mjs` writes `site/lowell/data.js` (update `AS_OF` in that script).
-5. Bump the cache name in `site/lowell/sw.js` so installed phones pick up the new data, then deploy.
+## Refresh (registries change often; redo right before Halloween)
+Massachusetts (needs a person for the CAPTCHA):
+1. `node tools/ma-pull.mjs` opens Chrome on the SORB search. The person accepts the terms and CAPTCHA and opens the
+   City, County, Zip search, then leaves the window open.
+2. Copy `tools/ma-pull-counties.js` to `data/ma-cmd/pull.js`. It searches every county (each comes back on one page) and
+   writes `data/ma-cmd/pull.out`; save the part after the `@@CSV@@` line as `data/ma-raw.csv`.
+3. `node tools/build-ma.mjs` (update `AS_OF`) geocodes new addresses (Census, then OpenStreetMap), re-checks Census hits
+   that landed on a different street, and writes `site/ma/data.js`.
 
-## Refresh the Nashua data (NH State Police registry, no CAPTCHA)
-1. `node tools/nh-scrape.mjs NASHUA HUDSON MERRIMACK LITCHFIELD HOLLIS AMHERST` opens Chrome and saves `data/nh-raw.csv`
-   (registry offender ID and listed address only).
-2. `node tools/build-nashua.mjs` geocodes new addresses, writes `site/nashua/data.js` (update `AS_OF`), and copies the
-   master app, worker, icons and manifest from `site/lowell/`. Re-run it after any change to the Lowell app.
-3. Bump the cache version in `site/lowell/sw.js` first if the app changed, then deploy.
+New Hampshire (no CAPTCHA):
+1. `node tools/nh-scrape.mjs --state` writes `data/nh-state-raw.csv`.
+2. `node tools/build-nh.mjs` (update `AS_OF`) writes `site/nh/data.js`.
 
-## Adding a city
-Add its settings to `tools/regions.mjs`, pull its registry, write a build like `tools/build-nashua.mjs` that outputs
-`site/<city>/data.js` and copies the master app, then flip its card on `site/index.html` from "Coming soon" to a live link.
+Then, if the app changed, bump the cache version in `site/ma/sw.js`, run `node tools/sync-app.mjs`, and deploy.
