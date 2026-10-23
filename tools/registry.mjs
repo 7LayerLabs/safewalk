@@ -26,7 +26,7 @@ export function parseAddress(raw) {
   const zip = m[2] || '';
   const first = parts[0] || '';
   const street = parts.length > 1 && /^\d/.test(first)
-    ? first.toUpperCase().replace(/\s+/g, ' ').split(' ').map(w => SUFFIX[w] || w).join(' ')
+    ? first.toUpperCase().replace(/\s+/g, ' ').split(' ').map((w, i, a) => (i === a.length - 1 && SUFFIX[w]) || w).join(' ') // last word only: COURT ST stays COURT ST
     : '';
   return { street, city: city || 'LOWELL', zip, mappable: mappable && !!street };
 }

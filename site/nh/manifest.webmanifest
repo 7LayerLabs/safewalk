@@ -1,7 +1,7 @@
 {
-  "name": "SafeWalk Nashua",
-  "short_name": "SafeWalk",
-  "description": "Halloween walking map of public registry addresses in Nashua, NH and the five towns around it.",
+  "name": "SafeWalk New Hampshire",
+  "short_name": "SafeWalk NH",
+  "description": "Halloween walking map of addresses on the New Hampshire State Police public offender registry, statewide, with walk alerts.",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",

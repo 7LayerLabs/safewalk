@@ -1,5 +1,35 @@
 // Per-city settings the app reads from data.js. The app page itself is the same file in every city folder.
+// Statewide maps (home: '' means every address shows its town; zoom is the starting zoom for the whole state)
 export const REGIONS = {
+  ma: {
+    slug: 'ma', name: 'Massachusetts', area: 'Massachusetts', home: '', homeName: '', state: 'MA', stateName: 'Massachusetts',
+    center: [42.25, -71.8], zoom: 9, viewbox: '-73.51,42.89,-69.86,41.18',
+    levels: true,
+    registryName: 'MA SORB public registry',
+    registryHome: 'https://sorb.chs.state.ma.us/',
+    whoUrl: 'https://sorb.chs.state.ma.us/sorbpublic/viewOffenderDetails.action?_p=',
+    terms: true,
+    intro: 'A Halloween walking map. Red pins mark addresses tied to Level 2 and Level 3 registrants on the Massachusetts Sex Offender Registry, statewide.',
+    sourceNote: 'From the Massachusetts Sex Offender Registry Board public search',
+    scopeNote: 'Level 1 registrants are not public and are not shown.',
+    law: 'Under Massachusetts law (M.G.L. c. 6, section 178N), using registry information to commit a crime, or to harass or discriminate against anyone, is illegal.',
+    // Page and install wording, filled in by tools/sync-app.mjs
+    description: 'Halloween walking map of Level 2 and Level 3 registered sex offender addresses across Massachusetts, from the public MA SORB registry, with walk alerts.',
+  },
+  nh: {
+    slug: 'nh', name: 'New Hampshire', area: 'New Hampshire', home: '', homeName: '', state: 'NH', stateName: 'New Hampshire',
+    center: [43.65, -71.55], zoom: 8, viewbox: '-72.56,45.31,-70.60,42.69',
+    levels: false,
+    registryName: 'NH State Police public registry',
+    registryHome: 'https://business.nh.gov/nsor/',
+    whoUrl: 'https://business.nh.gov/nsor/Display.aspx?offenderID=',
+    terms: false,
+    intro: 'A Halloween walking map. Red pins mark the reported addresses of everyone on the New Hampshire State Police public offender registry, statewide.',
+    sourceNote: 'From the New Hampshire State Police public offender registry',
+    scopeNote: 'New Hampshire does not publish risk tiers, so pins show no level. Out-of-state addresses are left off.',
+    law: 'Using registry information to commit a crime, or to harass, threaten or discriminate against anyone, is illegal.',
+    description: 'Halloween walking map of addresses on the New Hampshire State Police public offender registry, statewide, with walk alerts.',
+  },
   lowell: {
     slug: 'lowell', name: 'Greater Lowell', area: 'Lowell area', home: 'LOWELL', homeName: 'Lowell', state: 'MA',
     center: [42.6395, -71.3165], viewbox: '-71.52,42.73,-71.15,42.50',

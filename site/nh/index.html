@@ -3,12 +3,12 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>SafeWalk Nashua</title>
-<meta name="description" content="Halloween walking map of addresses on the New Hampshire State Police public offender registry in Nashua, Hudson, Merrimack, Litchfield, Hollis and Amherst, NH.">
+<title>SafeWalk New Hampshire</title>
+<meta name="description" content="Halloween walking map of addresses on the New Hampshire State Police public offender registry, statewide, with walk alerts.">
 <meta name="theme-color" content="#0e1014">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="SafeWalk">
+<meta name="apple-mobile-web-app-title" content="SafeWalk NH">
 <link rel="manifest" href="manifest.webmanifest">
 <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="icons/icon-192.png">
@@ -194,9 +194,6 @@
     border-radius: 9px; background: #fff; color: #a8001a; font: 800 11px/18px "Manrope", sans-serif; text-align: center;
     box-shadow: 0 1px 4px rgba(0,0,0,.35);
   }
-  .dot-pin { border-radius: 50%; border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.45); }
-  .dot-pin.l3 { background: var(--red-deep); }
-  .dot-pin.l2 { background: var(--red); }
   .pin.hot { animation: hot 1.1s ease-in-out infinite; }
   @keyframes hot { 50% { transform: scale(1.18); } }
   .me-dot { width: 20px; height: 20px; border-radius: 50%; background: var(--blue); border: 3px solid #fff; box-shadow: 0 0 0 0 rgba(47,123,255,.6), 0 2px 6px rgba(0,0,0,.35); animation: ping 2s infinite; }
@@ -309,7 +306,7 @@
 <div id="map" aria-label="Map of registry addresses"></div>
 
 <header class="topbar">
-  <a class="brand" href="../" aria-label="SafeWalk home: all cities">
+  <a class="brand" href="../" aria-label="SafeWalk home: both states">
     <div class="brand-mark" aria-hidden="true">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s7-6.2 7-12a7 7 0 1 0-14 0c0 5.8 7 12 7 12z"/><path d="M12 7v4"/><path d="M12 14.5h.01"/></svg>
     </div>
@@ -378,7 +375,7 @@
       <button data-ft="500" aria-pressed="false">500 ft</button>
     </div>
   </div>
-  <div class="list-title" id="listTitle">All flagged addresses</div>
+  <div class="list-title" id="listTitle">Flagged addresses in view</div>
   <div class="list" id="list"></div>
 </section>
 
@@ -395,7 +392,7 @@
       <li><b>Arrow button</b> shows where you are and lists the closest pins.</li>
       <li><b>Walk button</b> turns on alerts. Your phone buzzes and a red banner shows when you get within your alert distance of a pin. Keep the app open while you walk.</li>
       <li><b>Search</b> any street to check a route before you head out.</li>
-      <li><b>Hot spots</b> shows a heat map and ranks the busiest areas: the most people listed within a quarter mile.</li>
+      <li><b>Hot spots</b> shows a heat map and ranks the busiest areas in view: the most people listed within a quarter mile. Move the map and the ranking follows.</li>
       <li>Tap a pin, then <b>See who</b> to open that person's page on the official state registry.</li>
       <li>On a phone, use your browser's <b>Add to Home Screen</b> to install it like an app.</li>
     </ul>
@@ -446,6 +443,15 @@
   const WHO_URL = R.whoUrl;
   const lvlClass = lvl => HAS_LEVELS ? 'l' + lvl : 'l2';
   const HOT_R = 402; // hotspot radius: 1/4 mile
+  const LIST_MAX = 100; // a statewide list is thousands of rows, so the sheet shows the closest ones
+  const STATEWIDE = (DATA.towns || []).length > 12;
+  // Two listings can share a street and town (different zips); keys must stay unique for pins and list rows
+  const seenKeys = new Map();
+  for (const loc of DATA.locations) {
+    const k = loc.street + '|' + loc.city, n = seenKeys.get(k) || 0;
+    seenKeys.set(k, n + 1);
+    loc.key = n ? `${k}#${n}` : k;
+  }
 
   const $ = id => document.getElementById(id);
   const store = {
@@ -460,7 +466,7 @@
     following: false,
     walking: false,
     hotspots: false,
-    hot: [],            // ranked busiest areas, rebuilt when filters change
+    hot: [],            // ranked busiest areas in view, rebuilt when the map moves or filters change
     watchId: null,
     wakeLock: null,
     alerted: new Set(),
@@ -506,13 +512,35 @@
     const f = state.filters;
     return loc.entries.filter(e => (!HAS_LEVELS || (e.level === 3 ? f.level3 : f.level2)) && f[TYPE_GROUP[e.type]]);
   }
-  function visibleLocs() {
-    return DATA.locations.map(loc => ({ loc, entries: visibleEntries(loc) })).filter(v => v.entries.length);
-  }
   const topLevel = entries => HAS_LEVELS ? Math.max(...entries.map(e => e.level)) : 0;
+  // Built once per filter change and shared by pins, list, hotspots and alerts
+  let visCache = null;
+  const visByKey = new Map();
+  function visibleLocs() {
+    if (visCache) return visCache;
+    visCache = []; visByKey.clear();
+    for (const loc of DATA.locations) {
+      const entries = visibleEntries(loc);
+      if (!entries.length) continue;
+      const v = { loc, entries, lvl: topLevel(entries) };
+      visCache.push(v); visByKey.set(loc.key, v);
+    }
+    return visCache;
+  }
+  const inBox = (b, loc) => loc.lat >= b.s && loc.lat <= b.n && loc.lng >= b.w && loc.lng <= b.e;
+  const box = bounds => ({ s: bounds.getSouth(), n: bounds.getNorth(), w: bounds.getWest(), e: bounds.getEast() });
+  const dataBounds = DATA.locations.length ? L.latLngBounds(DATA.locations.map(l => [l.lat, l.lng])) : null;
+  // The part of the map people can actually see: not behind the side panel (desktop) or the sheet (phone)
+  function viewArea() {
+    const size = map.getSize(), wide = window.innerWidth >= 900;
+    const peek = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sheet-peek')) || 200;
+    const tl = L.point(wide ? Math.min(432, size.x / 2) : 0, 0), br = L.point(size.x, wide ? size.y : Math.max(size.y / 2, size.y - peek));
+    const bounds = L.latLngBounds(map.containerPointToLatLng(tl), map.containerPointToLatLng(br));
+    return { bounds, b: box(bounds), center: map.containerPointToLatLng(tl.add(br).divideBy(2)) };
+  }
 
   // ---------- map ----------
-  const map = L.map('map', { zoomControl: false, attributionControl: true, tap: true }).setView(R.center, 14);
+  const map = L.map('map', { zoomControl: false, attributionControl: true, tap: true }).setView(R.center, R.zoom || 14);
   // Streets come from OpenFreeMap (free, no key, built for app traffic). OSM's volunteer tile servers
   // block busy apps, so they are only a fallback for phones without WebGL.
   const STYLES = { light: 'https://tiles.openfreemap.org/styles/liberty', dark: 'https://tiles.openfreemap.org/styles/dark' };
@@ -532,22 +560,27 @@
     }).addTo(map);
   }
   let shownStyle = startTheme;
+  let dotsReady = false; // canvas dots take their colors from the theme, so they repaint when it changes
   function setTheme(theme) {
     document.documentElement.dataset.theme = theme;
     document.querySelector('meta[name="theme-color"]').content = theme === 'dark' ? '#0e1014' : '#f4f2ee';
     store.set('theme', theme);
     if (base && theme !== shownStyle) { shownStyle = theme; base.getMaplibreMap().setStyle(STYLES[theme]); }
+    if (dotsReady) styleDots(true);
   }
   setTheme(startTheme);
 
-  const COMPACT_BELOW = 15; // zoomed out: dots instead of pins so the city view stays readable
+  const COMPACT_BELOW = 15; // zoomed out: canvas dots instead of pins so the state view stays readable and smooth
+  const RING_FROM = 13;     // walk-alert rings only where a few hundred feet is visible
+  // Icons are shared by every pin with the same look, so a pin only redraws when its look changes
+  const iconCache = new Map();
   function pinIcon(level, count, hot) {
+    const id = `${level}|${count}|${hot}`;
+    if (!iconCache.has(id)) iconCache.set(id, makePinIcon(level, count, hot));
+    return iconCache.get(id);
+  }
+  function makePinIcon(level, count, hot) {
     const big = level === 3;
-    if (map.getZoom() < COMPACT_BELOW && !hot) {
-      const s = big ? 14 : 11;
-      const html = `<div class="dot-pin ${lvlClass(level)}" style="width:${s}px;height:${s}px"></div>`;
-      return L.divIcon({ html, className: '', iconSize: [s, s], iconAnchor: [s / 2, s / 2], popupAnchor: [0, -s / 2] });
-    }
     const w = big ? 34 : 28, h = Math.round(w * 1.3);
     const fill = big ? 'var(--red-deep)' : 'var(--red)';
     const html = `<div class="pin${hot ? ' hot' : ''}" style="width:${w}px;height:${h}px">
@@ -573,47 +606,143 @@
   // Keep opened popups clear of the search bar (top) and the button column (right)
   const POPUP_OPTS = { maxWidth: 280, autoPanPaddingTopLeft: L.point(12, 84), autoPanPaddingBottomRight: L.point(72, 20) };
 
-  let wasCompact = map.getZoom() < COMPACT_BELOW;
-  map.on('zoomend', () => {
-    const compact = map.getZoom() < COMPACT_BELOW;
-    map.getContainer().classList.toggle('close-in', map.getZoom() >= 16); // hotspot numbers are for the overview; up close the pins speak
-    if (compact !== wasCompact) { wasCompact = compact; renderPins(); }
-  });
-  const pinLayer = L.layerGroup().addTo(map);
-  const ringLayer = L.layerGroup().addTo(map);
-  const markers = new Map(); // street key -> marker
+  // Thousands of addresses: the overview draws every one as a dot on a single canvas, and full pins
+  // (DOM elements) are made only for addresses near the view once zoomed in. Panes keep dots above the
+  // heat map and street highlight, and walk rings below everything.
+  map.createPane('dots').style.zIndex = 450;
+  map.createPane('rings').style.zIndex = 350;
+  const dotRenderer = L.canvas({ pane: 'dots', padding: 0.3, tolerance: 6 }); // tolerance widens the tap target
+  const ringRenderer = L.canvas({ pane: 'rings', padding: 0.3 });
+  const dotLayer = L.featureGroup();
+  const dotPopup = L.popup({ ...POPUP_OPTS, offset: [0, -2] });
+  dotLayer.on('click', e => { const m = e.propagatedFrom; dotPopup.setLatLng(m.getLatLng()).setContent(popupHtml(m.v.loc, m.v.entries)).openOn(map); });
 
-  function renderPins() {
-    pinLayer.clearLayers(); ringLayer.clearLayers(); markers.clear();
-    for (const { loc, entries } of visibleLocs()) {
-      const lvl = topLevel(entries);
-      const key = loc.street + '|' + loc.city;
-      const hot = state.alerted.has(key);
-      const m = L.marker([loc.lat, loc.lng], { icon: pinIcon(lvl, entries.length, hot), riseOnHover: true, zIndexOffset: lvl === 3 ? 500 : 0, keyboard: true, title: addrOf(loc) })
-        .bindPopup(() => popupHtml(loc, entries), POPUP_OPTS);
-      m.addTo(pinLayer); markers.set(key, m);
-      if (state.walking) {
-        L.circle([loc.lat, loc.lng], {
-          radius: state.radiusFt / FT_PER_M, color: '#e0222f', weight: 1, opacity: .45, fillOpacity: .07, interactive: false
-        }).addTo(ringLayer);
-      }
+  // Dot size follows zoom so a whole state does not turn into one red smear
+  const dotBucket = z => z >= 13 ? 3 : z >= 11 ? 2 : z >= 9 ? 1 : 0;
+  let dotSize = -1;
+  function dotStyle(lvl, bucket) {
+    const css = getComputedStyle(document.documentElement);
+    const big = lvl === 3;
+    return {
+      radius: [1.8, 2.5, 3.5, 4.5][bucket] + (big ? [0.4, 0.5, 1, 1][bucket] : 0), weight: [0.6, 1, 1.5, 2][bucket], color: '#fff', opacity: 1,
+      fillColor: css.getPropertyValue(big ? '--red-deep' : '--red').trim(), fillOpacity: 1,
+    };
+  }
+  function styleDots(force) {
+    const b = dotBucket(map.getZoom());
+    if (b === dotSize && !force) return;
+    dotSize = b;
+    const looks = { 3: dotStyle(3, b), 2: dotStyle(2, b), 0: dotStyle(0, b) };
+    dotLayer.eachLayer(m => m.setStyle(looks[m.v.lvl])); // setStyle also applies the radius
+  }
+  function buildDots() {
+    const on = map.hasLayer(dotLayer);
+    if (on) map.removeLayer(dotLayer);
+    dotLayer.clearLayers();
+    const b = dotBucket(map.getZoom());
+    dotSize = b;
+    const looks = { 3: dotStyle(3, b), 2: dotStyle(2, b), 0: dotStyle(0, b) };
+    // Level 2 first so Level 3 dots paint on top
+    const vis = [...visibleLocs()].sort((a, b) => a.lvl - b.lvl);
+    for (const v of vis) {
+      const m = L.circleMarker([v.loc.lat, v.loc.lng], { renderer: dotRenderer, bubblingMouseEvents: false, ...looks[v.lvl] });
+      m.v = v; dotLayer.addLayer(m);
     }
+    dotsReady = true;
+    if (on) map.addLayer(dotLayer);
   }
 
+  map.on('zoomend', () => {
+    map.getContainer().classList.toggle('close-in', map.getZoom() >= 16); // hotspot numbers are for the overview; up close the pins speak
+    styleDots();
+  });
+  const pinLayer = L.layerGroup().addTo(map);
+  const markers = new Map(); // street key -> full pin currently on the map
+  const rings = new Map();   // street key -> walk-alert ring currently on the map
+
+  // Diff what should be on screen against what is: never redraws pins that stay put
+  function syncPins() {
+    const z = map.getZoom(), compact = z < COMPACT_BELOW;
+    if (compact !== map.hasLayer(dotLayer)) compact ? dotLayer.addTo(map) : map.removeLayer(dotLayer);
+    const area = box(map.getBounds().pad(0.3));
+    const wantRings = state.walking && z >= RING_FROM;
+    const want = new Map(), ringWant = new Set();
+    for (const v of visibleLocs()) {
+      const near = inBox(area, v.loc);
+      // Alerted addresses always get the big pulsing pin, even in the overview
+      if ((near && !compact) || state.alerted.has(v.loc.key)) want.set(v.loc.key, v);
+      if (near && wantRings) ringWant.add(v.loc.key);
+    }
+    for (const [k, m] of markers) {
+      if (want.has(k) || (m.isPopupOpen() && visByKey.has(k))) continue;
+      pinLayer.removeLayer(m); markers.delete(k);
+    }
+    for (const [k, v] of want) {
+      const icon = pinIcon(v.lvl, v.entries.length, state.alerted.has(k));
+      const m = markers.get(k);
+      if (m) { m.v = v; if (m.options.icon !== icon) m.setIcon(icon); continue; }
+      const p = L.marker([v.loc.lat, v.loc.lng], { icon, riseOnHover: true, zIndexOffset: v.lvl === 3 ? 500 : 0, keyboard: true, title: addrOf(v.loc) });
+      p.v = v;
+      p.bindPopup(() => popupHtml(p.v.loc, p.v.entries), POPUP_OPTS).addTo(pinLayer);
+      markers.set(k, p);
+    }
+    for (const [k, c] of rings) if (!ringWant.has(k)) { c.remove(); rings.delete(k); }
+    for (const k of ringWant) {
+      if (rings.has(k)) continue;
+      const loc = visByKey.get(k).loc;
+      rings.set(k, L.circle([loc.lat, loc.lng], {
+        renderer: ringRenderer, radius: state.radiusFt / FT_PER_M, color: '#e0222f', weight: 1, opacity: .45, fillOpacity: .07, interactive: false
+      }).addTo(map));
+    }
+  }
+  function clearRings() { for (const c of rings.values()) c.remove(); rings.clear(); }
+
   // ---------- hotspots ----------
-  // Greedy: the spot with the most people within 1/4 mile wins, its neighbors are claimed, repeat
+  // Greedy over the addresses in view: the spot with the most people within 1/4 mile wins, its neighbors
+  // are claimed, repeat. A grid of 1/4 mile cells means each spot only checks the 9 cells around it, and
+  // since claiming can only lower a spot's count, a spot is re-scored only when it reaches the top.
   function findHotspots() {
-    const left = new Set(visibleLocs());
-    const out = [];
-    while (left.size && out.length < 10) {
-      let best = null;
-      for (const v of left) {
-        if (out.some(h => distM(h, v.loc) < HOT_R * 1.6)) continue; // keep hotspot circles from stacking
-        const members = [...left].filter(o => distM(v.loc, o.loc) <= HOT_R);
-        const people = members.reduce((s, o) => s + o.entries.length, 0);
-        if (!best || people > best.people || (people === best.people && members.length > best.members.length)) best = { members, people };
+    const b = viewArea().b;
+    const pool = visibleLocs().filter(v => inBox(b, v.loc));
+    // Flat meters are plenty accurate across a quarter mile
+    const kx = 111320 * Math.cos((b.s + b.n) / 2 * Math.PI / 180), ky = 110540;
+    const grid = new Map();
+    const cellOf = (cx, cy) => cx * 1e6 + cy;
+    for (const v of pool) {
+      v.x = v.loc.lng * kx; v.y = v.loc.lat * ky;
+      v.cx = Math.floor(v.x / HOT_R); v.cy = Math.floor(v.y / HOT_R);
+      const c = cellOf(v.cx, v.cy);
+      if (!grid.has(c)) grid.set(c, []);
+      grid.get(c).push(v);
+    }
+    const left = new Set(pool);
+    const R2 = HOT_R * HOT_R;
+    function score(v) {
+      const members = [];
+      let people = 0;
+      for (let dx = -1; dx <= 1; dx++) for (let dy = -1; dy <= 1; dy++) {
+        for (const o of grid.get(cellOf(v.cx + dx, v.cy + dy)) || []) {
+          if (left.has(o) && (o.x - v.x) ** 2 + (o.y - v.y) ** 2 <= R2) { members.push(o); people += o.entries.length; }
+        }
       }
-      if (!best || best.people < 3) break;
+      return { v, members, people };
+    }
+    const better = (a, b) => b.people - a.people || b.members.length - a.members.length;
+    const queue = pool.map(score).filter(c => c.people >= 3).sort(better);
+    const out = [];
+    while (queue.length && out.length < 10) {
+      const top = queue.shift();
+      if (!left.has(top.v)) continue;
+      if (out.some(h => distM(h, top.v.loc) < HOT_R * 1.6)) continue; // keep hotspot circles from stacking
+      const best = score(top.v);
+      if (best.people < 3) continue;
+      // Count dropped since it was scored: put it back in line unless it still beats the next spot
+      if (queue.length && better(best, queue[0]) > 0) {
+        let lo = 0, hi = queue.length;
+        while (lo < hi) { const mid = (lo + hi) >> 1; if (better(queue[mid], best) <= 0) lo = mid + 1; else hi = mid; }
+        queue.splice(lo, 0, best);
+        continue;
+      }
       best.members.forEach(m => left.delete(m));
       const w = best.people;
       const lat = best.members.reduce((s, m) => s + m.loc.lat * m.entries.length, 0) / w;
@@ -640,17 +769,20 @@
     gradient: { .25: '#ffd36b', .5: '#ff9a3d', .75: '#ff3b47', 1: '#a8001a' } });
   const hotLayer = L.layerGroup();
   function hotPopup(h, i) {
-    return `<div class="pop-addr">#${i + 1} busiest area</div>
+    return `<div class="pop-addr">#${i + 1} busiest area in view</div>
       <div class="pop-sub">Around ${h.name}</div>
       <p class="pop-hot"><b>${h.people} people</b> listed at <b>${h.addrs} address${h.addrs > 1 ? 'es' : ''}</b> within 1/4 mile.${HAS_LEVELS ? ` <b>${h.l3}</b> ${h.l3 === 1 ? 'is' : 'are'} Level 3.` : ''}</p>
       ${h.oneBuilding ? '<p class="pop-hot">Most of these are at one building, likely a facility such as a hospital or shelter.</p>' : ''}
       <button class="pop-zoom" data-zoom="${i}">Zoom in and see the pins</button>`;
   }
+  let heatStale = true; // the heat map holds every address, so it only changes with the filters
+  let hotStale = false; // a move while a hotspot popup is open waits for the popup to close
+  function hotPopupOpen() { let open = false; hotLayer.eachLayer(l => { if (l.isPopupOpen?.()) open = true; }); return open; }
   function renderHot() {
-    hotLayer.clearLayers();
+    hotLayer.clearLayers(); hotStale = false;
     if (!state.hotspots) { state.hot = []; return; }
     state.hot = findHotspots();
-    heat.setLatLngs(visibleLocs().map(v => [v.loc.lat, v.loc.lng, v.entries.length]));
+    if (heatStale) { heatStale = false; heat.setLatLngs(visibleLocs().map(v => [v.loc.lat, v.loc.lng, v.entries.length])); }
     state.hot.forEach((h, i) => {
       const strength = Math.min(1, h.people / state.hot[0].people);
       L.circle([h.lat, h.lng], { radius: HOT_R, color: '#d10024', weight: 2, opacity: .35 + .5 * strength, dashArray: i ? '5 7' : null,
@@ -673,13 +805,11 @@
     $('hotBtn').classList.toggle('active', on);
     $('hotBtn').setAttribute('aria-pressed', on);
     if (on) { heat.addTo(map); hotLayer.addTo(map); } else { map.removeLayer(heat); map.removeLayer(hotLayer); }
-    refresh();
-    if (on && state.hot.length) {
-      toast(`Top ${state.hot.length} busiest areas. Tap a number for details.`);
-      const wide = window.innerWidth >= 900;
-      map.flyToBounds(L.latLngBounds(state.hot.map(h => [h.lat, h.lng])).pad(0.15), { paddingTopLeft: wide ? [440, 40] : [20, 90], paddingBottomRight: wide ? [40, 40] : [20, 220], maxZoom: 15, duration: .8 });
-    }
+    renderHot(); renderList(); requestAnimationFrame(setPeek);
+    // Rankings follow the view, so the map stays put; zoom out for the whole state
+    if (on) toast(state.hot.length ? `Top ${state.hot.length} busiest areas in view. Tap a number for details.` : 'No busy areas in view. Zoom out to see more.');
   }
+  map.on('popupclose', () => { if (hotStale) setTimeout(() => { if (hotStale && !hotPopupOpen()) { renderHot(); renderList(); } }); });
   $('hotBtn').addEventListener('click', () => setHotspots(!state.hotspots));
   document.addEventListener('click', e => {
     const z = e.target.closest('[data-zoom]'); if (z) zoomToHot(+z.dataset.zoom);
@@ -705,82 +835,107 @@
   $('termsModal').addEventListener('click', e => { if (e.target.id === 'termsModal') $('termsModal').classList.remove('show'); });
 
   // ---------- list / sheet ----------
+  // Rows are built only where someone can see them: a closed phone sheet shows just the counts, so moving
+  // the map never lays out a hidden list. The rows land when the sheet opens.
+  let pendingRows = null;
+  function setRows(html) {
+    if (window.innerWidth < 900 && !$('sheet').classList.contains('open')) { pendingRows = html; return; }
+    pendingRows = null; $('list').innerHTML = html;
+  }
+  function flushRows() { if (pendingRows != null) { $('list').innerHTML = pendingRows; pendingRows = null; } }
   function renderHotList() {
-    const list = $('list');
     $('statusNum').textContent = state.hot.length;
-    $('statusText').textContent = state.hot.length === 1 ? 'busy area' : 'busiest areas';
-    $('statusSub').textContent = 'Ranked by people listed within 1/4 mile. Tap one to zoom in.';
-    $('listTitle').textContent = 'Busiest areas';
-    if (!state.hot.length) { list.innerHTML = '<div class="empty">No area has 3 or more people with these filters.</div>'; return; }
-    list.innerHTML = state.hot.map((h, i) => `<button class="row" data-hot="${i}">
+    $('statusText').textContent = state.hot.length === 1 ? 'busy area in view' : 'busiest areas in view';
+    $('statusSub').textContent = 'Ranked by people listed within 1/4 mile. Tap one to zoom in. Move the map to rank another area.';
+    $('listTitle').textContent = 'Busiest areas in view';
+    if (!state.hot.length) { setRows('<div class="empty">No area in view has 3 or more people with these filters. Zoom out to see more.</div>'); return; }
+    setRows(state.hot.map((h, i) => `<button class="row" data-hot="${i}">
         <span class="row-pin rank${i ? '' : ' top'}">${i + 1}</span>
         <span class="row-main"><div class="row-addr">Around ${h.name}</div>
           <div class="row-meta">${h.people} people at ${h.addrs} address${h.addrs > 1 ? 'es' : ''}.${HAS_LEVELS ? ` ${h.l3} Level 3.` : ''}${h.oneBuilding ? ' Mostly one building.' : ''}</div></span>
         ${state.ref ? `<span class="row-dist">${fmtDist(distM(state.ref, h))}</span>` : ''}
-      </button>`).join('');
+      </button>`).join(''));
   }
   function renderList() {
     if (state.hotspots) return renderHotList();
     const vis = visibleLocs();
-    const nEntries = vis.reduce((s, v) => s + v.entries.length, 0);
-    const list = $('list');
-    const onStreetKey = state.ref && state.ref.kind === 'search' ? state.ref.street : null;
-    let items = vis.map(v => ({ ...v, d: state.ref ? refDist(v.loc) : null, onStreet: !!onStreetKey && streetKey(v.loc.street) === onStreetKey }));
+    const plural = (n, one, many) => n === 1 ? one : many;
+    let items, shownOf;
 
     if (state.ref) {
-      // Searched street first (nearest first), then everything else by distance
-      items.sort((a, b) => (b.onStreet - a.onStreet) || a.d - b.d);
+      // Searched street first (nearest first), then everything else by distance, cut to the closest ones
+      const onStreetKey = state.ref.kind === 'search' ? state.ref.street : null;
+      const all = vis.map(v => ({ ...v, d: refDist(v.loc), onStreet: !!onStreetKey && streetKey(v.loc.street) === onStreetKey }));
+      all.sort((a, b) => (b.onStreet - a.onStreet) || a.d - b.d);
       const quarterMi = 402;
-      const near = items.filter(i => i.d <= quarterMi);
+      const near = all.filter(i => i.d <= quarterMi);
+      items = all.slice(0, LIST_MAX); shownOf = all.length;
       $('statusNum').textContent = near.length;
-      $('statusText').textContent = (near.length === 1 ? 'flagged address within 1/4 mile' : 'flagged addresses within 1/4 mile') + (state.ref.line ? ' of this street' : '');
+      $('statusText').textContent = plural(near.length, 'flagged address within 1/4 mile', 'flagged addresses within 1/4 mile') + (state.ref.line ? ' of this street' : '');
+      const closest = all[0];
       $('statusSub').textContent = state.ref.kind === 'gps'
-        ? (items[0] ? `Closest is ${fmtDist(items[0].d)} away at ${addrOf(items[0].loc)}.` : 'No pins match your filters.')
+        ? (closest ? `Closest is ${fmtDist(closest.d)} away at ${addrOf(closest.loc)}.` : 'No pins match your filters.')
         : `${state.ref.line ? 'Along' : 'Around'} ${state.ref.label}.` + (state.ref.road
-          ? (() => { const n = items.filter(i => i.onStreet).length; return n ? ` ${n} on ${state.ref.road} itself.` : ` None on ${state.ref.road} itself.`; })()
+          ? (() => { const n = all.filter(i => i.onStreet).length; return n ? ` ${n} on ${state.ref.road} itself.` : ` None on ${state.ref.road} itself.`; })()
           : '');
-      $('listTitle').textContent = state.ref.kind === 'gps' ? 'Closest to you' : 'Your street first, then closest';
+      const title = state.ref.kind === 'gps' ? 'Closest to you' : 'Your street first, then closest';
+      $('listTitle').textContent = shownOf > LIST_MAX ? `${title}, top ${LIST_MAX}` : title;
     } else {
-      items.sort((a, b) => topLevel(b.entries) - topLevel(a.entries) || a.loc.street.localeCompare(b.loc.street, undefined, { numeric: true }));
-      $('statusNum').textContent = vis.length;
-      $('statusText').textContent = (vis.length === 1 ? 'flagged address in the ' : 'flagged addresses in the ') + R.area;
-      $('statusSub').textContent = `${nEntries} registry listings shown. Tap the arrow to see what is near you.`;
-      $('listTitle').textContent = 'All flagged addresses';
+      // Nothing to measure from: list what is in view, closest to the map center first
+      const { b, bounds, center: c } = viewArea();
+      const kx = Math.cos(c.lat * Math.PI / 180);
+      const inView = vis.filter(v => inBox(b, v.loc));
+      const whole = !!dataBounds && bounds.contains(dataBounds);
+      for (const v of inView) v.c = ((v.loc.lng - c.lng) * kx) ** 2 + (v.loc.lat - c.lat) ** 2;
+      items = inView.sort((a, b) => a.c - b.c).slice(0, LIST_MAX).map(v => ({ ...v, d: null }));
+      shownOf = inView.length;
+      const nEntries = inView.reduce((s, v) => s + v.entries.length, 0);
+      $('statusNum').textContent = inView.length.toLocaleString();
+      $('statusText').textContent = plural(inView.length, 'flagged address ', 'flagged addresses ') + (whole ? 'in ' + R.area : 'in view');
+      $('statusSub').textContent = `${nEntries.toLocaleString()} registry ${plural(nEntries, 'listing', 'listings')}. Tap the arrow to see what is near you.`;
+      $('listTitle').textContent = shownOf > LIST_MAX
+        ? `${shownOf.toLocaleString()} ${whole ? 'in ' + R.area : 'in view'}, showing the closest ${LIST_MAX}`
+        : (whole ? 'All flagged addresses' : 'Flagged addresses in view');
     }
 
+    const place = STATEWIDE ? R.area : 'these towns';
+    const note = `<div class="note">${DATA.unmapped.length.toLocaleString()} more listings in ${place} have no mappable address (most are listed as homeless) and are not shown. <a href="${DATA.source}" target="_blank" rel="noopener">Official registry</a></div>`;
     if (!items.length) {
-      list.innerHTML = '<div class="empty">No pins match these filters.</div>';
+      setRows((vis.length ? '<div class="empty">No pins in view. Move or zoom out the map.</div>' : '<div class="empty">No pins match these filters.</div>') + note);
       return;
     }
     const nearM = state.radiusFt / FT_PER_M;
-    list.innerHTML = items.map(({ loc, entries, d, onStreet }) => {
-      const lvl = topLevel(entries);
+    setRows(items.map(({ loc, entries, lvl, d, onStreet }) => {
       const types = [...new Set(entries.map(e => TYPE_LABEL[e.type]))].join(', ');
       const meta = (onStreet ? '<span class="row-tag">On this street</span>' : '') + (entries.length > 1 ? `${entries.length} listings. ` : '') + types;
-      return `<button class="row" data-key="${loc.street}|${loc.city}">
+      return `<button class="row" data-key="${loc.key.replace(/"/g, '&quot;')}">
         <span class="row-pin ${lvlClass(lvl)}">${HAS_LEVELS ? lvl : entries.length}</span>
         <span class="row-main"><div class="row-addr">${addrOf(loc)}</div><div class="row-meta">${meta}</div></span>
         ${d != null ? `<span class="row-dist${d <= nearM ? ' near' : ''}">${fmtDist(d)}</span>` : ''}
       </button>`;
-    }).join('') + `<div class="note">${DATA.unmapped.length} more listings in these towns have no mappable address (most are listed as homeless) and are not shown. <a href="${DATA.source}" target="_blank" rel="noopener">Official registry</a></div>`;
+    }).join('') + (shownOf > LIST_MAX ? `<div class="empty">${(shownOf - LIST_MAX).toLocaleString()} more not listed. ${state.ref ? 'Only the closest are listed.' : 'The list starts from the middle of the map. Zoom in to narrow it.'}</div>` : '') + note);
   }
 
+  // Fly to an address and open its pin. Full pins only exist near the view, so it is made once the map lands.
+  function openLoc(key) {
+    const v = visByKey.get(key); if (!v) return;
+    state.following = false; syncLocateBtn();
+    if (window.innerWidth < 900) setSheet(false);
+    map.flyTo([v.loc.lat, v.loc.lng], Math.max(map.getZoom(), 17), { duration: 0.8 });
+    map.once('moveend', () => { syncPins(); markers.get(key)?.openPopup(); });
+  }
   $('list').addEventListener('click', e => {
     const row = e.target.closest('.row'); if (!row) return;
     if (row.dataset.hot != null) { state.following = false; syncLocateBtn(); zoomToHot(+row.dataset.hot); return; }
-    const m = markers.get(row.dataset.key); if (!m) return;
-    state.following = false; syncLocateBtn();
-    if (window.innerWidth < 900) setSheet(false);
-    map.flyTo(m.getLatLng(), Math.max(map.getZoom(), 17), { duration: 0.8 });
-    // Zooming in past the dot view redraws every pin, so look the marker up again once the map lands
-    map.once('moveend', () => markers.get(row.dataset.key)?.openPopup());
+    openLoc(row.dataset.key);
   });
 
   document.querySelectorAll('.chip').forEach(chip => chip.addEventListener('click', () => {
     const k = chip.dataset.filter;
     state.filters[k] = !state.filters[k];
     chip.setAttribute('aria-pressed', state.filters[k]);
-    refresh();
+    visCache = null; heatStale = true;
+    buildDots(); refresh();
   }));
 
   function syncRadius() {
@@ -789,7 +944,7 @@
   $('radiusSeg').addEventListener('click', e => {
     const b = e.target.closest('button'); if (!b) return;
     state.radiusFt = +b.dataset.ft; store.set('radius', state.radiusFt); syncRadius();
-    state.alerted.clear(); refresh(); if (state.ref) checkAlerts();
+    state.alerted.clear(); clearRings(); refresh(); if (state.ref) checkAlerts();
   });
   syncRadius();
 
@@ -800,10 +955,11 @@
     const peek = 20 + head + 62 + (parseFloat(getComputedStyle(sheet).paddingBottom) || 0);
     document.documentElement.style.setProperty('--sheet-peek', peek + 'px');
   }
-  function setSheet(open) { sheet.classList.toggle('open', open); }
+  function setSheet(open) { sheet.classList.toggle('open', open); if (open) flushRows(); }
   let drag = null;
   function onDown(e) {
     if (window.innerWidth >= 900) return;
+    flushRows(); // the list peeks into view as soon as the sheet is dragged
     drag = { y: e.clientY, start: sheet.getBoundingClientRect().top, moved: false };
     sheet.classList.add('dragging');
     e.currentTarget.setPointerCapture(e.pointerId);
@@ -848,9 +1004,10 @@
     if (words.length > 1 && DIRS[words[0]]) words[0] = DIRS[words[0]];
     return words.join(' ');
   }
+  // The reference only changes distances, so pins and hotspots stay as they are
   function setRef(ref) {
     state.ref = ref;
-    refresh();
+    renderList(); requestAnimationFrame(setPeek);
   }
 
   function syncLocateBtn() {
@@ -921,7 +1078,7 @@
       try { await state.wakeLock?.release(); } catch {}
       state.wakeLock = null;
     }
-    renderPins();
+    syncPins();
   }
   $('walkBtn').addEventListener('click', () => setWalking(!state.walking));
   document.addEventListener('visibilitychange', async () => {
@@ -948,7 +1105,7 @@
         changed = true;
       }
     }
-    if (changed) renderPins();
+    if (changed) syncPins(); // only the alerted pins change look
     if (nearest) {
       const lvl = topLevel(nearest.entries);
       $('alertTitle').textContent = HAS_LEVELS ? `Heads up: Level ${lvl} address nearby` : 'Heads up: registry address nearby';
@@ -972,16 +1129,18 @@
   });
 
   // Every OSM segment of the named street in that town (dedupe=0 returns each piece), drawn as one glowing line
-  async function highlightStreet(road, town, token) {
-    const url = `https://nominatim.openstreetmap.org/search?format=json&polygon_geojson=1&dedupe=0&limit=50&countrycodes=us&state=${R.state}&city=`
-      + encodeURIComponent(town) + '&street=' + encodeURIComponent(road);
+  async function highlightStreet(road, town, at, token) {
+    const url = `https://nominatim.openstreetmap.org/search?format=json&polygon_geojson=1&dedupe=0&limit=50&countrycodes=us&state=${R.state}`
+      + (town ? '&city=' + encodeURIComponent(town) : '') + '&street=' + encodeURIComponent(road);
+    // Statewide, a street name repeats in many towns: keep only the pieces near the searched spot
+    const reach = town ? 15000 : 3000;
     try {
       const hits = await (await fetch(url)).json();
       if (token !== searchToken) return null; // a newer search started
       const lines = [];
       for (const h of hits) {
         const g = h.class === 'highway' && h.geojson;
-        if (!g) continue;
+        if (!g || distM(at, { lat: +h.lat, lng: +h.lon }) > reach) continue;
         const parts = g.type === 'LineString' ? [g.coordinates] : g.type === 'MultiLineString' ? g.coordinates : [];
         for (const part of parts) lines.push(part.map(([lng, lat]) => [lat, lng]));
       }
@@ -995,14 +1154,21 @@
     e.preventDefault();
     const q = input.value.trim(); if (!q) return;
     input.blur();
-    // Viewbox keeps results inside the covered towns. No town typed: try the main city first, then anywhere in the area.
-    const lookup = async text => (await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&countrycodes=us&bounded=1&viewbox=${R.viewbox}&q=`
+    // Viewbox keeps results inside the covered area. No town typed: try the main city (or, statewide, the part
+    // of the map in view when zoomed in to a town), then anywhere in the state.
+    const lookup = async (text, viewbox) => (await fetch(`https://nominatim.openstreetmap.org/search?format=json&addressdetails=1&limit=1&countrycodes=us&bounded=1&viewbox=${viewbox}&q=`
       + encodeURIComponent(text), { headers: { 'Accept-Language': 'en' } })).json();
-    const namesTown = DATA.towns.some(t => q.toLowerCase().includes(t.toLowerCase()));
+    const lower = q.toLowerCase();
+    const namesTown = (DATA.towns || []).some(t => new RegExp(`(^|[^a-z])${t.toLowerCase().replace(/[^a-z0-9 ]/g, '.')}($|[^a-z])`).test(lower));
+    const vb = map.getBounds().pad(0.2);
+    const viewBox = [vb.getWest(), vb.getNorth(), vb.getEast(), vb.getSouth()].map(n => n.toFixed(4)).join(',');
     try {
-      let hits = await lookup(namesTown ? `${q}, ${R.state}` : `${q}, ${R.homeName}, ${R.state}`);
-      if (!hits.length && !namesTown) hits = await lookup(`${q}, ${R.state}`);
-      if (!hits.length) { toast('No match nearby. Try a street, number and town.'); return; }
+      let hits;
+      if (namesTown) hits = await lookup(`${q}, ${R.state}`, R.viewbox);
+      else if (R.homeName) hits = await lookup(`${q}, ${R.homeName}, ${R.state}`, R.viewbox);
+      else if (map.getZoom() >= 11) hits = await lookup(`${q}, ${R.state}`, viewBox);
+      if (!hits?.length && !namesTown) hits = await lookup(`${q}, ${R.state}`, R.viewbox);
+      if (!hits.length) { toast(`No match in ${R.area}. Try a street, number and town.`); return; }
       const h = hits[0];
       let p = { lat: +h.lat, lng: +h.lon };
       const a = h.address || {};
@@ -1032,13 +1198,13 @@
       map.flyTo([p.lat, p.lng], 16, { duration: .8 });
       if (window.innerWidth < 900) setSheet(false); // keep the highlighted street in view
       if (road) {
-        const line = await highlightStreet(road, a.town || a.city || a.village || R.homeName, token);
+        const line = await highlightStreet(road, a.town || a.city || a.village || a.hamlet || R.homeName, p, token);
         if (line && !a.house_number) {
           // Street-only search: label the middle of the street, measure pins to the street itself, frame it all
           const parts = line.getLatLngs();
           const longest = parts.reduce((m, l) => l.length > m.length ? l : m, []);
           tagMarker.setLatLng(longest[Math.floor(longest.length / 2)]);
-          if (state.ref && state.ref.kind === 'search' && token === searchToken) { state.ref.line = parts; refresh(); }
+          if (state.ref && state.ref.kind === 'search' && token === searchToken) { state.ref.line = parts; renderList(); }
           const wide = window.innerWidth >= 900;
           map.flyToBounds(line.getBounds(), { paddingTopLeft: wide ? [440, 40] : [20, 90], paddingBottomRight: wide ? [40, 40] : [20, 220], maxZoom: 17, duration: .8 });
         }
@@ -1051,12 +1217,14 @@
   // ---------- theme + info ----------
   $('themeBtn').addEventListener('click', () => setTheme(document.documentElement.dataset.theme === 'dark' ? 'light' : 'dark'));
   const asOf = new Date(DATA.asOf + 'T12:00:00').toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
-  const townList = DATA.towns.slice(0, -1).join(', ') + ' and ' + DATA.towns[DATA.towns.length - 1];
-  $('dataNote').textContent = `${R.sourceNote} for ${townList}, captured ${asOf}. ${DATA.total} listings: ${DATA.total - DATA.unmapped.length} have a mappable address and are pinned; ${DATA.unmapped.length} are listed as homeless or have no mappable address. ${R.scopeNote} This app does not store names or photos. Each See who button opens that person's own page on the official state registry.`;
-  // City wording on the page
-  document.title = 'SafeWalk ' + R.homeName;
+  const towns = DATA.towns || [];
+  const where = STATEWIDE || !towns.length ? ', statewide' : ' for ' + towns.slice(0, -1).join(', ') + ' and ' + towns[towns.length - 1];
+  const n = x => x.toLocaleString();
+  $('dataNote').textContent = `${R.sourceNote}${where}, captured ${asOf}. ${n(DATA.total)} listings: ${n(DATA.total - DATA.unmapped.length)} have a mappable address and are pinned; ${n(DATA.unmapped.length)} are listed as homeless or have no mappable address. ${R.scopeNote} This app does not store names or photos. Each See who button opens that person's own page on the official state registry.`;
+  // State wording on the page
+  document.title = 'SafeWalk ' + (R.homeName || R.name);
   $('brandSub').textContent = R.name;
-  $('modalTitle').textContent = 'SafeWalk ' + R.homeName;
+  $('modalTitle').textContent = 'SafeWalk ' + (R.homeName || R.name);
   $('introText').textContent = R.intro;
   $('registryLink').href = R.registryHome;
   $('registryLink').textContent = R.registryName;
@@ -1070,17 +1238,68 @@
   document.addEventListener('keydown', e => { if (e.key === 'Escape') { closeModal(); $('termsModal').classList.remove('show'); } });
 
   // ---------- boot ----------
-  function refresh() { renderPins(); renderHot(); renderList(); requestAnimationFrame(setPeek); }
-  refresh();
+  function refresh() { syncPins(); renderHot(); renderList(); requestAnimationFrame(setPeek); }
+  // Pins, the list and hotspots follow the view. A fly or a fling can end in several moves, so wait a beat.
+  let moveTimer;
+  map.on('moveend', () => { clearTimeout(moveTimer); moveTimer = setTimeout(onMoved, 80); });
+  function onMoved() {
+    syncPins();
+    if (state.hotspots) { if (hotPopupOpen()) hotStale = true; else renderHot(); }
+    if (state.hotspots || !state.ref) { renderList(); requestAnimationFrame(setPeek); }
+  }
   window.addEventListener('resize', setPeek);
   document.fonts?.ready.then(setPeek);
-  // Keep pins clear of the side panel (desktop) or bottom sheet (phone)
-  const vis = visibleLocs();
+
+  // Start on the whole state, clear of the side panel (desktop) or bottom sheet (phone)
+  setPeek();
   const wide = window.innerWidth >= 900;
   const peekPx = parseFloat(getComputedStyle(document.documentElement).getPropertyValue('--sheet-peek')) || 200;
-  map.fitBounds(L.latLngBounds(vis.map(v => [v.loc.lat, v.loc.lng])), wide
-    ? { paddingTopLeft: [440, 30], paddingBottomRight: [80, 30] }
-    : { paddingTopLeft: [16, 80], paddingBottomRight: [16, peekPx + 10] });
+  const vbox = (R.viewbox || '').split(',').map(Number);
+  const startBounds = R.home || vbox.length !== 4 ? dataBounds : L.latLngBounds([[vbox[1], vbox[0]], [vbox[3], vbox[2]]]);
+  if (startBounds) {
+    map.fitBounds(startBounds, { animate: false, ...(wide
+      ? { paddingTopLeft: [440, 30], paddingBottomRight: [80, 30] }
+      : { paddingTopLeft: [16, 80], paddingBottomRight: [16, peekPx + 10] }) });
+    map.setMinZoom(Math.max(4, map.getZoom() - 1)); // room to breathe, but never lose the state
+  }
+  buildDots();
+  refresh();
+
+  // Deep links: ?town=Lowell opens on that town, ?q=12 Main St runs a search (inside the town when both are given)
+  const TOWN_ZOOM = 13;
+  function townCentroid(name) {
+    const up = name.toUpperCase();
+    const pts = DATA.locations.filter(l => l.city === up);
+    if (!pts.length) return null;
+    return { lat: pts.reduce((s, l) => s + l.lat, 0) / pts.length, lng: pts.reduce((s, l) => s + l.lng, 0) / pts.length };
+  }
+  async function goToTown(name) {
+    // Pins in that town give an instant first view; the map service then gives the real town center
+    const guess = townCentroid(name);
+    if (guess) map.setView(guess, TOWN_ZOOM, { animate: false });
+    let moved = false;
+    map.once('dragstart', () => { moved = true; }); // never yank the map away from someone already exploring
+    try {
+      const url = `https://nominatim.openstreetmap.org/search?format=json&limit=1&countrycodes=us&bounded=1&viewbox=${R.viewbox}&q=` + encodeURIComponent(`${name}, ${R.state}`);
+      const h = (await (await fetch(url, { headers: { 'Accept-Language': 'en' } })).json())[0];
+      if (h) {
+        const p = { lat: +h.lat, lng: +h.lon };
+        if (!moved && (!guess || distM(guess, p) > 800)) map.setView(p, TOWN_ZOOM, { animate: !!guess });
+        return;
+      }
+    } catch {}
+    if (!guess) toast(`Could not find ${name} in ${R.area}. Showing the whole state.`);
+  }
+  const params = new URLSearchParams(location.search);
+  const townParam = (params.get('town') || '').trim().slice(0, 60);
+  const qParam = (params.get('q') || '').trim().slice(0, 200);
+  (async () => {
+    if (townParam) await goToTown(townParam);
+    if (qParam) {
+      input.value = qParam; $('searchForm').classList.add('has-text');
+      $('searchForm').dispatchEvent(new Event('submit', { cancelable: true }));
+    }
+  })();
   if (!store.get('seenIntro')) openModal();
 
   if ('serviceWorker' in navigator && location.protocol !== 'file:') {

@@ -44,19 +44,29 @@
   .ctas { display: flex; flex-wrap: wrap; gap: 12px; }
 
   h2 { font-size: 13px; letter-spacing: .1em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 14px; }
-  .cities { display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr)); gap: 12px; padding-bottom: 44px; }
-  .city { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); text-decoration: none; min-height: 100px; }
-  .city.live { box-shadow: var(--shadow); grid-column: 1 / -1; border-color: color-mix(in srgb, var(--red) 40%, var(--line)); transition: transform .2s ease; }
-  .city.live:hover { transform: translateY(-2px); }
-  @media (min-width: 720px) { .city.live { grid-column: span 1; } }
-  .city-name { font-weight: 800; font-size: 20px; letter-spacing: -0.02em; }
+  .cities { display: grid; grid-template-columns: 1fr; gap: 12px; padding-bottom: 44px; }
+  @media (min-width: 720px) { .cities { grid-template-columns: 1fr 1fr; } }
+  .city { position: relative; display: flex; flex-direction: column; gap: 6px; padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); min-width: 0; }
+  .city.live { box-shadow: var(--shadow); border-color: color-mix(in srgb, var(--red) 40%, var(--line)); }
+  .city-name { font-weight: 800; font-size: 22px; letter-spacing: -0.02em; text-decoration: none; padding-right: 64px; }
   .city-towns { color: var(--ink-2); font-size: 14px; }
-  .city-meta { margin-top: auto; font-size: 13px; color: var(--ink-3); font-weight: 600; }
+  .city-meta { font-size: 13px; color: var(--ink-3); font-weight: 600; min-height: 1.5em; }
   .badge { position: absolute; top: 16px; right: 16px; font-size: 11px; font-weight: 800; letter-spacing: .06em; text-transform: uppercase; padding: 4px 9px; border-radius: 999px; }
   .badge.on { background: color-mix(in srgb, var(--ok) 16%, transparent); color: var(--ok); }
-  .badge.soon { background: var(--chip); color: var(--ink-3); }
-  .city.soon .city-name { color: var(--ink-2); }
-  .open { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--red); font-size: 14px; }
+  .open { display: inline-flex; align-items: center; gap: 6px; font-weight: 800; color: var(--red); font-size: 14px; text-decoration: none; margin-top: 4px; }
+  .find { display: flex; gap: 8px; margin-top: 10px; }
+  .find input {
+    flex: 1; min-width: 0; height: 46px; padding: 0 14px; border-radius: 12px; border: 1px solid var(--line); background: var(--bg); color: var(--ink);
+    font: inherit; font-size: 16px; font-weight: 600; outline: none;
+  }
+  .find input:focus { border-color: color-mix(in srgb, var(--red) 55%, var(--line)); }
+  .find input::placeholder { color: var(--ink-3); font-weight: 500; }
+  .find button { flex-shrink: 0; height: 46px; padding: 0 18px; border: 0; border-radius: 12px; background: var(--red); color: #fff; font: inherit; font-weight: 800; font-size: 15px; cursor: pointer; }
+  .find button:active { transform: scale(.97); }
+  .towns-label { margin-top: 10px; font-size: 12px; font-weight: 800; letter-spacing: .08em; text-transform: uppercase; color: var(--ink-3); }
+  .towns { display: flex; flex-wrap: wrap; gap: 6px; }
+  .towns a { display: inline-flex; align-items: center; height: 34px; padding: 0 12px; border-radius: 999px; background: var(--chip); color: var(--ink-2); font-size: 13.5px; font-weight: 700; text-decoration: none; transition: background .2s ease, color .2s ease; }
+  .towns a:hover, .towns a:focus-visible { background: var(--ink); color: var(--card); outline: none; }
 
   .how { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; padding-bottom: 44px; }
   .how div { padding: 18px; border-radius: 18px; background: var(--card); border: 1px solid var(--line); }
@@ -83,31 +93,59 @@
     <h1>Know the block before you trick-or-treat.</h1>
     <p class="lede">A phone map of addresses from the public state sex offender registries in Massachusetts and New Hampshire. Search your route, see the busiest areas, and turn on walk alerts that buzz when you get close.</p>
     <div class="ctas">
-      <a class="cta" href="lowell/">Greater Lowell, MA <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
-      <a class="cta" href="nashua/">Greater Nashua, NH <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      <a class="cta" href="ma/">Massachusetts <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+      <a class="cta" href="nh/">New Hampshire <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
     </div>
   </section>
 
-  <h2>Pick your area</h2>
+  <h2>Pick your state</h2>
   <div class="cities">
-    <a class="city live" href="lowell/">
+    <div class="city live">
       <span class="badge on">Live</span>
-      <span class="city-name">Greater Lowell, MA</span>
-      <span class="city-towns" id="lowellTowns">Lowell, Chelmsford, Dracut, Tewksbury, Billerica, Tyngsborough and Westford</span>
-      <span class="city-meta" id="lowellMeta"></span>
-      <span class="open">Open map <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
-    </a>
-    <a class="city live" href="nashua/">
+      <a class="city-name" href="ma/">Massachusetts</a>
+      <span class="city-towns">Statewide, Level 2 and 3</span>
+      <span class="city-meta" id="maMeta"></span>
+      <form class="find" data-state="ma" role="search">
+        <input name="town" list="maTowns" placeholder="Find your town" autocomplete="off" enterkeyhint="go" aria-label="Find your town in Massachusetts">
+        <button type="submit">Go</button>
+      </form>
+      <datalist id="maTowns"></datalist>
+      <div class="towns-label">Jump to</div>
+      <div class="towns">
+        <a href="ma/?town=Boston">Boston</a>
+        <a href="ma/?town=Worcester">Worcester</a>
+        <a href="ma/?town=Springfield">Springfield</a>
+        <a href="ma/?town=Lowell">Lowell</a>
+        <a href="ma/?town=Cambridge">Cambridge</a>
+        <a href="ma/?town=Brockton">Brockton</a>
+        <a href="ma/?town=New+Bedford">New Bedford</a>
+        <a href="ma/?town=Lynn">Lynn</a>
+      </div>
+      <a class="open" href="ma/">Open the statewide map <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
+    <div class="city live">
       <span class="badge on">Live</span>
-      <span class="city-name">Greater Nashua, NH</span>
-      <span class="city-towns">Nashua, Hudson, Merrimack, Litchfield, Hollis and Amherst</span>
-      <span class="city-meta" id="nashuaMeta"></span>
-      <span class="open">Open map <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></span>
-    </a>
-    <div class="city soon"><span class="badge soon">Coming soon</span><span class="city-name">Boston, MA</span><span class="city-towns">Boston and neighboring cities</span></div>
-    <div class="city soon"><span class="badge soon">Coming soon</span><span class="city-name">Worcester, MA</span><span class="city-towns">Worcester and nearby towns</span></div>
-    <div class="city soon"><span class="badge soon">Coming soon</span><span class="city-name">Manchester, NH</span><span class="city-towns">Manchester and nearby towns</span></div>
-    <div class="city soon"><span class="badge soon">Coming soon</span><span class="city-name">Concord, NH</span><span class="city-towns">Concord and nearby towns</span></div>
+      <a class="city-name" href="nh/">New Hampshire</a>
+      <span class="city-towns">Statewide</span>
+      <span class="city-meta" id="nhMeta"></span>
+      <form class="find" data-state="nh" role="search">
+        <input name="town" list="nhTowns" placeholder="Find your town" autocomplete="off" enterkeyhint="go" aria-label="Find your town in New Hampshire">
+        <button type="submit">Go</button>
+      </form>
+      <datalist id="nhTowns"></datalist>
+      <div class="towns-label">Jump to</div>
+      <div class="towns">
+        <a href="nh/?town=Manchester">Manchester</a>
+        <a href="nh/?town=Nashua">Nashua</a>
+        <a href="nh/?town=Concord">Concord</a>
+        <a href="nh/?town=Dover">Dover</a>
+        <a href="nh/?town=Rochester">Rochester</a>
+        <a href="nh/?town=Keene">Keene</a>
+        <a href="nh/?town=Portsmouth">Portsmouth</a>
+        <a href="nh/?town=Derry">Derry</a>
+      </div>
+      <a class="open" href="nh/">Open the statewide map <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14"/><path d="m13 6 6 6-6 6"/></svg></a>
+    </div>
   </div>
 
   <h2>How it works</h2>
@@ -133,17 +171,35 @@
   </footer>
 </div>
 <script>
-  // Live numbers from each city's data file, so the cards never go stale after a refresh
-  function cityMeta(id) {
-    const D = window.SAFEWALK_DATA; window.SAFEWALK_DATA = null;
-    if (!D) return;
-    const asOf = new Date(D.asOf + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
-    document.getElementById(id).textContent = `${D.total} registry listings across ${D.towns.length} towns. Updated ${asOf}.`;
+  // Live numbers from each state's data file, so the cards never go stale after a refresh. The files are
+  // big, so they load one at a time after the page shows.
+  function loadData(slug) {
+    return new Promise(done => {
+      const s = document.createElement('script');
+      s.src = slug + '/data.js';
+      s.onload = () => { const D = window.SAFEWALK_DATA; window.SAFEWALK_DATA = null; done(D); };
+      s.onerror = () => done(null);
+      document.body.appendChild(s);
+    });
   }
+  const titleCase = t => t.toLowerCase().replace(/\b([a-z])/g, c => c.toUpperCase());
+  function stateMeta(slug, D) {
+    const asOf = new Date(D.asOf + 'T12:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    document.getElementById(slug + 'Meta').textContent = `${D.total.toLocaleString()} registry listings across ${D.towns.length.toLocaleString()} towns. Updated ${asOf}.`;
+    // Town names for the finder, so a typo does not land somewhere else
+    document.getElementById(slug + 'Towns').innerHTML = [...D.towns].sort().map(t => `<option value="${titleCase(t).replace(/"/g, '&quot;')}">`).join('');
+  }
+  document.querySelectorAll('.find').forEach(f => f.addEventListener('submit', e => {
+    e.preventDefault();
+    const town = f.elements.town.value.trim();
+    location.href = f.dataset.state + '/' + (town ? '?town=' + encodeURIComponent(town) : '');
+  }));
+  window.addEventListener('load', async () => {
+    for (const slug of ['ma', 'nh']) {
+      const D = await loadData(slug);
+      if (D) stateMeta(slug, D);
+    }
+  });
 </script>
-<script src="lowell/data.js"></script>
-<script>cityMeta('lowellMeta');</script>
-<script src="nashua/data.js"></script>
-<script>cityMeta('nashuaMeta');</script>
 </body>
 </html>

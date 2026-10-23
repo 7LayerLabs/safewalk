@@ -5,3 +5,6 @@ data/sorb-links.csv
 site/.vercel/
 node_modules/
 data/nh-raw.csv
+data/nh-state-raw.csv
+data/ma-cmd/
+data/ma-raw.csv
